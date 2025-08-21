@@ -6,11 +6,11 @@
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Luxe Weddings &amp; Lifestyle</title>
+  <title>Royal Shaadi</title>
   <meta name="description" content="Premium wedding, fashion and lifestyle magazine — curated editorial, vendor listings and planning resources.">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
-  <meta property="og:title" content="Luxe Weddings &amp; Lifestyle">
+  <meta property="og:title" content="Royal Shaadi">
   <meta property="og:description" content="Luxury wedding &amp; lifestyle inspiration and vendor curation.">
   <meta property="og:type" content="website">
 
@@ -37,31 +37,184 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Royal Weddings & Lifestyle",
-    "url": "http://localhost/premium-wedding-site-final/",
-    "logo": "http://localhost/premium-wedding-site-final/assets/images/logo.png"
+    "url": "https://www.royalshaadi.co.in/",
+    "logo": "https://www.royalshaadi.co.in/assets/images/logo.png"
   }
   </script>
 </head>
 <body>
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="http://localhost/">Royal Shaadi<span class="accent">.</span></a>
+    <a class="brand" href="https://www.royalshaadi.co.in/">Royal Shaadi<span class="accent">.</span></a>
     <nav class="main-nav" id="mainNav">
-      <a href="http://localhost/">Home</a>
-      <a href="http://localhost/premium-wedding-site-final-2/blog.php">Blogs</a>
-      <a href="http://localhost/premium-wedding-site-final-2/planner.php">Planner</a>
-      <a href="http://localhost/premium-wedding-site-final-2/vendors.php">Vendors</a>
-      <a href="http://localhost/premium-wedding-site-final-2/contact.php">Contact</a>
+      <a href="https://www.royalshaadi.co.in/">Home</a>
+      <a href="https://www.royalshaadi.co.in/blog.php">Blogs</a>
+      <a href="https://www.royalshaadi.co.in/planner.php">Planner</a>
+      <a href="https://www.royalshaadi.co.in/vendors.php">Vendors</a>
+      <a href="https://www.royalshaadi.co.in/contact.php">Contact</a>
       <a class="cta" href="http://localhost/premium-wedding-site-final-2/#">Subscribe</a>
-      
-      <button id="signInBtn" class="btn btn-outline-primary">Sign in</button>
-      <a class="nav-link" href="http://localhost/premium-wedding-site-final-2/profile.php">Profile</a>
-      <!-- <button id="signOutBtn" class="btn btn-light">Sign out</button> -->
     </nav>
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <div id="userBadge" class="user-badge" style="display:none"></div>
+    <div class="auth-section">
+      <button id="signInBtn" class="btn btn-outline-primary" style="display: inline-block;">Sign in</button>
+      <button id="signOutBtn" class="btn btn-light" style="display: none;">Sign out</button>
+      <div id="userBadge" class="user-badge nav-link" style="display:none"></div>
+</div>
   </div>
 </header>
+
+<script>
+
+function getRandomColor() {
+  // Generates a random pastel color
+  const hue = Math.floor(Math.random() * 360);
+  return `hsl(${hue}, 70%, 80%)`;
+}
+
+function getInitial(name) {
+  return name ? name.charAt(0).toUpperCase() : '';
+}
+
+function updateUI(user) {
+  if (user) {
+    signInBtn.style.display = 'none';
+    signOutBtn.style.display = 'inline-block';
+    userBadge.style.display = 'inline-block';
+    let badgeHtml = '';
+    if (user.photoURL) {
+      badgeHtml = `<a href="https://www.royalshaadi.co.in/profile.php" title="Profile">
+        <img src="${user.photoURL}" alt="User" class="rounded-circle" width="30" height="30" style="object-fit:cover;">
+      </a>`;
+    } else {
+      const color = getRandomColor();
+      const initial = getInitial(user.displayName || user.email);
+      badgeHtml = `<a href="https://www.royalshaadi.co.in/profile.php" title="Profile">
+        <span style="
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          width:30px;
+          height:30px;
+          border-radius:50%;
+          background:${color};
+          color:#333;
+          font-weight:bold;
+          font-size:16px;
+          text-decoration:none;
+        ">${initial}</span>
+      </a>`;
+    }
+    userBadge.innerHTML = badgeHtml;
+  } else {
+    signInBtn.style.display = 'inline-block';
+    signOutBtn.style.display = 'none';
+    userBadge.style.display = 'none';
+    userBadge.innerHTML = '';
+  }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Firebase
+  firebase.initializeApp(window._FIREBASE_CONFIG);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  const signInBtn = document.getElementById('signInBtn');
+  const signOutBtn = document.getElementById('signOutBtn');
+  const profileLink = document.getElementById('profileLink');
+  const userBadge = document.getElementById('userBadge');
+  const navToggle = document.querySelector('.nav-toggle');
+  const mainNav = document.getElementById('mainNav');
+
+  // Toggle navigation menu
+  navToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', mainNav.classList.contains('open'));
+  });
+
+  // Sign-in handler
+  signInBtn.addEventListener('click', async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    try {
+      const result = await auth.signInWithPopup(provider);
+      const user = result.user;
+      // Optionally save user role or other data to Firestore
+      await db.collection('users').doc(user.uid).set({
+        name: user.displayName || '',
+        email: user.email || '',
+        photo: user.photoURL || '',
+        role: 'User', // Default role, can be updated via modal if needed
+        created_at: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+      updateUI(user);
+    } catch (error) {
+      console.error('Sign-in failed', error);
+      alert('Sign in failed: ' + error.message);
+    }
+  });
+
+  // Sign-out handler
+  signOutBtn.addEventListener('click', async () => {
+    await auth.signOut();
+    updateUI(null);
+    window.location.href = 'https://www.royalshaadi.co.in/';
+  });
+
+  // Update UI based on auth state
+  function updateUI(user) {
+    if (user) {
+      signInBtn.style.display = 'none';
+      signOutBtn.style.display = 'inline-block';
+      profileLink.style.display = 'inline-block';
+      userBadge.style.display = 'inline-block';
+      userBadge.innerHTML = `<img src="${user.photoURL || 'https://via.placeholder.com/30'}" alt="User" class="rounded-circle" width="30" height="30">`;
+    } else {
+      signInBtn.style.display = 'inline-block';
+      signOutBtn.style.display = 'none';
+      profileLink.style.display = 'none';
+      userBadge.style.display = 'none';
+      userBadge.innerHTML = '';
+    }
+  }
+
+  // Listen to auth state changes
+  auth.onAuthStateChanged((user) => {
+    updateUI(user);
+  });
+});
+</script>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>About</h4>
+        <p>Curated editorial for premium weddings and lifestyle.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="http://localhost/premium-wedding-site-final-2/blog.php">Magazine</a></li>
+          <li><a href="http://localhost/premium-wedding-site-final-2/vendors.php">Vendors</a></li>
+          <li><a href="http://localhost/premium-wedding-site-final-2/planner.php">Planner</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>hello@luxeweddings.local</p>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2025 Luxe Weddings &amp; Lifestyle — All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="./index_files/bootstrap.bundle.min.js.download"></script>
+<script src="./index_files/app.js.download"></script>
+<script src="./index_files/firebase-auth.js.download"></script>
+<script src="./index_files/firestore-api.js.download"></script>
+
+
 <header>
 </header>
 
@@ -171,27 +324,28 @@
 
 
   <!-- Navbar -->
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="/">Royal Shaadi</a>
+      <a class="navbar-brand fw-bold" href="http://localhost/">Royal Shaadi</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-center">
-          <li class="nav-item"><a class="nav-link" href="wedding_planner.php">Planner</a></li>
-          <li class="nav-item"><a class="nav-link" href="vendors.php">Vendors</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/premium-wedding-site-final-2/wedding_planner.php">Planner</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/premium-wedding-site-final-2/vendors.php">Vendors</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Blogs</a>
+            <a class="nav-link dropdown-toggle" href="http://localhost/premium-wedding-site-final-2/#" data-bs-toggle="dropdown">Blogs</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="blogs/wedding.php">Wedding</a></li> -->
-              <!-- Add other blog categories here -->
-            <!-- </ul>
+              <li><a class="dropdown-item" href="http://localhost/premium-wedding-site-final-2/blogs/wedding.php">Wedding</a></li>
+              <li><a class="dropdown-item" href="http://localhost/premium-wedding-site-final-2/blogs/fashion.php">Fashion</a></li>
+              <li><a class="dropdown-item" href="http://localhost/premium-wedding-site-final-2/blogs/lifestyle.php">Lifestyle</a></li>
+            </ul>
           </li>
 
           <li class="nav-item" id="navProfileLink" style="display:none">
-            <a class="nav-link" href="profile.php">Profile</a>
+            <a class="nav-link" href="http://localhost/premium-wedding-site-final-2/profile.php">Profile</a>
           </li>
 
           <li class="nav-item ms-2" id="navSigninBtn">
@@ -203,9 +357,8 @@
         </ul>
       </div>
     </div>
-  </nav> -->
-  <!-- End Navbar -->
-
+  </nav>
+  
   <!-- Hero Section -->
   <header class="hero">
     <div class="container">
@@ -225,10 +378,10 @@
     <div class="swiper vendor-swiper">
       <div class="swiper-wrapper" id="vendorSlides">
         <br>
-<b>Warning</b>:  Undefined variable $db in <b>C:\xampp\htdocs\premium-wedding-site-final-2\index.php</b> on line <b>172</b><br>
+<b>Warning</b>:  Undefined variable $db in <b>C:\xampp\htdocs\premium-wedding-site-final-2\index.php</b> on line <b>205</b><br>
 <br>
-<b>Fatal error</b>:  Uncaught Error: Call to a member function collection() on null in C:\xampp\htdocs\premium-wedding-site-final-2\index.php:172
+<b>Fatal error</b>:  Uncaught Error: Call to a member function collection() on null in C:\xampp\htdocs\premium-wedding-site-final-2\index.php:205
 Stack trace:
 #0 {main}
-  thrown in <b>C:\xampp\htdocs\premium-wedding-site-final-2\index.php</b> on line <b>172</b><br>
+  thrown in <b>C:\xampp\htdocs\premium-wedding-site-final-2\index.php</b> on line <b>205</b><br>
 </div></div></div></section></body></html>
