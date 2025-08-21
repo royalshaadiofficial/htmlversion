@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)http://localhost/premium-wedding-site-final-2/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Royal Shaadi — Premium Weddings &amp; Lifestyle</title>
+  <meta name="description" content="Royal Shaadi — premium wedding planning, vendors, inspiration and tools.">
+
+  <!-- Bootstrap CSS -->
+  <link href="./rshtml_files/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="./rshtml_files/css2" rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="./rshtml_files/swiper-bundle.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .premium-card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(10,10,10,0.06);
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .premium-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .premium-card .card-body {
+      padding: 1rem;
+    }
+    .premium-card h5 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      margin-bottom: .35rem;
+    }
+    .premium-card .tag {
+      background: rgba(183,138,88,0.08);
+      color: #b88458;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .85rem;
+    }
+    .premium-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(10,10,10,0.12);
+    }
+    .hero {
+      background-image: url('assets/images/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 65vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 6px 30px rgba(0,0,0,0.35);
+      text-align: center;
+    }
+    /* Vendors Swiper styling */
+    .swiper {
+      padding: 10px 0 30px;
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: #333;
+    }
+    #blogGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+      gap: 2rem;
+      padding-top: 1.5rem;
+    }
+    /* Buttons softer look */
+    .premium-card .btn {
+      border-radius: 50px;
+      font-size: .9rem;
+      padding: 6px 16px;
+    }
+    /* Hero section readability */
+    .hero h1 {
+      text-shadow: 0 4px 18px rgba(0,0,0,0.45);
+    }
+    .hero p {
+      color: #f8f9fa;
+      font-size: 1.1rem;
+    }
+  </style>
+
+  <script>
+    window._FIREBASE_CONFIG = {
+      apiKey: "AIzaSyBBIk0WfONu9tcD63hYNjXnNViXKd5BFZU",
+      authDomain: "royal-shaadi.firebaseapp.com",
+      projectId: "royal-shaadi",
+      storageBucket: "royal-shaadi.firebasestorage.app",
+      messagingSenderId: "16207213661",
+      appId: "1:16207213661:web:4f942e1f5a981a72a649b4",
+      measurementId: "G-BGHXT644B8"
+    };
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="http://localhost/">Royal Shaadi</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="http://localhost/premium-wedding-site-final-2/wedding_planner.php">Planner</a></li>
+          <li class="nav-item"><a class="nav-link" href="http://localhost/premium-wedding-site-final-2/vendors.php">Vendors</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="http://localhost/premium-wedding-site-final-2/#" data-bs-toggle="dropdown">Blogs</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="http://localhost/premium-wedding-site-final-2/blogs/wedding.php">Wedding</a></li>
+              <!-- Add other blog categories here -->
+            </ul>
+          </li>
+
+          <li class="nav-item" id="navProfileLink" style="display:none">
+            <a class="nav-link" href="http://localhost/premium-wedding-site-final-2/profile.php">Profile</a>
+          </li>
+
+          <li class="nav-item ms-2" id="navSigninBtn" style="display: block;">
+            <button id="signInBtn" class="btn btn-outline-primary">Sign in</button>
+          </li>
+          <li class="nav-item ms-2" id="navSignoutBtn" style="display:none">
+            <button id="signOutBtn" class="btn btn-light">Sign out</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Plan your dream wedding — the royal way</h1>
+      <p class="lead text-muted mb-4">Premium vendors, curated editorial, and powerful planning tools.</p>
+      <a href="http://localhost/premium-wedding-site-final-2/wedding_planner.php" class="btn btn-lg btn-primary">Start Planning</a>
+    </div>
+  </header>
+
+  <!-- Featured Vendors (Swiper Carousel) -->
+  <section class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Featured Vendors</h2>
+        <div class="carousel-cta small">Handpicked &amp; Verified</div>
+      </div>
+      <div class="swiper vendor-swiper swiper-initialized swiper-horizontal swiper-backface-hidden">
+        <div class="swiper-wrapper" id="vendorSlides" aria-live="polite">
+          <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 3" style="width: 360px; margin-right: 18px;">
+            <article class="premium-card vendor-card">
+              <img src="./rshtml_files/vendor1.jpg" alt="Elegant Weddings" loading="lazy">
+              <div class="card-body">
+                <h5>Elegant Weddings</h5>
+                <div class="mb-1"><span class="tag">Wedding Planner</span></div>
+                <p class="meta">Delhi</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">₹50,000 - ₹2,00,000</small>
+                  <a href="http://localhost/premium-wedding-site-final-2/vendors/elegant-weddings.html" class="btn btn-sm btn-outline-primary">View</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        
+          <div class="swiper-slide swiper-slide-next" role="group" aria-label="2 / 3" style="width: 360px; margin-right: 18px;">
+            <article class="premium-card vendor-card">
+              <img src="./rshtml_files/vendor2.jpg" alt="Royal Decor" loading="lazy">
+              <div class="card-body">
+                <h5>Royal Decor</h5>
+                <div class="mb-1"><span class="tag">Decorators</span></div>
+                <p class="meta">Mumbai</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">₹75,000 - ₹3,00,000</small>
+                  <a href="http://localhost/premium-wedding-site-final-2/vendors/royal-decor.html" class="btn btn-sm btn-outline-primary">View</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        
+          <div class="swiper-slide" role="group" aria-label="3 / 3" style="width: 360px; margin-right: 18px;">
+            <article class="premium-card vendor-card">
+              <img src="./rshtml_files/vendor3.jpg" alt="Glamour Makeup" loading="lazy">
+              <div class="card-body">
+                <h5>Glamour Makeup</h5>
+                <div class="mb-1"><span class="tag">Makeup Artist</span></div>
+                <p class="meta">Bangalore</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">₹20,000 - ₹1,00,000</small>
+                  <a href="http://localhost/premium-wedding-site-final-2/vendors/glamour-makeup.html" class="btn btn-sm btn-outline-primary">View</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="swiper-button-prev swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Previous slide" aria-controls="vendorSlides" aria-disabled="true"></div>
+        <div class="swiper-button-next swiper-button-disabled swiper-button-lock" tabindex="-1" role="button" aria-label="Next slide" aria-controls="vendorSlides" aria-disabled="true"></div>
+        <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true"></span></div>
+      <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+    </div>
+  </section>
+
+  <!-- Latest Blogs Grid -->
+  <section id="blogs" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Latest Blogs</h2>
+      <div id="blogGrid">
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="Top 10 Wedding Trends for 2025 category" loading="lazy">
+            <div class="card-body">
+              <h5>Top 10 Wedding Trends For 2025 Category</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/premium-wedding-site-final-2/single-blog.php?blog=Top+10+Wedding+Trends+for+2025+category" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (6)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (6)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/premium-wedding-site-final-2/single-blog.php?blog=timeless-indian-wedding-traditions+-+Copy+%286%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (5)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (5)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/premium-wedding-site-final-2/single-blog.php?blog=timeless-indian-wedding-traditions+-+Copy+%285%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (4)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (4)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/premium-wedding-site-final-2/single-blog.php?blog=timeless-indian-wedding-traditions+-+Copy+%284%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (3)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (3)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/premium-wedding-site-final-2/single-blog.php?blog=timeless-indian-wedding-traditions+-+Copy+%283%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="wedding-fashion-trends-2025" loading="lazy">
+            <div class="card-body">
+              <h5>Wedding Fashion Trends 2025</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/premium-wedding-site-final-2/single-blog.php?blog=wedding-fashion-trends-2025" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+              </div>
+    </div>
+  </section>
+
+  <!-- Role Selection Modal -->
+  <div class="modal fade" id="roleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <form id="roleForm">
+          <div class="modal-header">
+            <h5 class="modal-title">Welcome — choose your account type</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you signing in as a <strong>User</strong> or a <strong>Vendor</strong>?</p>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="role" id="roleUser" value="User" checked="">
+              <label class="form-check-label" for="roleUser">User</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="role" id="roleVendor" value="Vendor">
+              <label class="form-check-label" for="roleVendor">Vendor</label>
+            </div>
+            <small class="form-text text-muted">You can change this later from your profile.</small>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Compat Libraries -->
+  <script src="./rshtml_files/firebase-app-compat.js.download"></script>
+  <script src="./rshtml_files/firebase-auth-compat.js.download"></script>
+  <script src="./rshtml_files/firebase-firestore-compat.js.download"></script>
+
+  <!-- Swiper JS -->
+  <script src="./rshtml_files/swiper-bundle.min.js.download"></script>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="./rshtml_files/bootstrap.bundle.min.js.download"></script>
+
+  <script>
+    // Initialize Firebase
+    firebase.initializeApp(window._FIREBASE_CONFIG);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // UI Elements
+    const signInBtn = document.getElementById('signInBtn');
+    const signOutBtn = document.getElementById('signOutBtn');
+    const navProfileLink = document.getElementById('navProfileLink');
+    const navSigninBtn = document.getElementById('navSigninBtn');
+    const navSignoutBtn = document.getElementById('navSignoutBtn');
+
+    const roleModalEl = document.getElementById('roleModal');
+    const roleModal = new bootstrap.Modal(roleModalEl, { backdrop: 'static', keyboard: false });
+    const roleForm = document.getElementById('roleForm');
+
+    // Show/hide UI helpers
+    function showSignedInUI(user) {
+      navProfileLink.style.display = 'block';
+      navSigninBtn.style.display = 'none';
+      navSignoutBtn.style.display = 'block';
+    }
+    function showSignedOutUI() {
+      navProfileLink.style.display = 'none';
+      navSigninBtn.style.display = 'block';
+      navSignoutBtn.style.display = 'none';
+    }
+
+    // Sign in handler
+    signInBtn.addEventListener('click', async () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      try {
+        const result = await auth.signInWithPopup(provider);
+        const user = result.user;
+
+        roleModal.show();
+
+        roleForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const role = document.querySelector('input[name="role"]:checked').value || 'User';
+
+          await db.collection('users').doc(user.uid).set({
+            name: user.displayName || '',
+            email: user.email || '',
+            photo: user.photoURL || '',
+            role: role,
+            subscribed: false,
+            created_at: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
+
+          localStorage.setItem('rs_role', role);
+
+          roleModal.hide();
+          showSignedInUI(user);
+        }, { once: true });
+
+      } catch (error) {
+        console.error('Sign-in failed', error);
+        alert('Sign in failed: ' + (error.message || error));
+      }
+    });
+
+    // Sign out handler
+    signOutBtn.addEventListener('click', async () => {
+      await auth.signOut();
+      showSignedOutUI();
+      window.location = 'index.php';
+    });
+
+    // Listen to auth state changes
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        showSignedInUI(user);
+
+        const userDoc = await db.collection('users').doc(user.uid).get();
+
+        if (!userDoc.exists) {
+          const savedRole = localStorage.getItem('rs_role') || 'User';
+          await db.collection('users').doc(user.uid).set({
+            name: user.displayName || '',
+            email: user.email || '',
+            photo: user.photoURL || '',
+            role: savedRole,
+            subscribed: false,
+            created_at: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true });
+        } else {
+          const roleFromDb = userDoc.data().role;
+          if (roleFromDb) localStorage.setItem('rs_role', roleFromDb);
+        }
+      } else {
+        showSignedOutUI();
+      }
+    });
+
+    // ------------------------
+    // Static Vendor Data
+    // ------------------------
+    const vendors = [
+      {
+        name: "Elegant Weddings",
+        category: "Wedding Planner",
+        location: "Delhi",
+        image: "assets/images/vendor1.jpg",
+        price: "₹50,000 - ₹2,00,000",
+        url: "vendors/elegant-weddings.html"
+      },
+      {
+        name: "Royal Decor",
+        category: "Decorators",
+        location: "Mumbai",
+        image: "assets/images/vendor2.jpg",
+        price: "₹75,000 - ₹3,00,000",
+        url: "vendors/royal-decor.html"
+      },
+      {
+        name: "Glamour Makeup",
+        category: "Makeup Artist",
+        location: "Bangalore",
+        image: "assets/images/vendor3.jpg",
+        price: "₹20,000 - ₹1,00,000",
+        url: "vendors/glamour-makeup.html"
+      },
+    ];
+
+    // Load vendors into Swiper carousel
+    function loadVendors() {
+      const container = document.getElementById('vendorSlides');
+      let html = '';
+      vendors.forEach(v => {
+        html += `
+          <div class="swiper-slide">
+            <article class="premium-card vendor-card">
+              <img src="${v.image}" alt="${escapeHtml(v.name)}" loading="lazy" />
+              <div class="card-body">
+                <h5>${escapeHtml(v.name)}</h5>
+                <div class="mb-1"><span class="tag">${escapeHtml(v.category)}</span></div>
+                <p class="meta">${escapeHtml(v.location)}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted">${escapeHtml(v.price)}</small>
+                  <a href="${escapeHtml(v.url)}" class="btn btn-sm btn-outline-primary">View</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+
+      // Initialize swiper
+      if(window.vendorSwiper) window.vendorSwiper.destroy(true, true);
+
+      window.vendorSwiper = new Swiper('.vendor-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 18,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          992: { slidesPerView: 3 }
+        }
+      });
+    }
+
+    // Simple helper to escape HTML
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str.replace(/[&<>"']/g, m => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      })[m]);
+    }
+
+    // Initialize everything after DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      loadVendors();
+    });
+  </script>
+
+</body></html>
