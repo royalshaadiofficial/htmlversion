@@ -1,1 +1,0 @@
-// JS script to upload to Firestore
