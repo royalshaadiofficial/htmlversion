@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0030)https://www.royalshaadi.co.in/ -->
+<!-- saved from url=(0046)http://localhost/premium-wedding-site-final-2/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -89,7 +89,7 @@
     }
   </style>
 
-  <script src="./index_files/cb=gapi.loaded_0" async=""></script><script>
+  <script>
     window._FIREBASE_CONFIG = {
       apiKey: "",
       authDomain: "",
@@ -100,7 +100,7 @@
       measurementId: ""
     };
   </script>
-<script src="./index_files/api.js.download" type="text/javascript" charset="UTF-8" gapi_processed="true"></script></head>
+</head>
 <body>
 
 
@@ -159,7 +159,7 @@
       <button id="signInBtn" class="btn btn-outline-primary" style="display: none;">Sign in</button>
       <button id="signOutBtn" class="btn btn-light" style="display: inline-block;">Sign out</button>
       <div id="userBadge" class="user-badge nav-link" style="display: inline-block;"><a href="https://www.royalshaadi.co.in/profile.php" title="Profile">
-      <img src="./index_files/unnamed.jpg" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src=&#39;https://via.placeholder.com/30&#39;;">
+      <img src="https://via.placeholder.com/30" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src=&#39;https://via.placeholder.com/30&#39;;">
     </a></div>
     </div>
   </div>
@@ -175,8 +175,10 @@ function updateUI(user) {
     signInBtn.style.display = 'none';
     signOutBtn.style.display = 'inline-block';
     userBadge.style.display = 'inline-block';
+    const photoUrl = user.photoURL;
+    console.log('Photo URL:', photoUrl); // Debug log
     userBadge.innerHTML = `<a href="https://www.royalshaadi.co.in/profile.php" title="Profile">
-      <img src="${user.photoURL || 'https://via.placeholder.com/30'}" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src='https://via.placeholder.com/30';">
+      <img src="${photoUrl || 'https://via.placeholder.com/30'}" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src='https://via.placeholder.com/30';">
     </a>`;
   } else {
     signInBtn.style.display = 'inline-block';
@@ -188,7 +190,13 @@ function updateUI(user) {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Firebase
-  firebase.initializeApp(window._FIREBASE_CONFIG);
+  try {
+    firebase.initializeApp(window._FIREBASE_CONFIG);
+  } catch (error) {
+    console.error('Firebase initialization failed:', error);
+    alert('Failed to initialize Firebase. Check console for details.');
+    return;
+  }
   const auth = firebase.auth();
 
   const signInBtn = document.getElementById('signInBtn');
@@ -205,9 +213,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sign-in handler
   signInBtn.addEventListener('click', async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
     try {
       const result = await auth.signInWithPopup(provider);
       const user = result.user;
+      console.log('User data:', user); // Debug log
       updateUI(user);
     } catch (error) {
       console.error('Sign-in failed:', error);
@@ -229,6 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update UI based on auth state
   auth.onAuthStateChanged((user) => {
+    console.log('Auth state changed:', user); // Debug log
     updateUI(user);
   });
 });
@@ -254,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
                   <div class="swiper-slide">
                     <article class="premium-card vendor-card">
-                      <img src="./index_files/saved_resource" alt="Royal Catering" loading="lazy">
+                      <img src="http://localhost/premium-wedding-site-final-2/" alt="Royal Catering" loading="lazy">
                       <div class="card-body">
                         <h5>Royal Catering</h5>
                         <div class="mb-1"><span class="tag">Catering</span></div>
@@ -269,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                   <div class="swiper-slide">
                     <article class="premium-card vendor-card">
-                      <img src="./index_files/saved_resource" alt="Mela Studios" loading="lazy">
+                      <img src="http://localhost/premium-wedding-site-final-2/" alt="Mela Studios" loading="lazy">
                       <div class="card-body">
                         <h5>Mela Studios</h5>
                         <div class="mb-1"><span class="tag">Photography</span></div>
@@ -624,4 +636,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-<iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" tabindex="-1" vspace="0" width="100%" aria-hidden="true" id="I0_1755911532121" name="I0_1755911532121" src="./index_files/iframe.html" style="position: absolute; top: -100px; width: 1px; height: 1px;"></iframe></body></html>
+</body></html>
