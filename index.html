@@ -1,641 +1,363 @@
 <!DOCTYPE html>
-<!-- saved from url=(0046)http://localhost/premium-wedding-site-final-2/ -->
+<!-- saved from url=(0057)http://localhost/premium-wedding-site-final-2/profile.php -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Royal Shaadi — Premium Weddings &amp; Lifestyle</title>
-  <meta name="description" content="Royal Shaadi — premium wedding planning, vendors, inspiration and tools.">
-
-  <!-- Bootstrap CSS -->
+  <title>Your Profile — Royal Shaadi</title>
   <link href="./index_files/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Google Fonts -->
   <link href="./index_files/css2" rel="stylesheet">
-
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="./index_files/swiper-bundle.min.css">
-
+  <link rel="stylesheet" href="./index_files/style.css">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    .premium-card {
-      border-radius: 14px;
-      overflow: hidden;
-      background: #fff;
-      box-shadow: 0 6px 18px rgba(10,10,10,0.06);
-      transition: transform .28s ease, box-shadow .28s ease;
-    }
-    .premium-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .premium-card .card-body {
-      padding: 1rem;
-    }
-    .premium-card h5 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      margin-bottom: .35rem;
-    }
-    .premium-card .tag {
-      background: rgba(183,138,88,0.08);
-      color: #b88458;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: .85rem;
-    }
-    .premium-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 40px rgba(10,10,10,0.12);
-    }
-    .hero {
-      background-image: url('assets/images/hero.jpg');
-      background-size: cover;
-      background-position: center;
-      min-height: 65vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-shadow: 0 6px 30px rgba(0,0,0,0.35);
-      text-align: center;
-    }
-    .swiper {
-      padding: 10px 0 30px;
-    }
-    .swiper-button-next, .swiper-button-prev {
-      color: #333;
-    }
-    #blogGrid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 2rem;
-      padding-top: 1.5rem;
-    }
-    .premium-card .btn {
-      border-radius: 50px;
-      font-size: .9rem;
-      padding: 6px 16px;
-    }
-    .hero h1 {
-      text-shadow: 0 4px 18px rgba(0,0,0,0.45);
-    }
-    .hero p {
-      color: #f8f9fa;
-      font-size: 1.1rem;
-    }
+    .profile-card { border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.06); overflow: hidden; }
+    .profile-photo { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; }
+    .vendor-form .form-control { border-radius: 8px; }
+    .small-muted { color: #6b7280; }
+    .vendor-list .card { margin-bottom: 1rem; }
+    .edit-btn, .delete-btn { margin-right: 0.5rem; }
+    .status-approved { color: green; font-weight: bold; }
+    .status-pending { color: orange; font-weight: bold; }
   </style>
-
-  <script>
-    window._FIREBASE_CONFIG = {
-      apiKey: "",
-      authDomain: "",
-      projectId: "",
-      storageBucket: "",
-      messagingSenderId: "",
-      appId: "",
-      measurementId: ""
-    };
-  </script>
 </head>
 <body>
+  <nav class="navbar navbar-light bg-white shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="http://localhost/">Royal Shaadi</a>
+      <div>
+        <a class="btn btn-link" href="http://localhost/premium-wedding-site-final-2/index.php">Home</a>
+        <button id="signOutBtnTop" class="btn btn-outline-secondary" style="display: inline-block;">Sign out</button>
+      </div>
+    </div>
+  </nav>
 
+  <main class="container py-5">
+    <div id="notSigned" class="text-center" style="display: none;">
+      <p class="lead">You are not signed in.</p>
+      <a href="http://localhost/premium-wedding-site-final-2/index.php" class="btn btn-primary">Sign in</a>
+    </div>
 
+    <div id="profileArea" style="display: block;">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card profile-card p-4 text-center">
+            <img id="profilePhoto" src="./index_files/unnamed.jpg" class="profile-photo mb-3" alt="Profile">
+            <h4 id="profileName">Nikita Iyer</h4>
+            <p id="profileEmail" class="small-muted">nikitaiyerofficial@gmail.com</p>
+            <p><strong>Role:</strong> <span id="profileRole">Vendor</span></p>
+            <button id="changeRoleBtn" class="btn btn-outline-primary mt-2" style="display: none;">Switch to Vendor</button>
+            <div class="form-check form-switch mt-2">
+              <input class="form-check-input" type="checkbox" id="subscribeToggle">
+              <label class="form-check-label small-muted" for="subscribeToggle">Subscribe to newsletter</label>
+            </div>
+            <div id="subscribeMsg" class="small text-success mt-2" style="display: none;">Updated</div>
+          </div>
+        </div>
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Royal Shaadi</title>
-  <meta name="description" content="Premium wedding, fashion and lifestyle magazine — curated editorial, vendor listings and planning resources.">
-  <meta name="robots" content="index, follow">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Royal Shaadi">
-  <meta property="og:description" content="Luxury wedding &amp; lifestyle inspiration and vendor curation.">
-  <meta property="og:type" content="website">
+        <div class="col-md-8">
+          <!-- For Users: show saved vendors & quick planner shortcuts -->
+          <div id="userSection" style="display: none;">
+            <div class="card p-4 mb-4">
+              <h5>Saved Vendors</h5>
+              <p class="small-muted">Your shortlisted vendors will appear here (uses localStorage for demo).</p>
+              <ul id="savedVendorsList" class="list-group list-group-flush"></ul>
+            </div>
 
-  <!-- Google Fonts -->
-  <link href="./index_files/css2(1)" rel="stylesheet">
-  <!-- Bootstrap -->
-  <link href="./index_files/bootstrap(1).min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./index_files/styles.css">
+            <div class="card p-4 mb-4">
+              <h5>Your Planner</h5>
+              <p class="small-muted">Open the wedding planner to manage budget, guest list and more.</p>
+              <a href="http://localhost/premium-wedding-site-final-2/wedding_planner.php" class="btn btn-primary">Open Planner</a>
+            </div>
+          </div>
 
-  <!-- Firebase (compat) -->
+          <!-- For Vendors: registration + edit + list all services -->
+          <div id="vendorSection" style="display: block;">
+            <div class="card p-4 mb-4">
+              <h5>Register / Edit Your Vendor Listing</h5>
+              <form id="vendorForm" class="vendor-form">
+                <input type="hidden" name="vendorId" id="vendorId">
+                <div class="mb-3">
+                  <label class="form-label">Business Name</label>
+                  <input name="business_name" class="form-control" required="">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Category</label>
+                  <input name="category" class="form-control" placeholder="Photography, Venue, Catering..." required="">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">City / Location</label>
+                  <input name="city" class="form-control" required="">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Contact Email</label>
+                  <input name="contact_email" type="email" class="form-control" required="">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Price (approx)</label>
+                  <input name="price" class="form-control" placeholder="e.g. 50000">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Image URL</label>
+                  <input name="image" class="form-control" placeholder="https://... (you can upload to Firebase Storage later)">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Short Description</label>
+                  <textarea name="description" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-primary" type="submit">Submit / Update</button>
+                  <button id="deleteVendorBtn" type="button" class="btn btn-outline-danger" style="display: none;">Delete Listing</button>
+                </div>
+                <div id="vendorMsg" class="small text-success mt-2" style="display: none;">Saved — pending admin approval.</div>
+              </form>
+            </div>
+            <div class="card p-4 mb-4">
+              <h5>Your Vendor Services</h5>
+              <p class="small-muted">All services listed under your email address.</p>
+              <div id="vendorList" class="vendor-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Firebase -->
   <script src="./index_files/firebase-app-compat.js.download"></script>
   <script src="./index_files/firebase-auth-compat.js.download"></script>
   <script src="./index_files/firebase-firestore-compat.js.download"></script>
 
   <script>
-  // Embedded Firebase config
-  window._FIREBASE_CONFIG = {"apiKey": "AIzaSyBBIk0WfONu9tcD63hYNjXnNViXKd5BFZU", "authDomain": "royal-shaadi.firebaseapp.com", "projectId": "royal-shaadi", "storageBucket": "royal-shaadi.firebasestorage.app", "messagingSenderId": "16207213661", "appId": "1:16207213661:web:4f942e1f5a981a72a649b4", "measurementId": "G-BGHXT644B8"};
-  window._ADMIN_EMAIL = "advertexpanse@gmail.com";
-  </script>
-
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Royal Weddings & Lifestyle",
-    "url": "https://www.royalshaadi.co.in/",
-    "logo": "https://www.royalshaadi.co.in/assets/images/logo.png"
-  }
-  </script>
-
-
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="http://localhost/">Royal Shaadi<span class="accent">.</span></a>
-    <nav class="main-nav" id="mainNav">
-      <a href="http://localhost/">Home</a>
-      <a href="http://localhost/blog.php">Blogs</a>
-      <a href="http://localhost/planner.php">Planner</a>
-      <a href="http://localhost/vendors.php">Vendors</a>
-      <a href="http://localhost/contact.php">Contact</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-    <div class="auth-section">
-      <button id="signInBtn" class="btn btn-outline-primary" style="display: none;">Sign in</button>
-      <button id="signOutBtn" class="btn btn-light" style="display: inline-block;">Sign out</button>
-      <div id="userBadge" class="user-badge nav-link" style="display: inline-block;"><a href="http://localhost/profile.php" title="Profile">
-      <img src="./index_files/unnamed.jpg" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src=&#39;https://via.placeholder.com/30&#39;;">
-    </a></div>
-    </div>
-  </div>
-</header>
-
-<script>
-function updateUI(user) {
-  const signInBtn = document.getElementById('signInBtn');
-  const signOutBtn = document.getElementById('signOutBtn');
-  const userBadge = document.getElementById('userBadge');
-
-  if (user) {
-    signInBtn.style.display = 'none';
-    signOutBtn.style.display = 'inline-block';
-    userBadge.style.display = 'inline-block';
-    const photoUrl = user.photoURL;
-    console.log('Photo URL:', photoUrl); // Debug log
-    userBadge.innerHTML = `<a href="/profile.php" title="Profile">
-      <img src="${photoUrl || 'https://via.placeholder.com/30'}" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src='https://via.placeholder.com/30';">
-    </a>`;
-  } else {
-    signInBtn.style.display = 'inline-block';
-    signOutBtn.style.display = 'none';
-    userBadge.style.display = 'none';
-    userBadge.innerHTML = '';
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Firebase
-  try {
-    firebase.initializeApp(window._FIREBASE_CONFIG);
-  } catch (error) {
-    console.error('Firebase initialization failed:', error);
-    alert('Failed to initialize Firebase. Check console for details.');
-    return;
-  }
-  const auth = firebase.auth();
-
-  const signInBtn = document.getElementById('signInBtn');
-  const signOutBtn = document.getElementById('signOutBtn');
-  const navToggle = document.querySelector('.nav-toggle');
-  const mainNav = document.getElementById('mainNav');
-
-  // Toggle navigation menu
-  navToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', mainNav.classList.contains('open'));
-  });
-
-  // Sign-in handler
-  signInBtn.addEventListener('click', async () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-    try {
-      const result = await auth.signInWithPopup(provider);
-      const user = result.user;
-      console.log('User data:', user); // Debug log
-      // Set session for profile.php
-      sessionStorage.setItem('user_id', user.uid); // Using sessionStorage for simplicity
-      updateUI(user);
-    } catch (error) {
-      console.error('Sign-in failed:', error);
-      alert('Sign-in failed: ' + error.message);
-    }
-  });
-
-  // Sign-out handler
-  signOutBtn.addEventListener('click', async () => {
-    try {
-      await auth.signOut();
-      sessionStorage.removeItem('user_id'); // Clear session
-      updateUI(null);
-      window.location.href = '/';
-    } catch (error) {
-      console.error('Sign-out failed:', error);
-      alert('Sign-out failed: ' + error.message);
-    }
-  });
-
-  // Update UI based on auth state
-  auth.onAuthStateChanged((user) => {
-    console.log('Auth state changed:', user); // Debug log
-    updateUI(user);
-  });
-});
-</script>
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="container">
-      <h1 class="display-4 fw-bold">Plan your dream wedding — the royal way</h1>
-      <p class="lead text-muted mb-4">Premium vendors, curated editorial, and powerful planning tools.</p>
-      <a href="http://localhost/wedding_planner.php" class="btn btn-lg btn-primary">Start Planning</a>
-    </div>
-  </header>
-
-  <!-- Featured Vendors (Swiper Carousel) -->
-  <section class="py-5">
-    <div class="container">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 class="mb-0">Featured Vendors</h2>
-        <div class="carousel-cta small">Handpicked &amp; Verified</div>
-      </div>
-      <div class="swiper vendor-swiper">
-        <div class="swiper-wrapper" id="vendorSlides">
-          
-                  <div class="swiper-slide">
-                    <article class="premium-card vendor-card">
-                      <img src="http://localhost/premium-wedding-site-final-2/" alt="Royal Catering" loading="lazy">
-                      <div class="card-body">
-                        <h5>Royal Catering</h5>
-                        <div class="mb-1"><span class="tag">Catering</span></div>
-                        <p class="meta">Delhi</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <small class="text-muted">₹50,000</small>
-                          <a href="http://localhost/vendors.php#royal+catering" class="btn btn-sm btn-outline-primary">View</a>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                
-                  <div class="swiper-slide">
-                    <article class="premium-card vendor-card">
-                      <img src="http://localhost/premium-wedding-site-final-2/" alt="Mela Studios" loading="lazy">
-                      <div class="card-body">
-                        <h5>Mela Studios</h5>
-                        <div class="mb-1"><span class="tag">Photography</span></div>
-                        <p class="meta">Delhi NCR</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <small class="text-muted">₹60,000</small>
-                          <a href="http://localhost/vendors.php#mela+studios" class="btn btn-sm btn-outline-primary">View</a>
-                        </div>
-                      </div>
-                    </article>
-                  </div>
-                        </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Blogs Grid -->
-  <section id="blogs" class="py-5 bg-light">
-    <div class="container">
-      <h2 class="text-center mb-4">Latest Blogs</h2>
-      <div id="blogGrid">
-                  <article class="premium-card blog-card">
-            <img src="https://via.placeholder.com/1200x800" alt="Top-10-Wedding-Trends-for-2025-category" loading="lazy">
-            <div class="card-body">
-              <h5>Top 10 Wedding Trends For 2025 Category</h5>
-              <div class="mb-1"><span class="tag">Wedding</span></div>
-              <p class="meta"></p>
-              <a href="http://localhost/single-blog.php?blog=Top-10-Wedding-Trends-for-2025-category" class="btn btn-sm btn-outline-primary">Read More</a>
-            </div>
-          </article>
-                  <article class="premium-card blog-card">
-            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (6)" loading="lazy">
-            <div class="card-body">
-              <h5>Timeless Indian Wedding Traditions   Copy (6)</h5>
-              <div class="mb-1"><span class="tag">Wedding</span></div>
-              <p class="meta"></p>
-              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%286%29" class="btn btn-sm btn-outline-primary">Read More</a>
-            </div>
-          </article>
-                  <article class="premium-card blog-card">
-            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (5)" loading="lazy">
-            <div class="card-body">
-              <h5>Timeless Indian Wedding Traditions   Copy (5)</h5>
-              <div class="mb-1"><span class="tag">Wedding</span></div>
-              <p class="meta"></p>
-              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%285%29" class="btn btn-sm btn-outline-primary">Read More</a>
-            </div>
-          </article>
-                  <article class="premium-card blog-card">
-            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (4)" loading="lazy">
-            <div class="card-body">
-              <h5>Timeless Indian Wedding Traditions   Copy (4)</h5>
-              <div class="mb-1"><span class="tag">Wedding</span></div>
-              <p class="meta"></p>
-              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%284%29" class="btn btn-sm btn-outline-primary">Read More</a>
-            </div>
-          </article>
-                  <article class="premium-card blog-card">
-            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (3)" loading="lazy">
-            <div class="card-body">
-              <h5>Timeless Indian Wedding Traditions   Copy (3)</h5>
-              <div class="mb-1"><span class="tag">Wedding</span></div>
-              <p class="meta"></p>
-              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%283%29" class="btn btn-sm btn-outline-primary">Read More</a>
-            </div>
-          </article>
-                  <article class="premium-card blog-card">
-            <img src="https://via.placeholder.com/1200x800" alt="wedding-fashion-trends-2025" loading="lazy">
-            <div class="card-body">
-              <h5>Wedding Fashion Trends 2025</h5>
-              <div class="mb-1"><span class="tag">Wedding</span></div>
-              <p class="meta"></p>
-              <a href="http://localhost/single-blog.php?blog=wedding-fashion-trends-2025" class="btn btn-sm btn-outline-primary">Read More</a>
-            </div>
-          </article>
-              </div>
-    </div>
-  </section>
-
-  <!-- Role Selection Modal -->
-  <div class="modal fade" id="roleModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <form id="roleForm">
-          <div class="modal-header">
-            <h5 class="modal-title">Welcome — choose your account type</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Are you signing in as a <strong>User</strong> or a <strong>Vendor</strong>?</p>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleUser" value="User" checked="">
-              <label class="form-check-label" for="roleUser">User</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="role" id="roleVendor" value="Vendor">
-              <label class="form-check-label" for="roleVendor">Vendor</label>
-            </div>
-            <small class="form-text text-muted">You can change this later from your profile.</small>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Continue</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Firebase Compat Libraries -->
-  <script src="./index_files/firebase-app-compat.js.download"></script>
-  <script src="./index_files/firebase-auth-compat.js.download"></script>
-  <script src="./index_files/firebase-firestore-compat.js.download"></script>
-
-  <!-- Swiper JS -->
-  <script src="./index_files/swiper-bundle.min.js.download"></script>
-
-  <!-- Bootstrap Bundle JS -->
-  <script src="./index_files/bootstrap.bundle.min.js.download"></script>
-
-  <script>
-    // Initialize Firebase
-    firebase.initializeApp(window._FIREBASE_CONFIG);
+    // config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBBIk0WfONu9tcD63hYNjXnNViXKd5BFZU",
+      authDomain: "royal-shaadi.firebaseapp.com",
+      projectId: "royal-shaadi",
+      storageBucket: "royal-shaadi.firebasestorage.app",
+      messagingSenderId: "16207213661",
+      appId: "1:16207213661:web:4f942e1f5a981a72a649b4",
+      measurementId: "G-BGHXT644B8"
+    };
+    firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // UI Elements
-    const signInBtn = document.getElementById('signInBtn');
-    const signOutBtn = document.getElementById('signOutBtn');
-    const navProfileLink = document.getElementById('navProfileLink');
-    const navSigninBtn = document.getElementById('navSigninBtn');
-    const navSignoutBtn = document.getElementById('navSignoutBtn');
+    // UI refs
+    const notSigned = document.getElementById('notSigned');
+    const profileArea = document.getElementById('profileArea');
+    const profilePhoto = document.getElementById('profilePhoto');
+    const profileName = document.getElementById('profileName');
+    const profileEmail = document.getElementById('profileEmail');
+    const profileRole = document.getElementById('profileRole');
+    const changeRoleBtn = document.getElementById('changeRoleBtn');
+    const subscribeToggle = document.getElementById('subscribeToggle');
+    const subscribeMsg = document.getElementById('subscribeMsg');
+    const userSection = document.getElementById('userSection');
+    const vendorSection = document.getElementById('vendorSection');
+    const savedVendorsList = document.getElementById('savedVendorsList');
+    const vendorForm = document.getElementById('vendorForm');
+    const vendorMsg = document.getElementById('vendorMsg');
+    const deleteVendorBtn = document.getElementById('deleteVendorBtn');
+    const vendorList = document.getElementById('vendorList');
+    const signOutBtnTop = document.getElementById('signOutBtnTop');
 
-    const roleModalEl = document.getElementById('roleModal');
-    const roleModal = new bootstrap.Modal(roleModalEl, { backdrop: 'static', keyboard: false });
-    const roleForm = document.getElementById('roleForm');
+    // helper escape
+    function escapeHtml(s) { return String(s || ''); }
 
-    // Show/hide UI helpers
-    function updateProfileUI(user) {
-      const profileLink = document.getElementById('profileLink');
-      const userBadge = document.getElementById('userBadge');
-      const navProfileLink = document.getElementById('navProfileLink');
-      const signInBtn = document.getElementById('signInBtn');
-      const signOutBtn = document.getElementById('signOutBtn');
-      const navSigninBtn = document.getElementById('navSigninBtn');
-      const navSignoutBtn = document.getElementById('navSignoutBtn');
+    function showNotSigned() { notSigned.style.display = 'block'; profileArea.style.display = 'none'; }
+    function showProfile() { notSigned.style.display = 'none'; profileArea.style.display = 'block'; }
 
-      if (user) {
-        navProfileLink.style.display = 'block';
-        navSigninBtn.style.display = 'none';
-        navSignoutBtn.style.display = 'block';
-        let badgeHtml = '';
-        if (user.photoURL) {
-          badgeHtml = `<img src="${user.photoURL}" alt="Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;">`;
-        } else {
-          const color = getRandomColor();
-          const initial = getInitial(user.displayName || user.email);
-          badgeHtml = `<span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:${color};color:#333;font-weight:bold;font-size:16px;">${initial}</span>`;
-        }
-        userBadge.innerHTML = badgeHtml;
-        navProfileLink.href = '/profile.php';
+    function updateUI(user) {
+      if (!user) {
+        showNotSigned();
+        signOutBtnTop.style.display = 'none';
+        return;
+      }
+      showProfile();
+      signOutBtnTop.style.display = 'inline-block';
+      profilePhoto.src = user.photoURL || 'assets/images/profile_placeholder.jpg';
+      profileName.textContent = user.displayName || '';
+      profileEmail.textContent = user.email || '';
+      fetchUserData(user.uid);
+    }
+
+    async function fetchUserData(uid) {
+      const uref = db.collection('users').doc(uid);
+      const ud = await uref.get();
+      let docData = ud.exists ? ud.data() : null;
+      if (!docData) {
+        const role = localStorage.getItem('rs_role') || 'User';
+        await uref.set({
+          name: auth.currentUser.displayName || '',
+          email: auth.currentUser.email || '',
+          photo: auth.currentUser.photoURL || '',
+          role,
+          subscribed: false,
+          created_at: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true });
+        docData = { role, subscribed: false };
+      }
+      profileRole.textContent = docData.role || 'User';
+      subscribeToggle.checked = !!docData.subscribed;
+      changeRoleBtn.style.display = (docData.role === 'User') ? 'inline-block' : 'none';
+      handleRole(docData.role);
+    }
+
+    function handleRole(role) {
+      if (role === 'Vendor') {
+        vendorSection.style.display = 'block';
+        userSection.style.display = 'none';
+        fetchVendorServices();
+        vendorForm.contact_email.value = auth.currentUser.email || '';
       } else {
-        navProfileLink.style.display = 'none';
-        navSigninBtn.style.display = 'block';
-        navSignoutBtn.style.display = 'none';
-        userBadge.innerHTML = '';
+        vendorSection.style.display = 'none';
+        userSection.style.display = 'block';
+        const saved = JSON.parse(localStorage.getItem('selectedVendors') || '[]');
+        savedVendorsList.innerHTML = saved.length ? saved.map(s => `<li class="list-group-item">${escapeHtml(s)}</li>`).join('') : '<li class="list-group-item small-muted">No saved vendors yet.</li>';
       }
     }
 
-    function getRandomColor() {
-      const hue = Math.floor(Math.random() * 360);
-      return `hsl(${hue}, 70%, 80%)`;
+    async function fetchVendorServices() {
+      const snapshot = await db.collection('vendors').where('contact_email', '==', auth.currentUser.email).get();
+      vendorList.innerHTML = '';
+      snapshot.forEach(vdoc => {
+        const v = vdoc.data();
+        const status = v.status || 'pending';
+        const statusClass = status === 'approved' ? 'status-approved' : 'status-pending';
+        const vendorCard = document.createElement('div');
+        vendorCard.className = 'card mb-3 vendor-service';
+        vendorCard.innerHTML = `
+          <div class="card-body">
+            <h6>${escapeHtml(v.business_name)}</h6>
+            <p>Category: ${escapeHtml(v.category)}</p>
+            <p>City: ${escapeHtml(v.city)}</p>
+            <p>Contact: ${escapeHtml(v.contact_email)}</p>
+            <p>Price: ₹${v.price || 0}</p>
+            <p>Image: <img src="${escapeHtml(v.image) || 'https://via.placeholder.com/100'}" width="100"></p>
+            <p>Description: ${escapeHtml(v.description)}</p>
+            <p class="${statusClass}">Status: ${status.charAt(0).toUpperCase() + status.slice(1)}</p>
+            <button class="btn btn-sm btn-outline-primary edit-vendor" data-id="${vdoc.id}">Edit</button>
+            <button class="btn btn-sm btn-outline-danger delete-vendor" data-id="${vdoc.id}">Delete</button>
+          </div>
+        `;
+        vendorList.appendChild(vendorCard);
+      });
     }
 
-    function getInitial(name) {
-      return name ? name.charAt(0).toUpperCase() : '';
-    }
+    // Authentication state
+    auth.onAuthStateChanged(user => {
+      console.log('Auth state changed:', user);
+      updateUI(user);
+    });
 
-    // Sign-in handler
-    document.addEventListener('signInClick', async () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
+    // Sign out
+    signOutBtnTop.addEventListener('click', () => auth.signOut());
+    document.getElementById('signOutBtn')?.addEventListener('click', () => auth.signOut());
+
+    // Subscribe toggle
+    subscribeToggle.onchange = async () => {
+      if (!auth.currentUser) return;
       try {
-        const result = await auth.signInWithPopup(provider);
-        const user = result.user;
+        await db.collection('users').doc(auth.currentUser.uid).set({ subscribed: subscribeToggle.checked }, { merge: true });
+        subscribeMsg.style.display = 'block';
+        setTimeout(() => subscribeMsg.style.display = 'none', 2200);
+      } catch (e) { console.error(e); alert('Could not update subscription'); }
+    };
 
-        roleModal.show();
-
-        roleForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const role = document.querySelector('input[name="role"]:checked').value || 'User';
-
-          await db.collection('users').doc(user.uid).set({
-            name: user.displayName || '',
-            email: user.email || '',
-            photo: user.photoURL || '',
-            role: role,
-            subscribed: false,
-            created_at: firebase.firestore.FieldValue.serverTimestamp()
-          }, { merge: true });
-
-          localStorage.setItem('rs_role', role);
-
-          roleModal.hide();
-          updateProfileUI(user);
-          session_start();
-          $_SESSION['user_id'] = $user->uid; // Set session for profile access
-        }, { once: true });
-      } catch (error) {
-        console.error('Sign-in failed', error);
-        alert('Sign in failed: ' + (error.message || error));
+    // Change role
+    changeRoleBtn.addEventListener('click', async () => {
+      if (confirm('Switch to Vendor role? This will allow you to add vendor services. You can switch back later.')) {
+        try {
+          await db.collection('users').doc(auth.currentUser.uid).set({ role: 'Vendor' }, { merge: true });
+          alert('Role switched to Vendor. Please refresh the page.');
+          // Optionally reload to update UI
+          // location.reload();
+        } catch (e) { console.error(e); alert('Failed to switch role'); }
       }
     });
 
-    // Sign-out handler
-    document.addEventListener('signOutClick', async () => {
-      await auth.signOut();
-      updateProfileUI(null);
-      session_destroy(); // Destroy session on sign-out
-      window.location = '/';
-    });
-
-    // Listen to auth state changes
-    auth.onAuthStateChanged((user) => {
-      updateProfileUI(user);
-    });
-
-    // Load vendors into Swiper carousel
-    function loadVendors() {
-      const container = document.getElementById('vendorSlides');
-      if (container) {
-        let html = '';
-        if (typeof $db !== 'undefined' && $db) { // Check if PHP $db is passed or use Firebase JS db
-          const query = $db.collection('vendors').where('status', '=', 'approved').limit(6);
-          query.get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-              const data = doc.data();
-              const name = data.business_name || 'Unknown';
-              const category = data.category || 'Unknown';
-              const city = data.city || 'Unknown';
-              const price = data.price || 0;
-              const image = data.image || 'https://via.placeholder.com/1200x800';
-              const url = "/vendors.php#" + encodeURIComponent(name.toLowerCase());
-              html += `
-                <div class="swiper-slide">
-                  <article class="premium-card vendor-card">
-                    <img src="${image}" alt="${escapeHtml(name)}" loading="lazy" />
-                    <div class="card-body">
-                      <h5>${escapeHtml(name)}</h5>
-                      <div class="mb-1"><span class="tag">${escapeHtml(category)}</span></div>
-                      <p class="meta">${escapeHtml(city)}</p>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">₹${numberFormat(price)}</small>
-                        <a href="${escapeHtml(url)}" class="btn btn-sm btn-outline-primary">View</a>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              `;
-            });
-            container.innerHTML = html;
-            if (window.vendorSwiper) window.vendorSwiper.destroy(true, true);
-            window.vendorSwiper = new Swiper('.vendor-swiper', {
-              slidesPerView: 1,
-              spaceBetween: 18,
-              navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-              pagination: { el: '.swiper-pagination', clickable: true },
-              breakpoints: { 640: { slidesPerView: 1 }, 768: { slidesPerView: 2 }, 992: { slidesPerView: 3 } }
-            });
-          }).catch((error) => {
-            console.error('Error loading vendors:', error);
-            container.innerHTML = '<p>Error loading vendors. Check Firebase configuration.</p>';
-          });
+    // Vendor form submit
+    vendorForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!auth.currentUser) { alert('Please sign in'); return; }
+      const uid = auth.currentUser.uid;
+      const data = {
+        uid,
+        business_name: vendorForm.business_name.value.trim(),
+        category: vendorForm.category.value.trim(),
+        city: vendorForm.city.value.trim(),
+        contact_email: vendorForm.contact_email.value.trim(),
+        price: vendorForm.price.value ? Number(vendorForm.price.value) : 0,
+        image: vendorForm.image.value.trim() || '',
+        description: vendorForm.description.value.trim(),
+        status: 'pending',
+        created_at: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      try {
+        let vendorId;
+        if (vendorForm.dataset.vendorId) {
+          vendorId = vendorForm.dataset.vendorId;
+          await db.collection('vendors').doc(vendorId).set(data, { merge: true });
         } else {
-          console.warn('Firebase database not available in client-side script.');
+          const vref = await db.collection('vendors').add(data);
+          vendorId = vref.id;
+        }
+        vendorMsg.style.display = 'block';
+        setTimeout(() => vendorMsg.style.display = 'none', 3000);
+        vendorForm.reset();
+        vendorForm.contact_email.value = auth.currentUser.email || '';
+        delete vendorForm.dataset.vendorId;
+        deleteVendorBtn.style.display = 'none';
+        fetchVendorServices();
+      } catch (e) { console.error(e); alert('Save failed'); }
+    });
+
+    // Delete vendor
+    deleteVendorBtn.addEventListener('click', async () => {
+      if (!vendorForm.dataset.vendorId) return;
+      if (!confirm('Delete your vendor listing? This cannot be undone.')) return;
+      try {
+        await db.collection('vendors').doc(vendorForm.dataset.vendorId).delete();
+        vendorForm.reset();
+        delete vendorForm.dataset.vendorId;
+        deleteVendorBtn.style.display = 'none';
+        alert('Deleted');
+        fetchVendorServices();
+      } catch (e) { console.error(e); alert('Delete failed'); }
+    });
+
+    // Edit/Delete vendor (delegation)
+    vendorSection.addEventListener('click', async (e) => {
+      if (e.target.classList.contains('edit-vendor')) {
+        const vendorId = e.target.dataset.id;
+        const vdoc = await db.collection('vendors').doc(vendorId).get();
+        if (vdoc.exists) {
+          const v = vdoc.data();
+          vendorForm.business_name.value = v.business_name || '';
+          vendorForm.category.value = v.category || '';
+          vendorForm.city.value = v.city || '';
+          vendorForm.contact_email.value = v.contact_email || '';
+          vendorForm.price.value = v.price || '';
+          vendorForm.image.value = v.image || '';
+          vendorForm.description.value = v.description || '';
+          vendorForm.dataset.vendorId = vendorId;
+          deleteVendorBtn.style.display = 'inline-block';
+          vendorForm.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else if (e.target.classList.contains('delete-vendor')) {
+        const vendorId = e.target.dataset.id;
+        if (confirm('Delete this vendor service? This cannot be undone.')) {
+          try {
+            await db.collection('vendors').doc(vendorId).delete();
+            e.target.closest('.vendor-service').remove();
+            alert('Deleted');
+          } catch (e) {
+            console.error(e);
+            alert('Delete failed');
+          }
         }
       }
-    }
-
-    // Load blogs into grid
-    function loadBlogs() {
-      const container = document.getElementById('blogGrid');
-      if (container) {
-        const blogDir = 'blogs';
-        let html = '';
-        const blogs = [{"title":"Top 10 Wedding Trends For 2025 Category","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=Top-10-Wedding-Trends-for-2025-category"},{"title":"Timeless Indian Wedding Traditions   Copy (6)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%286%29"},{"title":"Timeless Indian Wedding Traditions   Copy (5)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%285%29"},{"title":"Timeless Indian Wedding Traditions   Copy (4)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%284%29"},{"title":"Timeless Indian Wedding Traditions   Copy (3)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%283%29"},{"title":"Wedding Fashion Trends 2025","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=wedding-fashion-trends-2025"}];
-        blogs.forEach(b => {
-          html += `
-            <article class="premium-card blog-card">
-              <img src="${escapeHtml(b.image)}" alt="${escapeHtml(b.title)}" loading="lazy" />
-              <div class="card-body">
-                <h5>${escapeHtml(b.title)}</h5>
-                <div class="mb-1"><span class="tag">${escapeHtml(b.category)}</span></div>
-                <p class="meta">${escapeHtml(b.excerpt)}</p>
-                <a href="${escapeHtml(b.url)}" class="btn btn-sm btn-outline-primary">Read More</a>
-              </div>
-            </article>
-          `;
-        });
-        container.innerHTML = html;
-      }
-    }
-
-    // Simple helper to escape HTML
-    function escapeHtml(str) {
-      return str ? str.replace(/[&<>"']/g, m => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-      })[m]) : '';
-    }
-
-    // Initialize everything after DOM ready
-    document.addEventListener('DOMContentLoaded', () => {
-      loadVendors();
-      loadBlogs();
     });
   </script>
 
-  <footer class="site-footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h4>About</h4>
-        <p>Curated editorial for premium weddings and lifestyle.</p>
-      </div>
-      <div>
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="http://localhost/premium-wedding-site-final-2/blog.php">Magazine</a></li>
-          <li><a href="http://localhost/premium-wedding-site-final-2/vendors.php">Vendors</a></li>
-          <li><a href="http://localhost/premium-wedding-site-final-2/planner.php">Planner</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <p>hello@luxeweddings.local</p>
-      </div>
-    </div>
-    <div class="foot-bottom">© 2025 Luxe Weddings &amp; Lifestyle — All rights reserved.</div>
-  </div>
-</footer>
-
-<script src="./index_files/bootstrap.bundle.min(1).js.download"></script>
-<script src="./index_files/app.js.download"></script>
-<script src="./index_files/firebase-auth.js.download"></script>
-<script src="./index_files/firestore-api.js.download"></script>
-
-
+  <script src="./index_files/bootstrap.bundle.min.js.download"></script>
 
 </body></html>
