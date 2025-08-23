@@ -146,20 +146,20 @@
 
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="https://www.royalshaadi.co.in/">Royal Shaadi<span class="accent">.</span></a>
+    <a class="brand" href="http://localhost/">Royal Shaadi<span class="accent">.</span></a>
     <nav class="main-nav" id="mainNav">
-      <a href="https://www.royalshaadi.co.in/">Home</a>
-      <a href="https://www.royalshaadi.co.in/blog.php">Blogs</a>
-      <a href="https://www.royalshaadi.co.in/planner.php">Planner</a>
-      <a href="https://www.royalshaadi.co.in/vendors.php">Vendors</a>
-      <a href="https://www.royalshaadi.co.in/contact.php">Contact</a>
+      <a href="http://localhost/">Home</a>
+      <a href="http://localhost/blog.php">Blogs</a>
+      <a href="http://localhost/planner.php">Planner</a>
+      <a href="http://localhost/vendors.php">Vendors</a>
+      <a href="http://localhost/contact.php">Contact</a>
     </nav>
     <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
     <div class="auth-section">
       <button id="signInBtn" class="btn btn-outline-primary" style="display: none;">Sign in</button>
       <button id="signOutBtn" class="btn btn-light" style="display: inline-block;">Sign out</button>
-      <div id="userBadge" class="user-badge nav-link" style="display: inline-block;"><a href="https://www.royalshaadi.co.in/profile.php" title="Profile">
-      <img src="https://via.placeholder.com/30" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src=&#39;https://via.placeholder.com/30&#39;;">
+      <div id="userBadge" class="user-badge nav-link" style="display: inline-block;"><a href="http://localhost/profile.php" title="Profile">
+      <img src="./index_files/unnamed.jpg" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src=&#39;https://via.placeholder.com/30&#39;;">
     </a></div>
     </div>
   </div>
@@ -177,7 +177,7 @@ function updateUI(user) {
     userBadge.style.display = 'inline-block';
     const photoUrl = user.photoURL;
     console.log('Photo URL:', photoUrl); // Debug log
-    userBadge.innerHTML = `<a href="https://www.royalshaadi.co.in/profile.php" title="Profile">
+    userBadge.innerHTML = `<a href="/profile.php" title="Profile">
       <img src="${photoUrl || 'https://via.placeholder.com/30'}" alt="User Profile" class="rounded-circle" width="30" height="30" style="object-fit:cover;" onerror="this.src='https://via.placeholder.com/30';">
     </a>`;
   } else {
@@ -219,6 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const result = await auth.signInWithPopup(provider);
       const user = result.user;
       console.log('User data:', user); // Debug log
+      // Set session for profile.php
+      sessionStorage.setItem('user_id', user.uid); // Using sessionStorage for simplicity
       updateUI(user);
     } catch (error) {
       console.error('Sign-in failed:', error);
@@ -230,8 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
   signOutBtn.addEventListener('click', async () => {
     try {
       await auth.signOut();
+      sessionStorage.removeItem('user_id'); // Clear session
       updateUI(null);
-      window.location.href = 'https://www.royalshaadi.co.in/';
+      window.location.href = '/';
     } catch (error) {
       console.error('Sign-out failed:', error);
       alert('Sign-out failed: ' + error.message);
@@ -250,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="container">
       <h1 class="display-4 fw-bold">Plan your dream wedding — the royal way</h1>
       <p class="lead text-muted mb-4">Premium vendors, curated editorial, and powerful planning tools.</p>
-      <a href="https://www.royalshaadi.co.in/wedding_planner.php" class="btn btn-lg btn-primary">Start Planning</a>
+      <a href="http://localhost/wedding_planner.php" class="btn btn-lg btn-primary">Start Planning</a>
     </div>
   </header>
 
@@ -273,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="meta">Delhi</p>
                         <div class="d-flex justify-content-between align-items-center">
                           <small class="text-muted">₹50,000</small>
-                          <a href="https://www.royalshaadi.co.in/vendors.php#royal+catering" class="btn btn-sm btn-outline-primary">View</a>
+                          <a href="http://localhost/vendors.php#royal+catering" class="btn btn-sm btn-outline-primary">View</a>
                         </div>
                       </div>
                     </article>
@@ -288,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="meta">Delhi NCR</p>
                         <div class="d-flex justify-content-between align-items-center">
                           <small class="text-muted">₹60,000</small>
-                          <a href="https://www.royalshaadi.co.in/vendors.php#mela+studios" class="btn btn-sm btn-outline-primary">View</a>
+                          <a href="http://localhost/vendors.php#mela+studios" class="btn btn-sm btn-outline-primary">View</a>
                         </div>
                       </div>
                     </article>
@@ -306,66 +309,61 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="container">
       <h2 class="text-center mb-4">Latest Blogs</h2>
       <div id="blogGrid">
-            <article class="premium-card blog-card">
-              <img src="https://via.placeholder.com/1200x800" alt="Top 10 Wedding Trends For 2025 Category" loading="lazy">
-              <div class="card-body">
-                <h5>Top 10 Wedding Trends For 2025 Category</h5>
-                <div class="mb-1"><span class="tag">Wedding</span></div>
-                <p class="meta"></p>
-                <a href="https://www.royalshaadi.co.in/single-blog.php?blog=Top-10-Wedding-Trends-for-2025-category" class="btn btn-sm btn-outline-primary">Read More</a>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="Top-10-Wedding-Trends-for-2025-category" loading="lazy">
+            <div class="card-body">
+              <h5>Top 10 Wedding Trends For 2025 Category</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/single-blog.php?blog=Top-10-Wedding-Trends-for-2025-category" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (6)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (6)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%286%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (5)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (5)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%285%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (4)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (4)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%284%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="timeless-indian-wedding-traditions - Copy (3)" loading="lazy">
+            <div class="card-body">
+              <h5>Timeless Indian Wedding Traditions   Copy (3)</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%283%29" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
+                  <article class="premium-card blog-card">
+            <img src="https://via.placeholder.com/1200x800" alt="wedding-fashion-trends-2025" loading="lazy">
+            <div class="card-body">
+              <h5>Wedding Fashion Trends 2025</h5>
+              <div class="mb-1"><span class="tag">Wedding</span></div>
+              <p class="meta"></p>
+              <a href="http://localhost/single-blog.php?blog=wedding-fashion-trends-2025" class="btn btn-sm btn-outline-primary">Read More</a>
+            </div>
+          </article>
               </div>
-            </article>
-          
-            <article class="premium-card blog-card">
-              <img src="https://via.placeholder.com/1200x800" alt="Timeless Indian Wedding Traditions   Copy (6)" loading="lazy">
-              <div class="card-body">
-                <h5>Timeless Indian Wedding Traditions   Copy (6)</h5>
-                <div class="mb-1"><span class="tag">Wedding</span></div>
-                <p class="meta"></p>
-                <a href="https://www.royalshaadi.co.in/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%286%29" class="btn btn-sm btn-outline-primary">Read More</a>
-              </div>
-            </article>
-          
-            <article class="premium-card blog-card">
-              <img src="https://via.placeholder.com/1200x800" alt="Timeless Indian Wedding Traditions   Copy (5)" loading="lazy">
-              <div class="card-body">
-                <h5>Timeless Indian Wedding Traditions   Copy (5)</h5>
-                <div class="mb-1"><span class="tag">Wedding</span></div>
-                <p class="meta"></p>
-                <a href="https://www.royalshaadi.co.in/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%285%29" class="btn btn-sm btn-outline-primary">Read More</a>
-              </div>
-            </article>
-          
-            <article class="premium-card blog-card">
-              <img src="https://via.placeholder.com/1200x800" alt="Timeless Indian Wedding Traditions   Copy (4)" loading="lazy">
-              <div class="card-body">
-                <h5>Timeless Indian Wedding Traditions   Copy (4)</h5>
-                <div class="mb-1"><span class="tag">Wedding</span></div>
-                <p class="meta"></p>
-                <a href="https://www.royalshaadi.co.in/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%284%29" class="btn btn-sm btn-outline-primary">Read More</a>
-              </div>
-            </article>
-          
-            <article class="premium-card blog-card">
-              <img src="https://via.placeholder.com/1200x800" alt="Timeless Indian Wedding Traditions   Copy (3)" loading="lazy">
-              <div class="card-body">
-                <h5>Timeless Indian Wedding Traditions   Copy (3)</h5>
-                <div class="mb-1"><span class="tag">Wedding</span></div>
-                <p class="meta"></p>
-                <a href="https://www.royalshaadi.co.in/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%283%29" class="btn btn-sm btn-outline-primary">Read More</a>
-              </div>
-            </article>
-          
-            <article class="premium-card blog-card">
-              <img src="https://via.placeholder.com/1200x800" alt="Wedding Fashion Trends 2025" loading="lazy">
-              <div class="card-body">
-                <h5>Wedding Fashion Trends 2025</h5>
-                <div class="mb-1"><span class="tag">Wedding</span></div>
-                <p class="meta"></p>
-                <a href="https://www.royalshaadi.co.in/single-blog.php?blog=wedding-fashion-trends-2025" class="btn btn-sm btn-outline-primary">Read More</a>
-              </div>
-            </article>
-          </div>
     </div>
   </section>
 
@@ -449,6 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
           badgeHtml = `<span style="display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:${color};color:#333;font-weight:bold;font-size:16px;">${initial}</span>`;
         }
         userBadge.innerHTML = badgeHtml;
+        navProfileLink.href = '/profile.php';
       } else {
         navProfileLink.style.display = 'none';
         navSigninBtn.style.display = 'block';
@@ -492,6 +491,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
           roleModal.hide();
           updateProfileUI(user);
+          session_start();
+          $_SESSION['user_id'] = $user->uid; // Set session for profile access
         }, { once: true });
       } catch (error) {
         console.error('Sign-in failed', error);
@@ -503,7 +504,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('signOutClick', async () => {
       await auth.signOut();
       updateProfileUI(null);
-      window.location = 'index.php';
+      session_destroy(); // Destroy session on sign-out
+      window.location = '/';
     });
 
     // Listen to auth state changes
@@ -526,7 +528,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const city = data.city || 'Unknown';
               const price = data.price || 0;
               const image = data.image || 'https://via.placeholder.com/1200x800';
-              const url = "https://www.royalshaadi.co.in/vendors.php#" + encodeURIComponent(name.toLowerCase());
+              const url = "/vendors.php#" + encodeURIComponent(name.toLowerCase());
               html += `
                 <div class="swiper-slide">
                   <article class="premium-card vendor-card">
@@ -569,7 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (container) {
         const blogDir = 'blogs';
         let html = '';
-        const blogs = [{"title":"Top 10 Wedding Trends For 2025 Category","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"https:\/\/www.royalshaadi.co.in\/single-blog.php?blog=Top-10-Wedding-Trends-for-2025-category"},{"title":"Timeless Indian Wedding Traditions   Copy (6)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"https:\/\/www.royalshaadi.co.in\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%286%29"},{"title":"Timeless Indian Wedding Traditions   Copy (5)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"https:\/\/www.royalshaadi.co.in\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%285%29"},{"title":"Timeless Indian Wedding Traditions   Copy (4)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"https:\/\/www.royalshaadi.co.in\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%284%29"},{"title":"Timeless Indian Wedding Traditions   Copy (3)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"https:\/\/www.royalshaadi.co.in\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%283%29"},{"title":"Wedding Fashion Trends 2025","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"https:\/\/www.royalshaadi.co.in\/single-blog.php?blog=wedding-fashion-trends-2025"}];
+        const blogs = [{"title":"Top 10 Wedding Trends For 2025 Category","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=Top-10-Wedding-Trends-for-2025-category"},{"title":"Timeless Indian Wedding Traditions   Copy (6)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%286%29"},{"title":"Timeless Indian Wedding Traditions   Copy (5)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%285%29"},{"title":"Timeless Indian Wedding Traditions   Copy (4)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%284%29"},{"title":"Timeless Indian Wedding Traditions   Copy (3)","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=timeless-indian-wedding-traditions---Copy-%283%29"},{"title":"Wedding Fashion Trends 2025","category":"Wedding","excerpt":"","image":"https:\/\/via.placeholder.com\/1200x800","url":"\/single-blog.php?blog=wedding-fashion-trends-2025"}];
         blogs.forEach(b => {
           html += `
             <article class="premium-card blog-card">
