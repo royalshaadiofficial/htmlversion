@@ -181,7 +181,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
     window.royal_shaadi_config = {
         firebase: {"apiKey":"","authDomain":"","projectId":"","storageBucket":"","messagingSenderId":"","appId":"","measurementId":""},
         ajax_url: 'https://www.urbancraftoasis.com/wp-admin/admin-ajax.php',
-        nonce: '6c4a14c751',
+        nonce: '90b7194b93',
         home_url: 'https://www.urbancraftoasis.com/',
         admin_email: 'advertexpanse@gmail.com'
     };</script>
@@ -357,247 +357,428 @@ function initializeAuth() {
     });
 }</script>
 <main id="primary" class="site-main">
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="display-4 fw-bold">
-                Plan your dream wedding — the royal way            </h1>
-            <p class="lead mb-4">
-                Premium vendors, curated editorial, and powerful planning tools.            </p>
-            <a class="btn btn-lg btn-primary">
-                Start Planning            </a>
+    <div class="container py-5">
+        <!-- Page Header -->
+        <div class="page-header text-center mb-5">
+            <h1 class="page-title">Wedding Vendors</h1>
+            <p class="lead">Discover handpicked vendors for your perfect wedding day</p>
         </div>
-    </section>
 
-    <!-- Featured Vendors Section -->
-    <section class="section">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">Featured Vendors</h2>
-                <div class="carousel-cta small text-muted">Handpicked & Verified</div>
+        <!-- Filters Section -->
+        <div class="vendors-filters mb-5">
+            <div class="row">
+                <div class="col-lg-3 mb-3">
+                    <select id="categoryFilter" class="form-select">
+                        <option value="">All Categories</option>
+                                            </select>
+                </div>
+                
+                <div class="col-lg-3 mb-3">
+                    <select id="locationFilter" class="form-select">
+                        <option value="">All Locations</option>
+                                            </select>
+                </div>
+                
+                <div class="col-lg-3 mb-3">
+                    <select id="sortFilter" class="form-select">
+                        <option value="date_desc">Newest First</option>
+                        <option value="date_asc">Oldest First</option>
+                        <option value="title_asc">A to Z</option>
+                        <option value="title_desc">Z to A</option>
+                    </select>
+                </div>
+                
+                <div class="col-lg-3 mb-3">
+                    <input type="text" id="searchFilter" class="form-control" placeholder="Search vendors...">
+                </div>
             </div>
             
-            <div class="swiper vendor-swiper">
-                <div class="swiper-wrapper" id="vendorSlides">
-                                            <div class="swiper-slide">
-                            <div class="text-center p-4">
-                                <p>No vendors found. Please add some vendors from the admin panel.</p>
-                            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="filter-actions d-flex justify-content-between align-items-center">
+                        <button id="clearFilters" class="btn btn-outline-secondary btn-sm">
+                            Clear All Filters                        </button>
+                        <div class="view-toggle">
+                            <button id="gridView" class="btn btn-outline-primary btn-sm active">
+                                <svg width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+                                    <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"></path>
+                                </svg>
+                                Grid                            </button>
+                            <button id="listView" class="btn btn-outline-primary btn-sm">
+                                <svg width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                                </svg>
+                                List                            </button>
                         </div>
-                                    </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-            
-            <div class="text-center mt-4">
-                <a href="https://www.urbancraftoasis.com/vendors/" class="btn btn-outline-primary">
-                    View All Vendors                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Latest Blog Posts -->
-    <section class="section section-bg">
-        <div class="container">
-            <h2 class="text-center mb-5">Latest Wedding Stories</h2>
-            
-            <div class="blog-grid">
-                                        <article class="premium-card blog-card">
-                            <img src="https://www.urbancraftoasis.com/wp-content/uploads/2024/08/Furniture-in-Living-Room.jpg" alt="Top 10 Furniture Brands in USA" loading="lazy">
-                            <div class="card-body">
-                                <h5>Top 10 Furniture Brands in USA</h5>
-                                <div class="mb-2">
-                                                                            <span class="tag">Decoration</span>
-                                                                    </div>
-                                <p class="meta text-muted">Your Furniture is no longer just an item to place in your home but rather an opportunity to express yourself.&hellip;</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">August 15, 2024</small>
-                                    <a href="https://www.urbancraftoasis.com/2024/08/15/top-furniture-brands-in-usa/" class="btn btn-sm btn-outline-primary">
-                                        Read More                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                                                <article class="premium-card blog-card">
-                            <img src="https://www.urbancraftoasis.com/wp-content/uploads/2020/01/pawel-czerwinski-1654487-unsplash.jpg" alt="Welcome to the Future of WordPress with Gutenberg" loading="lazy">
-                            <div class="card-body">
-                                <h5>Welcome to the Future of WordPress with Gutenberg</h5>
-                                <div class="mb-2">
-                                                                            <span class="tag">Trends</span>
-                                                                    </div>
-                                <p class="meta text-muted">Malesuada fames ac turpis egestas integer. Quam nulla porttitor massa id neque aliquam vestibulum morbi blandit. Commodo sed egestas egestas&hellip;</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">January 28, 2020</small>
-                                    <a href="https://www.urbancraftoasis.com/2020/01/28/welcome-to-the-future-of-wordpress-with-gutenberg/" class="btn btn-sm btn-outline-primary">
-                                        Read More                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                                                <article class="premium-card blog-card">
-                            <img src="https://www.urbancraftoasis.com/wp-content/uploads/2020/01/julian-o-hayon-265589-unsplash.jpg" alt="Scelerisque Indictum Non Consectetur Aerat Namin Turpis" loading="lazy">
-                            <div class="card-body">
-                                <h5>Scelerisque Indictum Non Consectetur Aerat Namin Turpis</h5>
-                                <div class="mb-2">
-                                                                            <span class="tag">Trends</span>
-                                                                    </div>
-                                <p class="meta text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In&hellip;</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">January 28, 2020</small>
-                                    <a href="https://www.urbancraftoasis.com/2020/01/28/scelerisque-indictum-non-consectetur-aerat-namin-vitae-turpis/" class="btn btn-sm btn-outline-primary">
-                                        Read More                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                                                <article class="premium-card blog-card">
-                            <img src="https://www.urbancraftoasis.com/wp-content/uploads/2020/01/ben-karpinski-uR_pNOruRPk-unsplash.jpg" alt="Quam Nulla Porttitor Massa Dneque Aliquam Vestibulum" loading="lazy">
-                            <div class="card-body">
-                                <h5>Quam Nulla Porttitor Massa Dneque Aliquam Vestibulum</h5>
-                                <div class="mb-2">
-                                                                            <span class="tag">Nature</span>
-                                                                    </div>
-                                <p class="meta text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Habitant&hellip;</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">January 28, 2020</small>
-                                    <a href="https://www.urbancraftoasis.com/2020/01/28/quam-nulla-porttitor-massa-id-neque-aliquam-vestibulum/" class="btn btn-sm btn-outline-primary">
-                                        Read More                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                                                <article class="premium-card blog-card">
-                            <img src="https://www.urbancraftoasis.com/wp-content/uploads/2020/01/robert-bahn-1370575-unsplash.jpg" alt="Malesuada Proin Libero Nunc Consequat Interdum" loading="lazy">
-                            <div class="card-body">
-                                <h5>Malesuada Proin Libero Nunc Consequat Interdum</h5>
-                                <div class="mb-2">
-                                                                            <span class="tag">Travel</span>
-                                                                    </div>
-                                <p class="meta text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus&hellip;</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">January 28, 2020</small>
-                                    <a href="https://www.urbancraftoasis.com/2020/01/28/malesuada-proin-libero-nunc-consequat-interdum/" class="btn btn-sm btn-outline-primary">
-                                        Read More                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                                                <article class="premium-card blog-card">
-                            <img src="https://www.urbancraftoasis.com/wp-content/uploads/2020/01/roman-mager-59779-unsplash.jpg" alt="Facilisi Nullam Vehicula Ipsum Arcu Cursus Vitae Congue" loading="lazy">
-                            <div class="card-body">
-                                <h5>Facilisi Nullam Vehicula Ipsum Arcu Cursus Vitae Congue</h5>
-                                <div class="mb-2">
-                                                                            <span class="tag">Trends</span>
-                                                                    </div>
-                                <p class="meta text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis&hellip;</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">January 28, 2020</small>
-                                    <a href="https://www.urbancraftoasis.com/2020/01/28/facilisi-nullam-vehicula-ipsum-a-arcu-cursus-vitae-congue/" class="btn btn-sm btn-outline-primary">
-                                        Read More                                    </a>
-                                </div>
-                            </div>
-                        </article>
-                                    </div>
-            
-            <div class="text-center mt-5">
-                <a href="https://www.urbancraftoasis.com/2020/01/28/facilisi-nullam-vehicula-ipsum-a-arcu-cursus-vitae-congue/" class="btn btn-outline-primary">
-                    View All Stories                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Signup -->
-    <section class="section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 text-center">
-                    <h2 class="mb-3">Stay Updated</h2>
-                    <p class="lead mb-4">Get the latest wedding trends, vendor spotlights, and planning tips delivered to your inbox.</p>
-                    
-                    <form id="newsletterForm" class="d-flex gap-2 mb-3">
-                        <input type="email" class="form-control" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary">
-                            Subscribe                        </button>
-                    </form>
-                    <small class="text-muted">No spam, unsubscribe at any time.</small>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<!-- Authentication Modal -->
-<div class="modal fade auth-modal" id="authModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <form id="roleForm">
-                <div class="modal-header">
-                    <h5 class="modal-title">Welcome — choose your account type</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you signing in as a User or a Vendor?</p>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="roleUser" value="User" checked>
-                        <label class="form-check-label" for="roleUser">
-                            User                        </label>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="roleVendor" value="Vendor">
-                        <label class="form-check-label" for="roleVendor">
-                            Vendor                        </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="vendorsLoading" class="text-center py-5" style="display: none;">
+            <div class="spinner mb-3"></div>
+            <p>Loading vendors...</p>
+        </div>
+
+        <!-- Vendors Grid/List -->
+        <div id="vendorsContainer">
+            <div class="vendors-grid" id="vendorsGrid">
+                                    <div class="no-vendors text-center py-5">
+                        <h3>No vendors found</h3>
+                        <p class="lead text-muted">Try adjusting your filters or search criteria.</p>
+                        <a href="https://www.urbancraftoasis.com/wp-admin/post-new.php?post_type=vendor" class="btn btn-primary">
+                            Be the first to add a vendor                        </a>
                     </div>
-                    <small class="form-text text-muted">You can change this later from your profile.</small>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Continue</button>
-                </div>
-            </form>
+                            </div>
+        </div>
+
+        <!-- Pagination -->
+        
+        <!-- Become a Vendor CTA -->
+        <div class="become-vendor-cta text-center mt-5 p-5 bg-light rounded">
+            <h3>Are you a wedding vendor?</h3>
+            <p class="lead">Join our platform and connect with couples planning their dream wedding.</p>
+            <a class="btn btn-primary btn-lg">
+                Become a Vendor            </a>
         </div>
     </div>
-</div>
+</main>
 
-<script>// Initialize Swiper when DOM is loaded
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-    if (typeof Swiper !== 'undefined') {
-        new Swiper('.vendor-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                },
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 25,
-                },
-                992: {
-                    slidesPerView: 3,
-                    spaceBetween: 30,
+    const categoryFilter = document.getElementById('categoryFilter');
+    const locationFilter = document.getElementById('locationFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const searchFilter = document.getElementById('searchFilter');
+    const clearFiltersBtn = document.getElementById('clearFilters');
+    const gridViewBtn = document.getElementById('gridView');
+    const listViewBtn = document.getElementById('listView');
+    const vendorsGrid = document.getElementById('vendorsGrid');
+    const vendorsContainer = document.getElementById('vendorsContainer');
+    const loadingIndicator = document.getElementById('vendorsLoading');
+
+    let vendors = Array.from(document.querySelectorAll('.vendor-item'));
+    let debounceTimer;
+
+    // Filter functionality
+    function filterVendors() {
+        const category = categoryFilter.value.toLowerCase();
+        const location = locationFilter.value.toLowerCase();
+        const searchTerm = searchFilter.value.toLowerCase();
+        const sortBy = sortFilter.value;
+
+        let filteredVendors = vendors.filter(vendor => {
+            const vendorCategory = vendor.dataset.category.toLowerCase();
+            const vendorLocation = vendor.dataset.location.toLowerCase();
+            const vendorTitle = vendor.dataset.title.toLowerCase();
+            
+            const categoryMatch = !category || vendorCategory === category;
+            const locationMatch = !location || vendorLocation === location;
+            const searchMatch = !searchTerm || vendorTitle.includes(searchTerm);
+            
+            return categoryMatch && locationMatch && searchMatch;
+        });
+
+        // Sort vendors
+        filteredVendors.sort((a, b) => {
+            switch (sortBy) {
+                case 'title_asc':
+                    return a.dataset.title.localeCompare(b.dataset.title);
+                case 'title_desc':
+                    return b.dataset.title.localeCompare(a.dataset.title);
+                case 'date_asc':
+                    return new Date(a.dataset.date) - new Date(b.dataset.date);
+                case 'date_desc':
+                default:
+                    return new Date(b.dataset.date) - new Date(a.dataset.date);
+            }
+        });
+
+        // Show/hide vendors
+        vendors.forEach(vendor => {
+            vendor.style.display = 'none';
+        });
+
+        if (filteredVendors.length > 0) {
+            filteredVendors.forEach((vendor, index) => {
+                vendor.style.display = 'block';
+                vendor.style.animationDelay = `${index * 0.1}s`;
+            });
+        } else {
+            // Show no results message
+            showNoResults();
+        }
+
+        // Update URL with filters (optional)
+        updateURL();
+    }
+
+    function showNoResults() {
+        const existingMessage = document.querySelector('.no-results-message');
+        if (existingMessage) existingMessage.remove();
+
+        const noResultsDiv = document.createElement('div');
+        noResultsDiv.className = 'no-results-message text-center py-5';
+        noResultsDiv.innerHTML = `
+            <h3>No vendors match your criteria<\/h3>
+            <p class="lead text-muted">Try adjusting your filters or search terms.<\/p>
+            <button class="btn btn-outline-primary" onclick="clearAllFilters()">
+                Clear All Filters            <\/button>
+        `;
+        vendorsGrid.appendChild(noResultsDiv);
+    }
+
+    function clearAllFilters() {
+        categoryFilter.value = '';
+        locationFilter.value = '';
+        searchFilter.value = '';
+        sortFilter.value = 'date_desc';
+        filterVendors();
+    }
+
+    function updateURL() {
+        const params = new URLSearchParams();
+        if (categoryFilter.value) params.set('category', categoryFilter.value);
+        if (locationFilter.value) params.set('location', locationFilter.value);
+        if (searchFilter.value) params.set('search', searchFilter.value);
+        if (sortFilter.value !== 'date_desc') params.set('sort', sortFilter.value);
+        
+        const newURL = window.location.pathname + (params.toString() ? '?' + params.toString() : '');
+        window.history.replaceState({}, '', newURL);
+    }
+
+    // Debounced search
+    function debounceFilter() {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(filterVendors, 300);
+    }
+
+    // Event listeners
+    categoryFilter.addEventListener('change', filterVendors);
+    locationFilter.addEventListener('change', filterVendors);
+    sortFilter.addEventListener('change', filterVendors);
+    searchFilter.addEventListener('input', debounceFilter);
+    clearFiltersBtn.addEventListener('click', clearAllFilters);
+
+    // View toggle
+    gridViewBtn.addEventListener('click', function() {
+        vendorsGrid.className = 'vendors-grid';
+        gridViewBtn.classList.add('active');
+        listViewBtn.classList.remove('active');
+        localStorage.setItem('vendorView', 'grid');
+    });
+
+    listViewBtn.addEventListener('click', function() {
+        vendorsGrid.className = 'vendors-list';
+        listViewBtn.classList.add('active');
+        gridViewBtn.classList.remove('active');
+        localStorage.setItem('vendorView', 'list');
+    });
+
+    // Restore saved view preference
+    const savedView = localStorage.getItem('vendorView');
+    if (savedView === 'list') {
+        listViewBtn.click();
+    }
+
+    // Save vendor functionality
+    document.querySelectorAll('.save-vendor').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const vendorId = this.dataset.vendorId;
+            const vendorTitle = this.closest('.vendor-item').querySelector('.vendor-title a').textContent;
+            
+            let savedVendors = JSON.parse(localStorage.getItem('savedVendors') || '[]');
+            
+            if (!savedVendors.some(v => v.id == vendorId)) {
+                savedVendors.push({
+                    id: vendorId,
+                    title: vendorTitle,
+                    url: this.closest('.vendor-item').querySelector('.vendor-title a').href,
+                    savedAt: new Date().toISOString()
+                });
+                localStorage.setItem('savedVendors', JSON.stringify(savedVendors));
+                
+                this.classList.remove('btn-primary');
+                this.classList.add('btn-success');
+                this.innerHTML = `
+                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    <\/svg>
+                `;
+                
+                if (window.RoyalShaadi) {
+                    window.RoyalShaadi.showNotification('Vendor saved to favorites!');
+                }
+            } else {
+                if (window.RoyalShaadi) {
+                    window.RoyalShaadi.showNotification('Vendor already in favorites!', 'warning');
                 }
             }
         });
+        
+        // Check if already saved
+        const vendorId = btn.dataset.vendorId;
+        const savedVendors = JSON.parse(localStorage.getItem('savedVendors') || '[]');
+        if (savedVendors.some(v => v.id == vendorId)) {
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-success');
+            btn.innerHTML = `
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                <\/svg>
+            `;
+        }
+    });
+
+    // Initialize filters from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('category')) categoryFilter.value = urlParams.get('category');
+    if (urlParams.get('location')) locationFilter.value = urlParams.get('location');
+    if (urlParams.get('search')) searchFilter.value = urlParams.get('search');
+    if (urlParams.get('sort')) sortFilter.value = urlParams.get('sort');
+    
+    // Apply initial filters
+    if (urlParams.toString()) {
+        filterVendors();
     }
 
-    // Newsletter form handler
-    const newsletterForm = document.getElementById('newsletterForm');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            // Here you would typically send to your email service
-            // For now, we'll just show a success message
-            alert('Thank you for subscribing!');
-            this.reset();
-        });
+    // Make clearAllFilters available globally
+    window.clearAllFilters = clearAllFilters;
+});
+</script>
+
+<style>.vendors-filters {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.vendors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.vendors-list .vendor-item {
+    display: flex;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.vendors-list .vendor-image {
+    flex: 0 0 250px;
+    position: relative;
+}
+
+.vendors-list .card-body {
+    flex: 1;
+    padding: 2rem;
+}
+
+.vendor-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vendor-item:hover .vendor-overlay {
+    opacity: 1;
+}
+
+.vendor-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.view-toggle .btn {
+    border-radius: 6px;
+}
+
+.view-toggle .btn.active {
+    background: #b88458;
+    border-color: #b88458;
+    color: white;
+}
+
+.vendor-item {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-});</script>
+}
+
+.no-results-message {
+    grid-column: 1 / -1;
+    animation: fadeIn 0.5s ease;
+}
+
+.save-vendor {
+    transition: all 0.3s ease;
+}
+
+.save-vendor:hover {
+    transform: scale(1.1);
+}
+
+.vendor-contact-actions .btn {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .vendors-filters .row {
+        margin-bottom: 1rem;
+    }
+    
+    .vendors-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .vendors-list .vendor-item {
+        flex-direction: column;
+    }
+    
+    .vendors-list .vendor-image {
+        flex: none;
+        height: 200px;
+    }
+    
+    .filter-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .view-toggle {
+        align-self: center;
+    }
+}</style>
 
 
 <footer class="site-footer">
@@ -621,7 +802,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="https://www.urbancraftoasis.com/">Home</a></li>
-                    <li><a href="https://www.urbancraftoasis.com/2020/01/28/facilisi-nullam-vehicula-ipsum-a-arcu-cursus-vitae-congue/">Blog</a></li>
+                    <li><a>Blog</a></li>
                     <li><a href="https://www.urbancraftoasis.com/vendors/">Vendors</a></li>
                                                                 <li><a href="https://www.urbancraftoasis.com/about/">About Us</a></li>
                                                                 <li><a href="https://www.urbancraftoasis.com/contact/">Contact</a></li>
@@ -1011,7 +1192,7 @@ var ezTOC = {"smooth_scroll":"1","scroll_offset":"30","fallbackIcon":"<span clas
 <script type="text/javascript" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js?ver=9.22.2" id="firebase-firestore-js"></script>
 <script type="text/javascript" id="royal-shaadi-script-js-extra">
 /* <![CDATA[ */
-var royal_shaadi_ajax = {"ajax_url":"https:\/\/www.urbancraftoasis.com\/wp-admin\/admin-ajax.php","nonce":"6c4a14c751","firebase_config":{"apiKey":"","authDomain":"","projectId":"","storageBucket":"","messagingSenderId":"","appId":"","measurementId":""}};
+var royal_shaadi_ajax = {"ajax_url":"https:\/\/www.urbancraftoasis.com\/wp-admin\/admin-ajax.php","nonce":"90b7194b93","firebase_config":{"apiKey":"","authDomain":"","projectId":"","storageBucket":"","messagingSenderId":"","appId":"","measurementId":""}};
 /* ]]> */
 </script>
 <script type="text/javascript" src="https://www.urbancraftoasis.com/wp-content/themes/wedding-theme/assets/js/theme.js?ver=1.0" id="royal-shaadi-script-js"></script>
