@@ -85,7 +85,7 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://www.urbancraftoasis.com/wp-content/themes/wedding-theme/assets/images/hero.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/wp-content/themes/wedding-theme/assets/images/hero.jpg');
   background-size: cover;
   background-position: center;
   min-height: 65vh;

@@ -9,23 +9,15 @@
 
 <channel>
 	<title>Vendors &#8211; Royal Shaadi</title>
-	<atom:link href="https://www.urbancraftoasis.com/vendors/feed/" rel="self" type="application/rss+xml" />
-	<link>https://www.urbancraftoasis.com</link>
-	<description>Your Home, Your Canvas</description>
-	<lastBuildDate>Sun, 15 Sep 2024 06:09:13 +0000</lastBuildDate>
+	<atom:link href="/vendors/feed/" rel="self" type="application/rss+xml" />
+	<link></link>
+	<description></description>
+	<lastBuildDate>Sun, 31 Aug 2025 13:31:23 +0000</lastBuildDate>
 	<language>en-US</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
 	<sy:updateFrequency>
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=6.8.2</generator>
-
-<image>
-	<url>https://www.urbancraftoasis.com/wp-content/uploads/2024/08/Site-Icon.png</url>
-	<title>Vendors &#8211; Royal Shaadi</title>
-	<link>https://www.urbancraftoasis.com</link>
-	<width>32</width>
-	<height>32</height>
-</image> 
 </channel>
 </rss>
