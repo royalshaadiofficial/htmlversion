@@ -6,20 +6,438 @@
     <meta name="description">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="Page not found | ">
-    <meta property="og:description">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="/">
-        
-    <!-- Structured Data -->
-    <script type="application/ld+json">{
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Royal Shaadi",
-        "url": "/",
-        "logo": ""
-    }</script>
+    <!-- Preload critical fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Beautiful Header Styles -->
+    <style>:root {
+            --royal-gold: #b88458;
+            --royal-gold-dark: #9d6f45;
+            --royal-gold-light: #d4a574;
+            --text-dark: #2c2c2c;
+            --text-muted: #6c757d;
+            --white: #ffffff;
+            --light-bg: #fafafa;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Header Styling */
+        .royal-header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            border-bottom: 1px solid rgba(184, 132, 88, 0.1);
+        }
+
+        .royal-header.scrolled {
+            box-shadow: var(--shadow-md);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+            min-height: 80px;
+        }
+
+        /* Logo/Brand */
+        .royal-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .royal-brand:hover {
+            color: var(--royal-gold);
+            transform: translateY(-1px);
+        }
+
+        .brand-accent {
+            color: var(--royal-gold);
+            font-weight: 700;
+        }
+
+        .brand-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: -4px;
+            display: block;
+        }
+
+        /* Navigation */
+        .royal-nav {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 0.75rem 0;
+            transition: var(--transition-smooth);
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--royal-gold);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--royal-gold), var(--royal-gold-light));
+            transition: var(--transition-smooth);
+            transform: translateX(-50%);
+            border-radius: 1px;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: var(--transition-smooth);
+            transform-origin: center;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        /* Authentication Section */
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Beautiful Buttons */
+        .btn-royal {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            letter-spacing: 0.5px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-royal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition-smooth);
+            z-index: -1;
+        }
+
+        .btn-royal:hover::before {
+            left: 100%;
+        }
+
+        .btn-royal-primary {
+            background: linear-gradient(135deg, var(--royal-gold), var(--royal-gold-dark));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(184, 132, 88, 0.3);
+        }
+
+        .btn-royal-primary:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 132, 88, 0.4);
+        }
+
+        .btn-royal-outline {
+            background: transparent;
+            color: var(--royal-gold);
+            border: 2px solid var(--royal-gold);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-royal-outline::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--royal-gold);
+            transition: var(--transition-smooth);
+            z-index: -1;
+            border-radius: 50px;
+        }
+
+        .btn-royal-outline:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(184, 132, 88, 0.3);
+        }
+
+        .btn-royal-outline:hover::after {
+            width: 100%;
+        }
+
+        .btn-royal-ghost {
+            background: rgba(184, 132, 88, 0.1);
+            color: var(--royal-gold);
+            border: 1px solid rgba(184, 132, 88, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-royal-ghost:hover {
+            background: rgba(184, 132, 88, 0.2);
+            color: var(--royal-gold-dark);
+            transform: translateY(-1px);
+        }
+
+        /* User Badge */
+        .user-badge {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--royal-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .user-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(184, 132, 88, 0.3);
+        }
+
+        .user-initial {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--royal-gold), var(--royal-gold-light));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+        }
+
+        .user-initial:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(184, 132, 88, 0.3);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 991px) {
+            .header-container {
+                padding: 0 1.5rem;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .royal-nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                box-shadow: var(--shadow-md);
+                border-top: 1px solid rgba(184, 132, 88, 0.1);
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition-smooth);
+                flex-direction: column;
+                gap: 0;
+                padding: 2rem 0;
+            }
+
+            .royal-nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 0;
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 1rem 2rem;
+                width: 100%;
+                text-align: center;
+                border-bottom: 1px solid rgba(184, 132, 88, 0.1);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link:hover {
+                background: rgba(184, 132, 88, 0.05);
+            }
+
+            .auth-section {
+                margin-top: 1.5rem;
+                justify-content: center;
+                padding: 0 2rem;
+                border-top: 1px solid rgba(184, 132, 88, 0.1);
+                padding-top: 1.5rem;
+            }
+
+            .royal-brand {
+                font-size: 1.75rem;
+            }
+
+            .brand-subtitle {
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .header-inner {
+                padding: 1rem 0;
+                min-height: 70px;
+            }
+
+            .royal-brand {
+                font-size: 1.5rem;
+            }
+
+            .btn-royal {
+                padding: 0.65rem 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus states */
+        .nav-link:focus,
+        .btn-royal:focus {
+            outline: 2px solid var(--royal-gold);
+            outline-offset: 2px;
+        }
+
+        /* Loading state */
+        .header-loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }</style>
 
     <title>Page not found &#8211; Royal Shaadi</title>
 <meta name="robots" content="max-image-preview:large">
@@ -58,12 +476,17 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 <link rel="stylesheet" id="royal-shaadi-style-css" href="/wp-content/themes/wedding-theme/style.css?ver=1.0" type="text/css" media="all">
 <script type="text/javascript" src="/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
 <script type="text/javascript" src="/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
-<link rel="https://api.w.org/" href="/wp-json/">    
-    <script>// Firebase configuration for client-side
+<link rel="https://api.w.org/" href="/wp-json/">
+<link rel="icon" href="/wp-content/uploads/2025/08/for-yt.png" sizes="32x32">
+<link rel="icon" href="/wp-content/uploads/2025/08/for-yt.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/wp-content/uploads/2025/08/for-yt.png">
+<meta name="msapplication-TileImage" content="/wp-content/uploads/2025/08/for-yt.png">
+    
+    <script>// Firebase configuration
     window.royal_shaadi_config = {
         firebase: {"apiKey":"","authDomain":"","projectId":"","storageBucket":"","messagingSenderId":"","appId":"","measurementId":""},
         ajax_url: '/wp-admin/admin-ajax.php',
-        nonce: 'd4fdf002da',
+        nonce: 'f4e3dd0f15',
         home_url: '/',
         admin_email: 'advertexpanse@gmail.com'
     };</script>
@@ -71,257 +494,623 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/16
 
 <body class="error404 wp-theme-wedding-theme">
 
-<header class="site-header">
-    <div class="container header-inner">
-        <!-- Logo/Brand -->
-        <div class="site-branding">
-                            <a class="brand" href="/">
-                    Royal Shaadi<span class="accent">.</span>
-                </a>
+<header class="royal-header" id="royalHeader">
+    <div class="header-container">
+        <div class="header-inner">
+            <!-- Logo/Brand -->
+            <div class="site-branding">
+                                    <a href="/" class="royal-brand">
+                        Royal Shaadi<span class="brand-accent">.</span>
+                        <span class="brand-subtitle"></span>
+                    </a>
+                            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Main Navigation -->
+            <nav class="royal-nav" id="royalNav" role="navigation" aria-label="Main navigation">
+                <ul class="nav-links">
+                    <li><a href="/" class="nav-link ">Home</a></li>
+                    <li><a class="nav-link ">Stories</a></li>
+                    <li><a href="/vendors/" class="nav-link ">Vendors</a></li>
+                                                        </ul>
+
+                <!-- Authentication Section -->
+                <div class="auth-section">
+                    <button id="signInBtn" class="btn-royal btn-royal-outline" style="display: inline-flex;" aria-label="Sign in with Google">
+                        <svg width="18" height="18" fill="currentColor" viewbox="0 0 24 24">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path>
+                        </svg>
+                        Sign In                    </button>
+                    
+                    <button id="signOutBtn" class="btn-royal btn-royal-ghost" style="display: none;" aria-label="Sign out">
+                        <svg width="16" height="16" fill="currentColor" viewbox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"></path>
+                            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"></path>
+                        </svg>
+                        Sign Out                    </button>
+                    
+                    <div id="userBadge" class="user-badge" style="display: none;">
+                        <a title="View Profile" aria-label="View Profile">
+                            <div class="user-initial">U</div>
+                        </a>
                     </div>
-
-        <!-- Main Navigation -->
-        <nav class="main-nav" id="mainNav">
-                <a href="/">Home</a>
-    <a>Blog</a>
-    <a href="/vendors/">Vendors</a>
-                    </nav>
-
-        <!-- Mobile Menu Toggle -->
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <!-- Authentication Section -->
-        <div class="auth-section">
-            <button id="signInBtn" class="btn btn-outline-primary" style="display: inline-block;">
-                Sign In            </button>
-            <button id="signOutBtn" class="btn btn-light" style="display: none;">
-                Sign Out            </button>
-            <div id="userBadge" class="user-badge" style="display: none;">
-                <a title="Profile">
-                    <img src="/wp-content/themes/wedding-theme/assets/images/user-placeholder.png" alt="User Profile" class="rounded-circle" width="30" height="30">
-                </a>
-            </div>
+                </div>
+            </nav>
         </div>
     </div>
 </header>
 
 <script>document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    
-    if (navToggle && mainNav) {
-        navToggle.addEventListener('click', function() {
-            mainNav.classList.toggle('open');
-            const isOpen = mainNav.classList.contains('open');
-            navToggle.setAttribute('aria-expanded', isOpen);
-        });
-    }
-
-    // Initialize Firebase if config exists
-    if (window.royal_shaadi_config && window.royal_shaadi_config.firebase && typeof firebase !== 'undefined') {
-        try {
-            firebase.initializeApp(window.royal_shaadi_config.firebase);
-            initializeAuth();
-        } catch (error) {
-            console.error('Firebase initialization failed:', error);
-        }
-    }
-});
-
-function initializeAuth() {
-    const auth = firebase.auth();
-    const db = firebase.firestore();
-    
+    const header = document.getElementById('royalHeader');
+    const mobileToggle = document.getElementById('mobileToggle');
+    const royalNav = document.getElementById('royalNav');
     const signInBtn = document.getElementById('signInBtn');
     const signOutBtn = document.getElementById('signOutBtn');
     const userBadge = document.getElementById('userBadge');
 
-    // Update UI based on auth state
-    function updateAuthUI(user) {
-        if (user) {
-            signInBtn.style.display = 'none';
-            signOutBtn.style.display = 'inline-block';
-            userBadge.style.display = 'inline-block';
-            
-            // Update user badge
-            const userImg = userBadge.querySelector('img');
-            if (user.photoURL) {
-                userImg.src = user.photoURL;
-                userImg.onerror = function() {
-                    this.src = '/wp-content/themes/wedding-theme/assets/images/user-placeholder.png';
-                };
-            } else {
-                // Create initial-based avatar
-                const initial = (user.displayName || user.email || 'U').charAt(0).toUpperCase();
-                const canvas = document.createElement('canvas');
-                canvas.width = 30;
-                canvas.height = 30;
-                const ctx = canvas.getContext('2d');
-                ctx.fillStyle = '#b88458';
-                ctx.fillRect(0, 0, 30, 30);
-                ctx.fillStyle = '#fff';
-                ctx.font = 'bold 16px Inter, sans-serif';
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(initial, 15, 15);
-                userImg.src = canvas.toDataURL();
-            }
+    // Header scroll effect
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+            header.classList.add('scrolled');
         } else {
-            signInBtn.style.display = 'inline-block';
-            signOutBtn.style.display = 'none';
-            userBadge.style.display = 'none';
+            header.classList.remove('scrolled');
         }
+        
+        // Optional: Hide header on scroll down, show on scroll up
+        if (scrollTop > lastScrollTop && scrollTop > 200) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+        lastScrollTop = scrollTop;
+    });
+
+    // Mobile menu toggle
+    mobileToggle.addEventListener('click', function() {
+        const isActive = this.classList.contains('active');
+        
+        this.classList.toggle('active');
+        royalNav.classList.toggle('active');
+        this.setAttribute('aria-expanded', !isActive);
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = !isActive ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            mobileToggle.classList.remove('active');
+            royalNav.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!header.contains(event.target) && royalNav.classList.contains('active')) {
+            mobileToggle.classList.remove('active');
+            royalNav.classList.remove('active');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Initialize Firebase authentication
+    initializeAuth();
+});
+
+function initializeAuth() {
+    if (typeof firebase === 'undefined' || !window.royal_shaadi_config?.firebase) return;
+
+    try {
+        firebase.initializeApp(window.royal_shaadi_config.firebase);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Update UI based on auth state
+        function updateAuthUI(user) {
+            const signInBtn = document.getElementById('signInBtn');
+            const signOutBtn = document.getElementById('signOutBtn');
+            const userBadge = document.getElementById('userBadge');
+
+            if (user) {
+                signInBtn.style.display = 'none';
+                signOutBtn.style.display = 'inline-flex';
+                userBadge.style.display = 'block';
+                
+                // Update user avatar
+                const userElement = userBadge.querySelector('.user-initial') || userBadge.querySelector('.user-avatar');
+                if (user.photoURL) {
+                    userElement.outerHTML = `<img src="${user.photoURL}" alt="User Avatar" class="user-avatar" onerror="this.outerHTML='<div class=\\'user-initial\\'>${(user.displayName || user.email || 'U').charAt(0).toUpperCase()}<\/div>'">`;
+                } else {
+                    const initial = (user.displayName || user.email || 'U').charAt(0).toUpperCase();
+                    userElement.textContent = initial;
+                }
+            } else {
+                signInBtn.style.display = 'inline-flex';
+                signOutBtn.style.display = 'none';
+                userBadge.style.display = 'none';
+            }
+        }
+
+        // Sign in handler
+        signInBtn.addEventListener('click', async function() {
+            this.classList.add('header-loading');
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.addScope('profile');
+            provider.addScope('email');
+            
+            try {
+                const result = await auth.signInWithPopup(provider);
+                const user = result.user;
+                
+                // Save user data
+                await db.collection('users').doc(user.uid).set({
+                    name: user.displayName || '',
+                    email: user.email || '',
+                    photo: user.photoURL || '',
+                    role: 'User',
+                    subscribed: false,
+                    created_at: firebase.firestore.FieldValue.serverTimestamp(),
+                    last_login: firebase.firestore.FieldValue.serverTimestamp()
+                }, { merge: true });
+                
+            } catch (error) {
+                console.error('Sign-in failed:', error);
+                alert('Sign-in failed. Please try again.');
+            } finally {
+                this.classList.remove('header-loading');
+            }
+        });
+
+        // Sign out handler
+        signOutBtn.addEventListener('click', async function() {
+            this.classList.add('header-loading');
+            try {
+                await auth.signOut();
+                window.location.reload();
+            } catch (error) {
+                console.error('Sign-out failed:', error);
+            } finally {
+                this.classList.remove('header-loading');
+            }
+        });
+
+        // Listen to auth state changes
+        auth.onAuthStateChanged(updateAuthUI);
+        
+    } catch (error) {
+        console.error('Firebase initialization failed:', error);
     }
-
-    // Sign in with Google
-    signInBtn.addEventListener('click', async function() {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        provider.addScope('profile');
-        provider.addScope('email');
-        
-        try {
-            const result = await auth.signInWithPopup(provider);
-            const user = result.user;
-            
-            // Save/update user data in Firestore
-            await db.collection('users').doc(user.uid).set({
-                name: user.displayName || '',
-                email: user.email || '',
-                photo: user.photoURL || '',
-                role: 'User', // Default role
-                subscribed: false,
-                created_at: firebase.firestore.FieldValue.serverTimestamp(),
-                last_login: firebase.firestore.FieldValue.serverTimestamp()
-            }, { merge: true });
-            
-            // Store user session
-            sessionStorage.setItem('royal_shaadi_user', JSON.stringify({
-                uid: user.uid,
-                email: user.email,
-                name: user.displayName
-            }));
-            
-        } catch (error) {
-            console.error('Sign-in failed:', error);
-            alert('Sign-in failed. Please try again.');
-        }
-    });
-
-    // Sign out
-    signOutBtn.addEventListener('click', async function() {
-        try {
-            await auth.signOut();
-            sessionStorage.removeItem('royal_shaadi_user');
-            // Optionally redirect to home
-            window.location.href = window.royal_shaadi_config.home_url;
-        } catch (error) {
-            console.error('Sign-out failed:', error);
-            alert('Sign-out failed. Please try again.');
-        }
-    });
-
-    // Listen to auth state changes
-    auth.onAuthStateChanged(function(user) {
-        updateAuthUI(user);
-        
-        if (user) {
-            // Update last login
-            db.collection('users').doc(user.uid).update({
-                last_login: firebase.firestore.FieldValue.serverTimestamp()
-            }).catch(console.error);
-        }
-    });
 }</script>
+
+<!-- Firebase Scripts -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 <main id="primary" class="site-main">
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Section with Gradient Background -->
+    <section class="hero position-relative overflow-hidden">
+        <div class="hero-bg"></div>
+        <div class="container position-relative">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-3 fw-bold mb-4 text-white">
+                            Plan Your Dream Wedding                            <span class="text-gradient d-block">The Royal Way</span>
+                        </h1>
+                        <p class="lead mb-5 text-light opacity-90">
+                            Premium vendors, curated editorial, and powerful planning tools to make your special day absolutely perfect.                        </p>
+                        <div class="hero-buttons d-flex flex-wrap gap-3">
+                            <a class="btn btn-primary btn-lg px-5 py-3">
+                                <i class="fas fa-calendar-alt me-2"></i>
+                                Start Planning                            </a>
+                            <a href="/vendors/" class="btn btn-outline-light btn-lg px-5 py-3">
+                                <i class="fas fa-search me-2"></i>
+                                Find Vendors                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image text-center">
+                        <img src="/wp-content/themes/wedding-theme/assets/images/hero-couple.png" alt="Royal Wedding Couple" class="img-fluid hero-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-heart floating-heart-1">💕</div>
+            <div class="floating-heart floating-heart-2">💖</div>
+            <div class="floating-heart floating-heart-3">💝</div>
+        </div>
+    </section>
+
+    <!-- Quick Stats Section -->
+    <section class="stats-section py-5 bg-white">
         <div class="container">
-            <h1 class="display-4 fw-bold">
-                Plan your dream wedding — the royal way            </h1>
-            <p class="lead mb-4">
-                Premium vendors, curated editorial, and powerful planning tools.            </p>
-            <a class="btn btn-lg btn-primary">
-                Start Planning            </a>
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number display-4 fw-bold text-primary">2500+</div>
+                        <div class="stat-label text-muted">Happy Couples</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number display-4 fw-bold text-primary">850+</div>
+                        <div class="stat-label text-muted">Verified Vendors</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number display-4 fw-bold text-primary">50+</div>
+                        <div class="stat-label text-muted">Cities Covered</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <div class="stat-item">
+                        <div class="stat-number display-4 fw-bold text-primary">98%</div>
+                        <div class="stat-label text-muted">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Why Choose Royal Shaadi?</h2>
+                    <p class="lead text-muted">We provide everything you need to plan the perfect wedding</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card h-100 text-center p-4">
+                        <div class="feature-icon mb-4">
+                            <i class="fas fa-crown fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="mb-3">Premium Vendors</h4>
+                        <p class="text-muted">Handpicked and verified vendors who deliver exceptional quality and service for your special day.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card h-100 text-center p-4">
+                        <div class="feature-icon mb-4">
+                            <i class="fas fa-calendar-check fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="mb-3">Smart Planning Tools</h4>
+                        <p class="text-muted">Comprehensive planning suite with timeline management, budget tracking, and guest management tools.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card h-100 text-center p-4">
+                        <div class="feature-icon mb-4">
+                            <i class="fas fa-heart fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="mb-3">Personalized Experience</h4>
+                        <p class="text-muted">Tailored recommendations and dedicated support to make your wedding planning journey smooth and enjoyable.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Featured Vendors Section -->
-    <section class="section">
+    <section class="vendors-section py-5 bg-light">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="mb-0">Featured Vendors</h2>
-                <div class="carousel-cta small text-muted">Handpicked & Verified</div>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Featured Vendors</h2>
+                    <p class="lead text-muted">Discover our handpicked collection of premium wedding vendors</p>
+                </div>
             </div>
             
-            <div class="swiper vendor-swiper">
-                <div class="swiper-wrapper" id="vendorSlides">
-                                            <div class="swiper-slide">
-                            <div class="text-center p-4">
-                                <p>No vendors found. Please add some vendors from the admin panel.</p>
+            <div class="vendor-carousel-container position-relative">
+                <div class="swiper vendor-swiper">
+                    <div class="swiper-wrapper" id="vendorSlides">
+                                                    <div class="swiper-slide">
+                                <div class="text-center p-5">
+                                    <i class="fas fa-store fa-3x text-muted mb-3"></i>
+                                    <p class="text-muted">No vendors found. Please add some vendors from the admin panel.</p>
+                                </div>
                             </div>
-                        </div>
-                                    </div>
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-pagination"></div>
+                                            </div>
+                    
+                    <!-- Navigation -->
+                    <div class="swiper-button-prev custom-nav-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="swiper-button-next custom-nav-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="swiper-pagination mt-4"></div>
             </div>
             
-            <div class="text-center mt-4">
-                <a href="/vendors/" class="btn btn-outline-primary">
-                    View All Vendors                </a>
+            <div class="text-center mt-5">
+                <a href="/vendors/" class="btn btn-outline-primary btn-lg px-5 py-3">
+                    <i class="fas fa-th-large me-2"></i>
+                    Explore All Vendors                </a>
             </div>
         </div>
     </section>
 
-    <!-- Latest Blog Posts -->
-    <section class="section section-bg">
+    <!-- Wedding Categories Section -->
+    <section class="categories-section py-5">
         <div class="container">
-            <h2 class="text-center mb-5">Latest Wedding Stories</h2>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Wedding Services</h2>
+                    <p class="lead text-muted">Find the perfect vendors for every aspect of your wedding</p>
+                </div>
+            </div>
             
-            <div class="blog-grid">
-                                        <article class="premium-card blog-card">
-                            <img src="/wp-content/themes/wedding-theme/assets/images/blog-placeholder.jpg" alt="Hello world!" loading="lazy">
-                            <div class="card-body">
-                                <h5>Hello world!</h5>
-                                <div class="mb-2">
-                                                                            <span class="tag">Uncategorized</span>
-                                                                    </div>
-                                <p class="meta text-muted">Welcome to WordPress. This is your first post. Edit or delete it, then start writing!</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">August 31, 2025</small>
-                                    <a href="/2025/08/31/hello-world/" class="btn btn-sm btn-outline-primary">
-                                        Read More                                    </a>
-                                </div>
+            <div class="row g-4">
+                                    <div class="col-lg-4 col-md-6">
+                        <div class="category-card text-center p-4 h-100">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-camera fa-3x text-primary"></i>
                             </div>
-                        </article>
+                            <h4 class="mb-3">Photography</h4>
+                            <p class="text-muted mb-4">Capture your precious moments</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                Explore                            </a>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                        <div class="category-card text-center p-4 h-100">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-utensils fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">Catering</h4>
+                            <p class="text-muted mb-4">Delicious cuisine for your guests</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                Explore                            </a>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                        <div class="category-card text-center p-4 h-100">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-music fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">Entertainment</h4>
+                            <p class="text-muted mb-4">Music and entertainment services</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                Explore                            </a>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                        <div class="category-card text-center p-4 h-100">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-palette fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">Decoration</h4>
+                            <p class="text-muted mb-4">Beautiful venue decorations</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                Explore                            </a>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                        <div class="category-card text-center p-4 h-100">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-tshirt fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">Attire</h4>
+                            <p class="text-muted mb-4">Bridal and groom outfits</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                Explore                            </a>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                        <div class="category-card text-center p-4 h-100">
+                            <div class="category-icon mb-4">
+                                <i class="fas fa-car fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-3">Transportation</h4>
+                            <p class="text-muted mb-4">Luxury wedding transportation</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">
+                                Explore                            </a>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blog Posts -->
+    <section class="blog-section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">Latest Wedding Stories</h2>
+                    <p class="lead text-muted">Get inspired by real weddings and expert advice</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                                        <div class="col-lg-6">
+                            <article class="blog-card premium-card h-100 featured-post">
+                                <div class="card-image-container position-relative">
+                                    <img src="/wp-content/themes/wedding-theme/assets/images/blog-placeholder.jpg" alt="Hello world!" class="card-img-top" loading="lazy">
+                                    <div class="card-overlay">
+                                        <div class="post-date">
+                                            <span>Aug 31</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body p-4">
+                                                                            <div class="mb-3">
+                                            <span class="badge bg-secondary-light text-secondary rounded-pill">
+                                                Uncategorized                                            </span>
+                                        </div>
+                                                                        
+                                    <h5 class="card-title mb-3">
+                                        <a href="/2025/08/31/hello-world/" class="text-decoration-none">
+                                            Hello world!                                        </a>
+                                    </h5>
+                                    
+                                    <p class="card-text text-muted mb-4">
+                                        Welcome to WordPress. This is your first post. Edit or delete it, then start writing!                                    </p>
+                                    
+                                    <div class="card-footer-info d-flex justify-content-between align-items-center">
+                                        <div class="author-info d-flex align-items-center">
+                                            <img alt="" src="https://secure.gravatar.com/avatar/da208d426ad5415abbac437d3c406c2d7cb6655c7ec96214df8a3a601b4e31eb?s=24&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/da208d426ad5415abbac437d3c406c2d7cb6655c7ec96214df8a3a601b4e31eb?s=48&#038;d=mm&#038;r=g 2x" class="avatar avatar-24 photo rounded-circle me-2" height="24" width="24" decoding="async">                                            <small class="text-muted">advertexpanse</small>
+                                        </div>
+                                        <a href="/2025/08/31/hello-world/" class="btn btn-sm btn-outline-primary">
+                                            Read More                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
                                     </div>
             
             <div class="text-center mt-5">
-                <a href="/2025/08/31/hello-world/" class="btn btn-outline-primary">
+                <a href="/2025/08/31/hello-world/" class="btn btn-primary btn-lg px-5 py-3">
+                    <i class="fas fa-book-open me-2"></i>
                     View All Stories                </a>
             </div>
         </div>
     </section>
 
+    <!-- Testimonials Section -->
+    <section class="testimonials-section py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-4">What Couples Say</h2>
+                    <p class="lead text-muted">Real reviews from real couples who trusted us with their special day</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                                    <div class="col-lg-4">
+                        <div class="testimonial-card premium-card h-100 p-4">
+                            <div class="testimonial-rating mb-3">
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                            </div>
+                            <blockquote class="mb-4">
+                                <p class="text-muted">"Royal Shaadi made our dream wedding come true. The vendor recommendations were perfect!"</p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <h6 class="mb-1">Priya &amp; Arjun</h6>
+                                <small class="text-muted">Mumbai</small>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4">
+                        <div class="testimonial-card premium-card h-100 p-4">
+                            <div class="testimonial-rating mb-3">
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                            </div>
+                            <blockquote class="mb-4">
+                                <p class="text-muted">"The planning tools saved us so much time and stress. Highly recommended!"</p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <h6 class="mb-1">Simran &amp; Karan</h6>
+                                <small class="text-muted">Delhi</small>
+                            </div>
+                        </div>
+                    </div>
+                                    <div class="col-lg-4">
+                        <div class="testimonial-card premium-card h-100 p-4">
+                            <div class="testimonial-rating mb-3">
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                                    <i class="fas fa-star text-warning"></i>
+                                                            </div>
+                            <blockquote class="mb-4">
+                                <p class="text-muted">"Exceptional service and beautiful results. Our wedding was magical!"</p>
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <h6 class="mb-1">Meera &amp; Rohan</h6>
+                                <small class="text-muted">Bangalore</small>
+                            </div>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+    </section>
+
     <!-- Newsletter Signup -->
-    <section class="section">
+    <section class="newsletter-section py-5 bg-primary text-white">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-6 text-center">
-                    <h2 class="mb-3">Stay Updated</h2>
-                    <p class="lead mb-4">Get the latest wedding trends, vendor spotlights, and planning tips delivered to your inbox.</p>
-                    
-                    <form id="newsletterForm" class="d-flex gap-2 mb-3">
-                        <input type="email" class="form-control" placeholder="Your email address" required>
-                        <button type="submit" class="btn btn-primary">
-                            Subscribe                        </button>
-                    </form>
-                    <small class="text-muted">No spam, unsubscribe at any time.</small>
+                <div class="col-lg-8 text-center">
+                    <div class="newsletter-content">
+                        <i class="fas fa-envelope fa-3x mb-4 opacity-75"></i>
+                        <h2 class="display-6 fw-bold mb-4">Stay in the Loop</h2>
+                        <p class="lead mb-5 opacity-90">
+                            Get the latest wedding trends, vendor spotlights, and exclusive planning tips delivered straight to your inbox.                        </p>
+                        
+                        <form id="newsletterForm" class="newsletter-form">
+                            <div class="input-group input-group-lg mb-3">
+                                <input type="email" class="form-control" placeholder="Enter your email address" required>
+                                <button type="submit" class="btn btn-light btn-lg px-4">
+                                    <i class="fas fa-paper-plane me-2"></i>
+                                    Subscribe                                </button>
+                            </div>
+                        </form>
+                        
+                        <small class="opacity-75">
+                            <i class="fas fa-shield-alt me-1"></i>
+                            No spam, unsubscribe at any time. We respect your privacy.                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="cta-card premium-card text-center p-5">
+                        <h2 class="display-6 fw-bold mb-4">Ready to Start Planning?</h2>
+                        <p class="lead mb-5 text-muted">
+                            Join thousands of couples who have planned their perfect wedding with Royal Shaadi. Start your journey today!                        </p>
+                        <div class="cta-buttons d-flex flex-wrap justify-content-center gap-3">
+                            <a href="/wp-login.php?action=register" class="btn btn-primary btn-lg px-5 py-3">
+                                <i class="fas fa-user-plus me-2"></i>
+                                Create Account                            </a>
+                            <a href="#" class="btn btn-outline-primary btn-lg px-5 py-3" data-bs-toggle="modal" data-bs-target="#demoModal">
+                                <i class="fas fa-play me-2"></i>
+                                Watch Demo                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -332,39 +1121,498 @@ function initializeAuth() {
 <div class="modal fade auth-modal" id="authModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form id="roleForm">
-                <div class="modal-header">
-                    <h5 class="modal-title">Welcome — choose your account type</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you signing in as a User or a Vendor?</p>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="roleUser" value="User" checked>
-                        <label class="form-check-label" for="roleUser">
-                            User                        </label>
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold">Welcome to Royal Shaadi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4 py-4">
+                <p class="text-muted mb-4">Choose your account type to get started:</p>
+                
+                <form id="roleForm">
+                    <div class="role-options">
+                        <div class="form-check role-option p-3 mb-3">
+                            <input class="form-check-input" type="radio" name="role" id="roleUser" value="User" checked>
+                            <label class="form-check-label w-100" for="roleUser">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-heart fa-2x text-primary me-3"></i>
+                                    <div>
+                                        <strong>Couple/User</strong>
+                                        <p class="small text-muted mb-0">Plan your dream wedding</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="form-check role-option p-3 mb-3">
+                            <input class="form-check-input" type="radio" name="role" id="roleVendor" value="Vendor">
+                            <label class="form-check-label w-100" for="roleVendor">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-store fa-2x text-primary me-3"></i>
+                                    <div>
+                                        <strong>Vendor/Business</strong>
+                                        <p class="small text-muted mb-0">Showcase your services</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="roleVendor" value="Vendor">
-                        <label class="form-check-label" for="roleVendor">
-                            Vendor                        </label>
-                    </div>
-                    <small class="form-text text-muted">You can change this later from your profile.</small>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Continue</button>
-                </div>
-            </form>
+                    
+                    <small class="form-text text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        You can change this later from your profile settings.                    </small>
+                </form>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+                <button type="submit" form="roleForm" class="btn btn-primary btn-lg w-100">
+                    <i class="fas fa-arrow-right me-2"></i>
+                    Continue                </button>
+            </div>
         </div>
     </div>
 </div>
 
-<script>// Initialize Swiper when DOM is loaded
+<!-- Demo Modal -->
+<div class="modal fade" id="demoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-bold">Royal Shaadi Demo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Royal Shaadi Demo Video" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>/* Custom CSS for Royal Shaadi Index */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/wp-content/themes/wedding-theme/assets/images/hero-pattern.png') repeat;
+    opacity: 0.1;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-img {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.7;
+    animation: floatHeart 6s ease-in-out infinite;
+}
+
+.floating-heart-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-heart-2 {
+    top: 60%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+.floating-heart-3 {
+    top: 40%;
+    left: 80%;
+    animation-delay: 4s;
+}
+
+@keyframes floatHeart {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+    50% { transform: translateY(-30px) rotate(10deg); opacity: 1; }
+}
+
+.btn {
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border-width: 2px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-outline-primary {
+    border-color: #667eea;
+    color: #667eea;
+}
+
+.btn-outline-primary:hover {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-outline-light:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+}
+
+.stats-section {
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.stat-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.premium-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.feature-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.feature-icon i {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.category-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    border-color: #667eea;
+}
+
+.vendor-card .card-image-container {
+    height: 250px;
+    overflow: hidden;
+}
+
+.vendor-card .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.vendor-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.vendor-rating {
+    background: rgba(255,255,255,0.95);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.blog-card .card-image-container {
+    height: 200px;
+    overflow: hidden;
+}
+
+.blog-card.featured-post .card-image-container {
+    height: 300px;
+}
+
+.blog-card .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.post-date {
+    background: rgba(102, 126, 234, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 15px 0;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.badge {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.bg-primary-light {
+    background-color: rgba(102, 126, 234, 0.1) !important;
+}
+
+.bg-secondary-light {
+    background-color: rgba(108, 117, 125, 0.1) !important;
+}
+
+.testimonial-card {
+    background: white;
+    border-left: 4px solid #667eea;
+}
+
+.testimonial-rating i {
+    font-size: 1.2rem;
+}
+
+.newsletter-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
+}
+
+.newsletter-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/wp-content/themes/wedding-theme/assets/images/newsletter-pattern.png') repeat;
+    opacity: 0.1;
+}
+
+.newsletter-form .form-control {
+    border-radius: 50px 0 0 50px;
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+.newsletter-form .btn {
+    border-radius: 0 50px 50px 0;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.custom-nav-btn {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    color: #667eea;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.custom-nav-btn:hover {
+    background: #667eea;
+    color: white;
+    transform: scale(1.1);
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #667eea;
+    opacity: 0.3;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #667eea;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.role-option {
+    border: 2px solid #e9ecef;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.role-option:hover {
+    border-color: #667eea;
+    background-color: rgba(102, 126, 234, 0.05);
+}
+
+.role-option .form-check-input:checked ~ .form-check-label {
+    color: #667eea;
+}
+
+.empty-state {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 80vh;
+        text-align: center;
+    }
+    
+    .display-3 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .stats-section {
+        margin-top: -30px;
+    }
+    
+    .stat-item {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .newsletter-form .input-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-form .form-control,
+    .newsletter-form .btn {
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Loading Animation */
+.vendor-card,
+.blog-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.vendor-card:nth-child(1) { animation-delay: 0.1s; }
+.vendor-card:nth-child(2) { animation-delay: 0.2s; }
+.vendor-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}</style>
+
+<script>
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize Swiper
     if (typeof Swiper !== 'undefined') {
         new Swiper('.vendor-swiper', {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -372,6 +1620,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
+                dynamicBullets: true,
             },
             breakpoints: {
                 640: {
@@ -385,6 +1634,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 992: {
                     slidesPerView: 3,
                     spaceBetween: 30,
+                },
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
                 }
             }
         });
@@ -396,14 +1649,80 @@ document.addEventListener('DOMContentLoaded', function() {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
             
-            // Here you would typically send to your email service
-            // For now, we'll just show a success message
-            alert('Thank you for subscribing!');
-            this.reset();
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"><\/i>Subscribing...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('Thank you for subscribing! Check your email for confirmation.');
+                this.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
         });
     }
-});</script>
+
+    // Role form handler
+    const roleForm = document.getElementById('roleForm');
+    if (roleForm) {
+        roleForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedRole = this.querySelector('input[name="role"]:checked').value;
+            
+            // Close modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('authModal'));
+            if (modal) {
+                modal.hide();
+            }
+            
+            // Redirect based on role
+            if (selectedRole === 'Vendor') {
+                window.location.href = '/wp-login.php?action=register?role=vendor';
+            } else {
+                window.location.href = '/wp-login.php?action=register?role=user';
+            }
+        });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Observe all cards
+    document.querySelectorAll('.premium-card, .feature-card, .category-card, .stat-item').forEach(card => {
+        observer.observe(card);
+    });
+});
+</script>
 
 
 <footer class="site-footer">
@@ -453,8 +1772,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                         
                     <p>
                         <strong>Email:</strong><br>
-                        <a href="mailto:advertexpanse@gmail.com">
-                            advertexpanse@gmail.com                        </a>
+                        <a href="mailto:">
+                                                    </a>
                     </p>
                 </div>
                 
@@ -798,7 +2117,7 @@ window.RoyalShaadi = {
 <script type="text/javascript" src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js?ver=9.22.2" id="firebase-firestore-js"></script>
 <script type="text/javascript" id="royal-shaadi-script-js-extra">
 /* <![CDATA[ */
-var royal_shaadi_ajax = {"ajax_url":"\/wp-admin\/admin-ajax.php","nonce":"d4fdf002da","firebase_config":{"apiKey":"","authDomain":"","projectId":"","storageBucket":"","messagingSenderId":"","appId":"","measurementId":""}};
+var royal_shaadi_ajax = {"ajax_url":"\/wp-admin\/admin-ajax.php","nonce":"f4e3dd0f15","firebase_config":{"apiKey":"","authDomain":"","projectId":"","storageBucket":"","messagingSenderId":"","appId":"","measurementId":""}};
 /* ]]> */
 </script>
 <script type="text/javascript" src="/wp-content/themes/wedding-theme/assets/js/theme.js?ver=1.0" id="royal-shaadi-script-js"></script>
