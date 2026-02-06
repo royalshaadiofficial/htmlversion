@@ -8,15 +8,21 @@ export const metadata = {
     "Browse and discover the best wedding vendors, photographers, venues, decorators, caterers, and more for your royal Indian wedding.",
 };
 
-export default async function VendorsPage({
-  searchParams,
-}: {
-  searchParams: { category?: string; city?: string; search?: string };
-}) {
-  const supabase = await createClient();
+type SearchParams = Promise<{ 
+  category?: string; 
+  city?: string; 
+  search?: string 
+}>;
 
+export default async function VendorsPage(props: {
+  searchParams: SearchParams;
+}) {
+  // 2. Await the searchParams at the very beginning
+  const searchParams = await props.searchParams;
+  
+  const supabase = await createClient();
   // Build query
-  let query = supabase
+let query = supabase
     .from("vendors")
     .select("*")
     .eq("is_active", true)
@@ -35,7 +41,7 @@ export default async function VendorsPage({
     query = query.ilike("name", `%${searchParams.search}%`);
   }
 
-  const { data: vendors, error } = await query;
+  const { data: vendors } = await query;
 
   // Get unique cities and categories for filters
   const { data: allVendors } = await supabase

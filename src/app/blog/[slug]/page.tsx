@@ -6,15 +6,16 @@ import { Calendar, Clock, Share2, ArrowLeft, Tag } from "lucide-react";
 import { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params; // Extract slug after awaiting
   const supabase = await createClient();
   const { data: post } = await supabase
     .from("blog_posts")
     .select("title, excerpt, featured_image")
-    .eq("slug", params.slug)
+    .eq("slug", slug) // Use the awaited slug here
     .single();
 
   if (!post) {
@@ -35,12 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
+  const { slug } = await params; // Extract slug after awaiting
   const supabase = await createClient();
 
   const { data: post } = await supabase
     .from("blog_posts")
     .select("*")
-    .eq("slug", params.slug)
+    .eq("slug", slug) // Use the awaited slug here
     .eq("is_published", true)
     .single();
 

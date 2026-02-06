@@ -20,15 +20,16 @@ import { Metadata } from "next";
 import InquiryForm from "./InquiryForm";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params; // Await the params first
   const supabase = await createClient();
   const { data: vendor } = await supabase
     .from("vendors")
     .select("name, description, featured_image, city")
-    .eq("slug", params.slug)
+    .eq("slug", slug) // Use the awaited slug
     .single();
 
   if (!vendor) {
@@ -49,12 +50,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function VendorDetailPage({ params }: Props) {
+  const { slug } = await params; // Await the params first
   const supabase = await createClient();
 
   const { data: vendor } = await supabase
     .from("vendors")
     .select("*")
-    .eq("slug", params.slug)
+    .eq("slug", slug) // Use the awaited slug
     .eq("is_active", true)
     .single();
 
