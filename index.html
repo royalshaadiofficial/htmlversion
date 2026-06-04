@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RoyalShaadi — Weddings, Fashion & Lifestyle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ivory: #faf7f2;
+      --cream: #f3ece0;
+      --blush: #e8c9b0;
+      --rose: #c9736b;
+      --maroon: #8b2635;
+      --gold: #c9a84c;
+      --gold-light: #e8d5a3;
+      --dark: #1a1008;
+      --text: #2c1a0e;
+      --muted: #7a6050;
+      --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--ivory);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem;
+      height: 72px;
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(26,16,8,0.08); }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem; font-weight: 600;
+      color: var(--maroon); letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      text-decoration: none; color: var(--text);
+      font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .btn-vendor {
+      background: var(--maroon); color: var(--white) !important;
+      padding: 0.5rem 1.4rem; border-radius: 2px;
+      font-size: 0.8rem !important; letter-spacing: 0.12em !important;
+      transition: background 0.25s !important;
+    }
+    .btn-vendor:hover { background: var(--rose) !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, #1a1008 0%, #3d1f12 40%, #8b2635 100%);
+    }
+    .hero-bg-pattern {
+      position: absolute; inset: 0; opacity: 0.06;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-glow {
+      position: absolute; width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      animation: pulse 5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(1);opacity:1} 50%{transform:translate(-50%,-50%) scale(1.15);opacity:0.7} }
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 2rem;
+      animation: fadeUp 1.2s ease both;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 1rem;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--gold); opacity: 0.6;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 300; line-height: 1;
+      color: var(--ivory); margin-bottom: 0.3em;
+    }
+    .hero-title em { color: var(--gold); font-style: italic; }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 300; font-style: italic;
+      color: rgba(250,247,242,0.7); margin-bottom: 2.5rem;
+    }
+    .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--dark);
+      padding: 0.85rem 2.5rem; border-radius: 2px;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      border: none; cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+    .btn-outline {
+      background: transparent; color: var(--ivory);
+      padding: 0.85rem 2.5rem; border-radius: 2px;
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; text-decoration: none;
+      border: 1px solid rgba(250,247,242,0.4); cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(250,247,242,0.4); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+      animation: float 2.5s ease-in-out infinite;
+    }
+    .hero-scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(201,168,76,0.6), transparent); }
+    @keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 0; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .section-label {
+      font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300;
+      color: var(--text); line-height: 1.2; margin-bottom: 0.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--maroon); }
+    .section-desc { color: var(--muted); font-weight: 300; max-width: 520px; line-height: 1.8; }
+
+    /* ── CATEGORIES STRIP ── */
+    .categories { background: var(--cream); padding: 3rem 0; }
+    .categories-inner {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 0;
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+    .cat-item {
+      flex: 1; min-width: 120px; max-width: 200px;
+      padding: 1.8rem 1rem; text-align: center; text-decoration: none;
+      border-right: 1px solid rgba(201,168,76,0.25);
+      color: var(--text); transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .cat-item:last-child { border-right: none; }
+    .cat-item::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: var(--gold); transform: scaleX(0); transition: transform 0.3s;
+    }
+    .cat-item:hover::before { transform: scaleX(1); }
+    .cat-item:hover { background: rgba(201,168,76,0.06); color: var(--maroon); }
+    .cat-icon { font-size: 1.6rem; margin-bottom: 0.5rem; display: block; }
+    .cat-name { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* ── LATEST BLOGS ── */
+    .blogs-section { background: var(--ivory); }
+    .blogs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+    .blogs-header .view-all {
+      text-decoration: none; color: var(--maroon); font-size: 0.8rem;
+      font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      border-bottom: 1px solid var(--maroon); padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .blogs-header .view-all:hover { color: var(--gold); border-color: var(--gold); }
+    .blogs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .blog-card {
+      background: var(--white); border-radius: 2px;
+      overflow: hidden; text-decoration: none; color: inherit;
+      box-shadow: 0 2px 20px rgba(26,16,8,0.06);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      display: flex; flex-direction: column;
+    }
+    .blog-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,16,8,0.14); }
+    .blog-card-img {
+      aspect-ratio: 16/10; overflow: hidden; position: relative;
+      background: var(--cream);
+    }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .blog-card:hover .blog-card-img img { transform: scale(1.06); }
+    .blog-card-badge {
+      position: absolute; top: 1rem; left: 1rem;
+      background: var(--maroon); color: var(--white);
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 1px;
+    }
+    .blog-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-meta {
+      font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em;
+      margin-bottom: 0.7rem; display: flex; gap: 1rem;
+    }
+    .blog-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 400; line-height: 1.35;
+      color: var(--text); margin-bottom: 0.75rem;
+    }
+    .blog-card-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.7; flex: 1; }
+    .blog-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--cream);
+    }
+    .blog-read-more {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--maroon);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .blog-read-more svg { transition: transform 0.2s; }
+    .blog-card:hover .blog-read-more svg { transform: translateX(4px); }
+
+    /* Featured blog (first card) */
+    .blog-card.featured { grid-column: span 2; flex-direction: row; }
+    .blog-card.featured .blog-card-img { aspect-ratio: auto; flex: 1.2; min-height: 260px; }
+    .blog-card.featured .blog-card-body { flex: 1; padding: 2rem; }
+    .blog-card.featured .blog-card-title { font-size: 1.6rem; }
+
+    /* Loading state */
+    .blog-skeleton {
+      background: var(--white); border-radius: 2px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(26,16,8,0.06);
+    }
+    .skeleton-img { aspect-ratio: 16/10; background: linear-gradient(90deg, var(--cream) 25%, var(--blush) 50%, var(--cream) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+    .skeleton-body { padding: 1.5rem; }
+    .skeleton-line { height: 12px; background: linear-gradient(90deg, var(--cream) 25%, var(--blush) 50%, var(--cream) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 2px; margin-bottom: 0.75rem; }
+    .skeleton-line.short { width: 60%; }
+    .skeleton-line.title { height: 18px; width: 90%; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    /* No blogs message */
+    .no-blogs {
+      grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;
+      color: var(--muted); font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-style: italic;
+    }
+
+    /* ── VENDOR FLUTTER SECTION ── */
+    .vendors-section { background: var(--dark); padding: 7rem 0; position: relative; overflow: hidden; }
+    .vendors-section::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .vendors-section .container { position: relative; z-index: 1; }
+    .vendors-section .section-title { color: var(--ivory); }
+    .vendors-section .section-desc { color: rgba(250,247,242,0.55); }
+    .vendors-tabs {
+      display: flex; gap: 0; flex-wrap: wrap;
+      margin: 3rem 0 2.5rem; border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .vendor-tab {
+      background: none; border: none; cursor: pointer;
+      padding: 0.85rem 1.5rem; font-family: 'Jost', sans-serif;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(250,247,242,0.4);
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: all 0.25s; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .vendor-tab.active, .vendor-tab:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    .vendor-tab-icon { font-size: 1rem; }
+    .vendors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .vendor-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 2px; padding: 1.8rem 1.5rem;
+      transition: all 0.3s; cursor: pointer; text-decoration: none;
+      display: block;
+    }
+    .vendor-card:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: rgba(201,168,76,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .vendor-img {
+      width: 100%; aspect-ratio: 4/3;
+      background: rgba(255,255,255,0.05);
+      border-radius: 1px; margin-bottom: 1.2rem;
+      overflow: hidden; position: relative;
+    }
+    .vendor-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s; }
+    .vendor-card:hover .vendor-img img { opacity: 1; }
+    .vendor-img-placeholder {
+      width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(139,38,53,0.1));
+    }
+    .vendor-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: rgba(201,168,76,0.15); color: var(--gold);
+      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 1px;
+      margin-bottom: 0.75rem;
+    }
+    .vendor-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400;
+      color: var(--ivory); margin-bottom: 0.4rem; line-height: 1.3;
+    }
+    .vendor-city { font-size: 0.78rem; color: rgba(250,247,242,0.4); margin-bottom: 0.75rem; }
+    .vendor-stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 0.1em; }
+    .vendor-price { font-size: 0.78rem; color: rgba(250,247,242,0.5); margin-top: 0.5rem; }
+    .vendors-cta { text-align: center; margin-top: 3rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--cream); padding: 7rem 0; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+    .testimonial-card {
+      background: var(--white); padding: 2.5rem;
+      border-radius: 2px; position: relative;
+      box-shadow: 0 2px 20px rgba(26,16,8,0.06);
+    }
+    .testimonial-card::before {
+      content: '\201C'; position: absolute; top: 1.5rem; left: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; line-height: 1; color: var(--gold); opacity: 0.25;
+    }
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-style: italic; line-height: 1.8;
+      color: var(--text); margin-bottom: 1.5rem; position: relative; z-index: 1;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose), var(--maroon));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600;
+    }
+    .author-name { font-weight: 600; font-size: 0.9rem; color: var(--text); }
+    .author-detail { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── NEWSLETTER ── */
+    .newsletter { background: var(--maroon); padding: 5rem 0; text-align: center; }
+    .newsletter .section-label { justify-content: center; color: rgba(250,247,242,0.6); }
+    .newsletter .section-label::after { background: rgba(250,247,242,0.3); }
+    .newsletter .section-title { color: var(--ivory); margin-bottom: 1rem; }
+    .newsletter .section-desc { color: rgba(250,247,242,0.65); margin: 0 auto 2.5rem; text-align: center; }
+    .newsletter-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto; }
+    .newsletter-input {
+      flex: 1; padding: 0.9rem 1.5rem; border: none; border-radius: 0;
+      font-family: 'Jost', sans-serif; font-size: 0.9rem;
+      background: rgba(255,255,255,0.12); color: var(--ivory);
+      outline: none; border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.2s;
+    }
+    .newsletter-input::placeholder { color: rgba(250,247,242,0.4); }
+    .newsletter-input:focus { background: rgba(255,255,255,0.18); }
+    .newsletter-btn {
+      background: var(--gold); color: var(--dark); border: none;
+      padding: 0.9rem 2rem; font-family: 'Jost', sans-serif;
+      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; cursor: pointer; transition: background 0.25s;
+    }
+    .newsletter-btn:hover { background: var(--gold-light); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); padding: 5rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
+    .footer-brand .nav-logo { font-size: 1.8rem; display: inline-block; margin-bottom: 1rem; }
+    .footer-tagline { font-size: 0.85rem; color: rgba(250,247,242,0.45); line-height: 1.8; max-width: 260px; }
+    .footer-socials { display: flex; gap: 0.75rem; margin-top: 1.5rem; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(201,168,76,0.2);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(250,247,242,0.5); text-decoration: none; font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .social-btn:hover { background: rgba(201,168,76,0.15); color: var(--gold); border-color: var(--gold); }
+    .footer-col h4 {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.75rem; }
+    .footer-col ul li a {
+      text-decoration: none; font-size: 0.85rem;
+      color: rgba(250,247,242,0.45); transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 2rem; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+      font-size: 0.78rem; color: rgba(250,247,242,0.25);
+    }
+
+    /* ── DIVIDER ── */
+    .ornament-divider {
+      text-align: center; color: var(--gold); font-size: 1.2rem;
+      opacity: 0.4; padding: 1rem 0; letter-spacing: 0.5em;
+    }
+
+    /* ── VENDOR PANEL HIDDEN ── */
+    .vendor-panel { display: none; }
+    .vendor-panel.active { display: grid; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .blogs-grid { grid-template-columns: repeat(2, 1fr); }
+      .blog-card.featured { grid-column: span 2; flex-direction: column; }
+      .vendors-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; inset: 72px 0 0 0;
+        background: var(--ivory); padding: 2rem;
+        z-index: 999; gap: 1.5rem;
+        border-top: 1px solid var(--cream);
+      }
+      .nav-hamburger { display: flex; flex-direction: column; gap: 5px; }
+      .ham-bar { width: 24px; height: 2px; background: var(--text); transition: all 0.3s; }
+      .blogs-grid { grid-template-columns: 1fr; }
+      .blog-card.featured { flex-direction: column; }
+      .vendors-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .categories-inner { flex-direction: row; }
+      .cat-item { border-right: 1px solid rgba(201,168,76,0.25); border-bottom: 1px solid rgba(201,168,76,0.25); }
+      section { padding: 4rem 0; }
+    }
+    @media (max-width: 480px) {
+      .vendors-grid { grid-template-columns: 1fr; }
+      .hero-cta-group { flex-direction: column; align-items: center; }
+      .newsletter-form { flex-direction: column; }
+      .vendors-tabs { gap: 0; }
+      .vendor-tab { padding: 0.7rem 0.9rem; font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="index.html" class="nav-logo">Royal<span>Shaadi</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="blogs.html">Blog</a>
+      <a href="#vendors-section">Vendors</a>
+      <a href="#about">About</a>
+      <a href="vendors.html" class="btn-vendor">List Your Business</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">India's Premier Wedding Platform</div>
+      <h1 class="hero-title">Royal<em>Shaadi</em></h1>
+      <p class="hero-subtitle">Where Every Love Story Becomes Legend</p>
+      <div class="hero-cta-group">
+        <a href="blogs.html" class="btn-primary">Explore Stories</a>
+        <a href="vendors.html" class="btn-outline">Find Vendors</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      Scroll
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <div class="categories">
+    <div class="container">
+      <div class="categories-inner">
+        <a href="blogs.html?cat=bridal" class="cat-item">
+          <span class="cat-icon">👰</span>
+          <span class="cat-name">Bridal</span>
+        </a>
+        <a href="blogs.html?cat=fashion" class="cat-item">
+          <span class="cat-icon">✨</span>
+          <span class="cat-name">Fashion</span>
+        </a>
+        <a href="blogs.html?cat=decor" class="cat-item">
+          <span class="cat-icon">🌸</span>
+          <span class="cat-name">Décor</span>
+        </a>
+        <a href="blogs.html?cat=food" class="cat-item">
+          <span class="cat-icon">🍛</span>
+          <span class="cat-name">Food</span>
+        </a>
+        <a href="blogs.html?cat=venues" class="cat-item">
+          <span class="cat-icon">🏰</span>
+          <span class="cat-name">Venues</span>
+        </a>
+        <a href="blogs.html?cat=travel" class="cat-item">
+          <span class="cat-icon">✈️</span>
+          <span class="cat-name">Honeymoon</span>
+        </a>
+        <a href="blogs.html?cat=beauty" class="cat-item">
+          <span class="cat-icon">💄</span>
+          <span class="cat-name">Beauty</span>
+        </a>
+        <a href="blogs.html?cat=lifestyle" class="cat-item">
+          <span class="cat-icon">💎</span>
+          <span class="cat-name">Lifestyle</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATEST BLOGS -->
+  <section class="blogs-section">
+    <div class="container">
+      <div class="blogs-header">
+        <div>
+          <div class="section-label">Fresh From the Journal</div>
+          <h2 class="section-title">Latest <em>Stories</em></h2>
+          <p class="section-desc">Inspiration, trends, and expert advice for your dream wedding.</p>
+        </div>
+        <a href="blogs.html" class="view-all">View All Articles →</a>
+      </div>
+      <div class="blogs-grid" id="blogsGrid">
+        <!-- Skeletons while loading -->
+        <div class="blog-skeleton featured" style="grid-column:span 2">
+          <div class="skeleton-img"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line title"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line short"></div>
+          </div>
+        </div>
+        <div class="blog-skeleton">
+          <div class="skeleton-img"></div>
+          <div class="skeleton-body">
+            <div class="skeleton-line short"></div>
+            <div class="skeleton-line title"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-divider">✦ ✦ ✦</div>
+
+  <!-- PREMIUM VENDORS -->
+  <section class="vendors-section" id="vendors-section">
+    <div class="container">
+      <div class="section-label" style="color:var(--gold)">Handpicked Excellence</div>
+      <h2 class="section-title">Premium <em style="color:var(--gold)">Vendors</em></h2>
+      <p class="section-desc">India's finest wedding professionals, curated for your royal celebration.</p>
+
+      <div class="vendors-tabs" id="vendorTabs">
+        <button class="vendor-tab active" data-tab="food">
+          <span class="vendor-tab-icon">🍛</span> Food & Catering
+        </button>
+        <button class="vendor-tab" data-tab="decoration">
+          <span class="vendor-tab-icon">🌸</span> Decoration
+        </button>
+        <button class="vendor-tab" data-tab="photography">
+          <span class="vendor-tab-icon">📸</span> Photography
+        </button>
+        <button class="vendor-tab" data-tab="venues">
+          <span class="vendor-tab-icon">🏰</span> Venues
+        </button>
+        <button class="vendor-tab" data-tab="bridal">
+          <span class="vendor-tab-icon">👰</span> Bridal Wear
+        </button>
+        <button class="vendor-tab" data-tab="music">
+          <span class="vendor-tab-icon">🎵</span> Music & DJ
+        </button>
+      </div>
+
+      <!-- FOOD -->
+      <div class="vendors-grid vendor-panel active" id="panel-food">
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🍛</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Regal Rasoi Catering</div>
+          <div class="vendor-city">📍 Delhi NCR</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹1,200 per plate</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🥘</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Saffron Grand Feasts</div>
+          <div class="vendor-city">📍 Mumbai</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹1,800 per plate</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🎂</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Royal Mithai & Desserts</div>
+          <div class="vendor-city">📍 Jaipur</div>
+          <div class="vendor-stars">★★★★☆</div>
+          <div class="vendor-price">Custom packages</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🍽️</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Nawabi Daawat Co.</div>
+          <div class="vendor-city">📍 Lucknow</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹950 per plate</div>
+        </a>
+      </div>
+
+      <!-- DECORATION -->
+      <div class="vendors-grid vendor-panel" id="panel-decoration">
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🌸</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Bloom & Splendour</div>
+          <div class="vendor-city">📍 Bangalore</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹2L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🕯️</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Golden Drape Events</div>
+          <div class="vendor-city">📍 Delhi</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹3.5L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">✨</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Maharaja Mandap</div>
+          <div class="vendor-city">📍 Udaipur</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹5L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🪷</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Florista Royale</div>
+          <div class="vendor-city">📍 Chennai</div>
+          <div class="vendor-stars">★★★★☆</div>
+          <div class="vendor-price">From ₹1.2L</div>
+        </a>
+      </div>
+
+      <!-- PHOTOGRAPHY -->
+      <div class="vendors-grid vendor-panel" id="panel-photography">
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">📸</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Frame & Forever Studio</div>
+          <div class="vendor-city">📍 Mumbai</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹80,000</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🎬</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Cinematic Weddings Co.</div>
+          <div class="vendor-city">📍 Hyderabad</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹1.2L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🌄</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Golden Hour Clicks</div>
+          <div class="vendor-city">📍 Jaipur</div>
+          <div class="vendor-stars">★★★★☆</div>
+          <div class="vendor-price">From ₹60,000</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">💍</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Eternal Moments Films</div>
+          <div class="vendor-city">📍 Pune</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹90,000</div>
+        </a>
+      </div>
+
+      <!-- VENUES -->
+      <div class="vendors-grid vendor-panel" id="panel-venues">
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🏰</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Palace on Wheels Resort</div>
+          <div class="vendor-city">📍 Udaipur</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹15L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🌊</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Sea Breeze Grand Banquet</div>
+          <div class="vendor-city">📍 Goa</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹8L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🏛️</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">The Imperial Lawns</div>
+          <div class="vendor-city">📍 Delhi</div>
+          <div class="vendor-stars">★★★★☆</div>
+          <div class="vendor-price">From ₹6L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🌿</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Aranya Forest Retreat</div>
+          <div class="vendor-city">📍 Rishikesh</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹4L</div>
+        </a>
+      </div>
+
+      <!-- BRIDAL -->
+      <div class="vendors-grid vendor-panel" id="panel-bridal">
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">👰</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Sabyasachi Boutique Delhi</div>
+          <div class="vendor-city">📍 New Delhi</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹2.5L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🥻</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Anita Dongre Studio</div>
+          <div class="vendor-city">📍 Mumbai</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹1.8L</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">💎</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Meena Bazaar Couture</div>
+          <div class="vendor-city">📍 Chandni Chowk</div>
+          <div class="vendor-stars">★★★★☆</div>
+          <div class="vendor-price">From ₹85,000</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🪬</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Kalki Fashion House</div>
+          <div class="vendor-city">📍 Kolkata</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹60,000</div>
+        </a>
+      </div>
+
+      <!-- MUSIC -->
+      <div class="vendors-grid vendor-panel" id="panel-music">
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🎵</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">DJ Shaahi Beats</div>
+          <div class="vendor-city">📍 Pan India</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹50,000</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🎺</div></div>
+          <div class="vendor-badge">⭐ Premium</div>
+          <div class="vendor-name">Shehnai & Symphony</div>
+          <div class="vendor-city">📍 Varanasi</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹40,000</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🥁</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Dhol Dynasty</div>
+          <div class="vendor-city">📍 Amritsar</div>
+          <div class="vendor-stars">★★★★☆</div>
+          <div class="vendor-price">From ₹25,000</div>
+        </a>
+        <a href="vendors.html" class="vendor-card">
+          <div class="vendor-img"><div class="vendor-img-placeholder">🎻</div></div>
+          <div class="vendor-badge">✦ Featured</div>
+          <div class="vendor-name">Classical Strings Ensemble</div>
+          <div class="vendor-city">📍 Chennai</div>
+          <div class="vendor-stars">★★★★★</div>
+          <div class="vendor-price">From ₹35,000</div>
+        </a>
+      </div>
+
+      <div class="vendors-cta">
+        <a href="vendors.html" class="btn-primary">Browse All Vendors</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-label">Real Love Stories</div>
+      <h2 class="section-title">What <em>Couples Say</em></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">RoyalShaadi made our dream wedding a breathtaking reality. Every vendor we found here was exceptional — from the caterers to the photographers. Our families still talk about it!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">P</div>
+            <div>
+              <div class="author-name">Priya & Arjun Sharma</div>
+              <div class="author-detail">Delhi Wedding, December 2024</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">The blog content on RoyalShaadi helped us plan every detail of our big day. The décor inspiration and vendor listings saved us months of research. Truly the best platform!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Ananya & Vikram Mehta</div>
+              <div class="author-detail">Mumbai Wedding, February 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-text">We were overwhelmed planning a destination wedding in Udaipur. RoyalShaadi connected us with amazing local vendors and the articles were a goldmine of ideas. Magical experience!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Sneha & Rahul Joshi</div>
+              <div class="author-detail">Udaipur Wedding, November 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="section-label">Stay Inspired</div>
+      <h2 class="section-title">Get the <em>Royal</em> Newsletter</h2>
+      <p class="section-desc">Trends, tips, vendor spotlights and real wedding stories — delivered to your inbox every week.</p>
+      <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+        <input type="email" class="newsletter-input" placeholder="Your email address" required/>
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Royal<span>Shaadi</span></a>
+          <p class="footer-tagline">India's premier destination for wedding inspiration, fashion, and connecting couples with the finest vendors.</p>
+          <div class="footer-socials">
+            <a href="#" class="social-btn" aria-label="Instagram">Ig</a>
+            <a href="#" class="social-btn" aria-label="Pinterest">Pi</a>
+            <a href="#" class="social-btn" aria-label="Facebook">Fb</a>
+            <a href="#" class="social-btn" aria-label="YouTube">Yt</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="blogs.html">All Blogs</a></li>
+            <li><a href="blogs.html?cat=bridal">Bridal Looks</a></li>
+            <li><a href="blogs.html?cat=decor">Décor Inspiration</a></li>
+            <li><a href="blogs.html?cat=venues">Venue Guide</a></li>
+            <li><a href="blogs.html?cat=food">Wedding Food</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Vendors</h4>
+          <ul>
+            <li><a href="vendors.html">Find Vendors</a></li>
+            <li><a href="vendors.html#food">Caterers</a></li>
+            <li><a href="vendors.html#decoration">Decorators</a></li>
+            <li><a href="vendors.html#photography">Photographers</a></li>
+            <li><a href="vendors.html">List Your Business</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 RoyalShaadi.co.in — All rights reserved.</span>
+        <span>Made with ♥ for Indian weddings</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // ── HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // ── VENDOR TABS ──
+  document.getElementById('vendorTabs').addEventListener('click', (e) => {
+    const btn = e.target.closest('.vendor-tab');
+    if (!btn) return;
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.vendor-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.vendor-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const panel = document.getElementById('panel-' + tab);
+    if (panel) {
+      panel.classList.add('active');
+      // Animate in
+      panel.style.opacity = '0';
+      panel.style.transform = 'translateY(16px)';
+      requestAnimationFrame(() => {
+        panel.style.transition = 'opacity 0.35s, transform 0.35s';
+        panel.style.opacity = '1';
+        panel.style.transform = 'translateY(0)';
+      });
+    }
+  });
+
+  // ── BLOG AUTO-DISCOVERY ──
+  const BLOG_SLUGS = [
+    'top-10-bridal-lehenga-trends-2025',
+    'royal-rajasthan-wedding-venues',
+    'how-to-plan-your-mehendi-night',
+    'best-wedding-caterers-delhi-ncr',
+    'intimate-wedding-decor-ideas',
+    'honeymoon-destinations-india-2025',
+    'bridal-jewellery-guide',
+    'wedding-photography-tips',
+    'south-indian-wedding-traditions',
+    'budget-wedding-tips'
+  ];
+
+  const BLOG_META = {
+    'top-10-bridal-lehenga-trends-2025': { title: 'Top 10 Bridal Lehenga Trends for 2025', category: 'Fashion', date: 'May 28, 2025', read: '6 min', excerpt: 'From pastel tones to rich embroideries — discover which lehenga styles are ruling mandaps this season.' },
+    'royal-rajasthan-wedding-venues': { title: 'Royal Rajasthan: 8 Majestic Wedding Venues', category: 'Venues', date: 'May 20, 2025', read: '8 min', excerpt: 'Palaces, havelis, and fort gardens — the finest venues for a destination wedding in Rajasthan.' },
+    'how-to-plan-your-mehendi-night': { title: 'How to Plan the Perfect Mehendi Night', category: 'Planning', date: 'May 15, 2025', read: '5 min', excerpt: 'Everything from artist bookings to decor themes and music playlists for an unforgettable haldi night.' },
+    'best-wedding-caterers-delhi-ncr': { title: 'Best Wedding Caterers in Delhi NCR 2025', category: 'Food', date: 'May 10, 2025', read: '7 min', excerpt: 'A curated guide to Delhi's most acclaimed caterers — from live chaat counters to royal banquets.' },
+    'intimate-wedding-decor-ideas': { title: '12 Intimate Wedding Decor Ideas for 2025', category: 'Décor', date: 'May 4, 2025', read: '6 min', excerpt: 'Small guest lists, big impact. Floral arches, string lights, and tablescapes that make every corner glow.' },
+    'honeymoon-destinations-india-2025': { title: 'India\'s Most Romantic Honeymoon Spots in 2025', category: 'Travel', date: 'Apr 28, 2025', read: '9 min', excerpt: 'From Kashmir\'s valleys to Kerala backwaters — romantic getaways that will leave you both speechless.' },
+    'bridal-jewellery-guide': { title: 'The Complete Bridal Jewellery Guide', category: 'Fashion', date: 'Apr 20, 2025', read: '8 min', excerpt: 'Choosing the right set for every ceremony — from mangalsutra to maang tikka, we\'ve got you covered.' },
+    'wedding-photography-tips': { title: '10 Tips to Get Stunning Wedding Photos', category: 'Photography', date: 'Apr 14, 2025', read: '5 min', excerpt: 'Work with your photographer to create magical candid moments and timeless portraits.' },
+    'south-indian-wedding-traditions': { title: 'South Indian Wedding Traditions Explained', category: 'Culture', date: 'Apr 8, 2025', read: '10 min', excerpt: 'A deep dive into the beautiful rituals of Tamil, Telugu, and Malayali weddings.' },
+    'budget-wedding-tips': { title: '15 Ways to Have a Royal Wedding on a Budget', category: 'Planning', date: 'Apr 2, 2025', read: '7 min', excerpt: 'Smart tips to cut costs without cutting corners — because your big day deserves to be magical.' },
+  };
+
+  async function tryLoadBlog(slug) {
+    try {
+      const res = await fetch(`blog/${slug}/index.html`, { method: 'HEAD' });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  }
+
+  function createBlogCard(slug, meta, isFeatured) {
+    const card = document.createElement('a');
+    card.href = `blog/${slug}/index.html`;
+    card.className = 'blog-card' + (isFeatured ? ' featured' : '');
+    card.innerHTML = `
+      <div class="blog-card-img">
+        <img src="blog/${slug}/hero.webp" alt="${meta.title}" loading="lazy" onerror="this.parentElement.style.background='linear-gradient(135deg,var(--cream),var(--blush))'">
+        <div class="blog-card-badge">${meta.category}</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span>📅 ${meta.date}</span>
+          <span>⏱ ${meta.read} read</span>
+        </div>
+        <h3 class="blog-card-title">${meta.title}</h3>
+        <p class="blog-card-excerpt">${meta.excerpt}</p>
+        <div class="blog-card-footer">
+          <span class="blog-read-more">Read Article <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>`;
+    return card;
+  }
+
+  async function loadBlogs() {
+    const grid = document.getElementById('blogsGrid');
+    const checks = BLOG_SLUGS.map(slug => tryLoadBlog(slug));
+    const results = await Promise.all(checks);
+    const available = BLOG_SLUGS.filter((_, i) => results[i]);
+
+    // Fallback: if no blogs found, show the defined list anyway
+    const toShow = (available.length > 0 ? available : BLOG_SLUGS).slice(0, 5);
+    grid.innerHTML = '';
+
+    toShow.forEach((slug, i) => {
+      const meta = BLOG_META[slug] || {
+        title: slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+        category: 'Blog', date: 'Recent', read: '5 min', excerpt: 'Read the full story on RoyalShaadi.'
+      };
+      grid.appendChild(createBlogCard(slug, meta, i === 0));
+    });
+
+    if (toShow.length === 0) {
+      grid.innerHTML = '<div class="no-blogs">No articles found. Check back soon for fresh inspiration!</div>';
+    }
+  }
+
+  loadBlogs();
+
+  // ── NEWSLETTER ──
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.newsletter-btn');
+    btn.textContent = '✓ Subscribed!';
+    btn.style.background = '#4caf50';
+    setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; }, 3000);
+  }
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.blog-card, .vendor-card, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.35s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

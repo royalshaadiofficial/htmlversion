@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — RoyalShaadi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ivory: #faf7f2; --cream: #f3ece0; --blush: #e8c9b0;
+      --rose: #c9736b; --maroon: #8b2635; --gold: #c9a84c;
+      --gold-light: #e8d5a3; --dark: #1a1008; --text: #2c1a0e;
+      --muted: #7a6050; --white: #ffffff;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--ivory); color: var(--text); }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3rem; height: 72px;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      box-shadow: 0 2px 20px rgba(26,16,8,0.06);
+    }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--maroon); letter-spacing: 0.05em; text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--maroon); }
+    .btn-vendor { background: var(--maroon); color: var(--white) !important; padding: 0.5rem 1.4rem; border-radius: 2px; font-size: 0.8rem !important; letter-spacing: 0.12em !important; transition: background 0.25s !important; }
+    .btn-vendor:hover { background: var(--rose) !important; }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; }
+
+    /* PAGE HEADER */
+    .page-header {
+      background: linear-gradient(135deg, #1a1008 0%, #3d1f12 50%, #8b2635 100%);
+      padding: 5rem 2rem 4rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; inset: 0; opacity: 0.05;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .page-header-inner { position: relative; z-index: 1; }
+    .page-eyebrow { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+    .page-eyebrow::before, .page-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--gold); opacity: 0.5; }
+    .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; color: var(--ivory); line-height: 1; margin-bottom: 0.5rem; }
+    .page-title em { color: var(--gold); font-style: italic; }
+    .page-subtitle { color: rgba(250,247,242,0.6); font-size: 1rem; font-weight: 300; margin-bottom: 2.5rem; }
+
+    /* SEARCH BAR */
+    .search-wrap { max-width: 600px; margin: 0 auto; position: relative; }
+    .search-input {
+      width: 100%; padding: 1rem 1.5rem 1rem 3.5rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(201,168,76,0.4);
+      color: var(--ivory); font-family: 'Jost', sans-serif; font-size: 0.95rem;
+      border-radius: 2px; outline: none; transition: all 0.25s;
+    }
+    .search-input::placeholder { color: rgba(250,247,242,0.4); }
+    .search-input:focus { background: rgba(255,255,255,0.15); border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.15); }
+    .search-icon { position: absolute; left: 1.1rem; top: 50%; transform: translateY(-50%); color: rgba(201,168,76,0.7); font-size: 1rem; pointer-events: none; }
+    .search-clear { position: absolute; right: 1.1rem; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: rgba(250,247,242,0.4); font-size: 1.1rem; display: none; transition: color 0.2s; }
+    .search-clear:hover { color: var(--gold); }
+    .search-count { font-size: 0.78rem; color: rgba(250,247,242,0.4); margin-top: 0.75rem; min-height: 1em; }
+
+    /* MAIN CONTENT */
+    .blog-page { max-width: 1280px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+    /* FILTER TAGS */
+    .filter-bar { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--cream); }
+    .filter-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 0.5rem; }
+    .filter-tag {
+      background: var(--cream); color: var(--muted); border: none; cursor: pointer;
+      padding: 0.4rem 1rem; border-radius: 20px; font-family: 'Jost', sans-serif;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .filter-tag:hover { background: var(--blush); color: var(--text); }
+    .filter-tag.active { background: var(--maroon); color: var(--white); }
+
+    /* BLOG GRID */
+    .blogs-list-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .blog-card {
+      background: var(--white); border-radius: 2px;
+      overflow: hidden; text-decoration: none; color: inherit;
+      box-shadow: 0 2px 20px rgba(26,16,8,0.06);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      display: flex; flex-direction: column;
+      animation: fadeIn 0.4s ease both;
+    }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .blog-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,16,8,0.14); }
+    .blog-card-img { aspect-ratio: 16/10; overflow: hidden; position: relative; background: var(--cream); }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .blog-card:hover .blog-card-img img { transform: scale(1.06); }
+    .blog-card-badge { position: absolute; top: 1rem; left: 1rem; background: var(--maroon); color: var(--white); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 1px; }
+    .blog-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-meta { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.06em; margin-bottom: 0.7rem; display: flex; gap: 1rem; }
+    .blog-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; line-height: 1.35; color: var(--text); margin-bottom: 0.75rem; }
+    .blog-card-excerpt { font-size: 0.85rem; color: var(--muted); line-height: 1.7; flex: 1; }
+    .blog-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--cream); }
+    .blog-read-more { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--maroon); display: flex; align-items: center; gap: 0.5rem; }
+    .blog-read-more svg { transition: transform 0.2s; }
+    .blog-card:hover .blog-read-more svg { transform: translateX(4px); }
+
+    /* Skeleton */
+    .blog-skeleton { background: var(--white); border-radius: 2px; overflow: hidden; box-shadow: 0 2px 20px rgba(26,16,8,0.06); }
+    .skeleton-img { aspect-ratio: 16/10; background: linear-gradient(90deg, var(--cream) 25%, var(--blush) 50%, var(--cream) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+    .skeleton-body { padding: 1.5rem; }
+    .skeleton-line { height: 12px; background: linear-gradient(90deg, var(--cream) 25%, var(--blush) 50%, var(--cream) 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; border-radius: 2px; margin-bottom: 0.75rem; }
+    .skeleton-line.short { width: 60%; }
+    .skeleton-line.title { height: 18px; width: 90%; }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+    /* Empty state */
+    .empty-state { grid-column: 1/-1; text-align: center; padding: 5rem 2rem; }
+    .empty-state-icon { font-size: 3.5rem; margin-bottom: 1rem; opacity: 0.4; }
+    .empty-state h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--text); margin-bottom: 0.5rem; }
+    .empty-state p { color: var(--muted); font-size: 0.9rem; }
+
+    /* Load More */
+    .load-more-wrap { text-align: center; margin-top: 3rem; }
+    .btn-load-more {
+      background: transparent; color: var(--maroon); border: 1px solid var(--maroon);
+      padding: 0.85rem 2.5rem; font-family: 'Jost', sans-serif;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer; border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .btn-load-more:hover { background: var(--maroon); color: var(--white); }
+    .btn-load-more:disabled { opacity: 0.4; cursor: default; }
+
+    /* FOOTER minimal */
+    footer { background: var(--dark); padding: 2.5rem; text-align: center; }
+    .footer-bottom { font-size: 0.8rem; color: rgba(250,247,242,0.25); display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) { .blogs-list-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 72px 0 0 0; background: var(--ivory); padding: 2rem; z-index: 999; gap: 1.5rem; }
+      .nav-hamburger { display: flex; flex-direction: column; gap: 5px; }
+      .ham-bar { width: 24px; height: 2px; background: var(--text); }
+      .blogs-list-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Royal<span>Shaadi</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="blogs.html" class="active">Blog</a>
+      <a href="index.html#vendors-section">Vendors</a>
+      <a href="vendors.html" class="btn-vendor">List Your Business</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+    </button>
+  </nav>
+
+  <!-- PAGE HEADER + SEARCH -->
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="page-eyebrow">Wedding & Lifestyle Journal</div>
+      <h1 class="page-title">The <em>Blog</em></h1>
+      <p class="page-subtitle">Stories, trends & inspiration for your dream wedding</p>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search articles, topics, vendors…" autocomplete="off"/>
+        <button class="search-clear" id="searchClear" aria-label="Clear search">×</button>
+      </div>
+      <div class="search-count" id="searchCount"></div>
+    </div>
+  </div>
+
+  <!-- BLOG CONTENT -->
+  <div class="blog-page">
+    <!-- FILTERS -->
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-label">Filter:</span>
+      <button class="filter-tag active" data-cat="all">All Articles</button>
+      <button class="filter-tag" data-cat="Fashion">Fashion</button>
+      <button class="filter-tag" data-cat="Venues">Venues</button>
+      <button class="filter-tag" data-cat="Food">Food</button>
+      <button class="filter-tag" data-cat="Décor">Décor</button>
+      <button class="filter-tag" data-cat="Photography">Photography</button>
+      <button class="filter-tag" data-cat="Planning">Planning</button>
+      <button class="filter-tag" data-cat="Travel">Travel</button>
+      <button class="filter-tag" data-cat="Culture">Culture</button>
+      <button class="filter-tag" data-cat="Beauty">Beauty</button>
+    </div>
+
+    <!-- GRID -->
+    <div class="blogs-list-grid" id="blogsGrid">
+      <!-- Skeletons -->
+      <div class="blog-skeleton"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
+      <div class="blog-skeleton"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
+      <div class="blog-skeleton"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
+      <div class="blog-skeleton"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
+      <div class="blog-skeleton"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
+      <div class="blog-skeleton"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line short"></div><div class="skeleton-line title"></div><div class="skeleton-line"></div></div></div>
+    </div>
+
+    <div class="load-more-wrap" id="loadMoreWrap" style="display:none">
+      <button class="btn-load-more" id="loadMoreBtn">Load More Articles</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <span class="footer-logo">RoyalShaadi</span>
+      <span>© 2025 royalshaadi.co.in — All rights reserved.</span>
+      <a href="index.html" style="color:rgba(201,168,76,0.7);text-decoration:none;font-size:0.8rem;">← Back to Home</a>
+    </div>
+  </footer>
+
+<script>
+  // ── NAV ──
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // ── BLOG DATA ──
+  // These are your known blog slugs. The system also auto-discovers from blog/ folder.
+  const KNOWN_BLOGS = [
+    { slug: 'top-10-bridal-lehenga-trends-2025', title: 'Top 10 Bridal Lehenga Trends for 2025', category: 'Fashion', date: 'May 28, 2025', read: '6 min', excerpt: 'From pastel tones to rich embroideries — discover which lehenga styles are ruling mandaps this season and how to choose the perfect one for your body type.' },
+    { slug: 'royal-rajasthan-wedding-venues', title: 'Royal Rajasthan: 8 Majestic Wedding Venues', category: 'Venues', date: 'May 20, 2025', read: '8 min', excerpt: 'Palaces, havelis, and fort gardens — the finest venues for a destination wedding in Rajasthan that will transport your guests to another era.' },
+    { slug: 'how-to-plan-your-mehendi-night', title: 'How to Plan the Perfect Mehendi Night', category: 'Planning', date: 'May 15, 2025', read: '5 min', excerpt: 'Everything from artist bookings to decor themes and music playlists for an unforgettable mehendi and haldi night your family will never forget.' },
+    { slug: 'best-wedding-caterers-delhi-ncr', title: 'Best Wedding Caterers in Delhi NCR 2025', category: 'Food', date: 'May 10, 2025', read: '7 min', excerpt: 'A curated guide to Delhi\'s most acclaimed caterers — from live chaat counters to royal banquets serving 2,000 guests with grace.' },
+    { slug: 'intimate-wedding-decor-ideas', title: '12 Intimate Wedding Decor Ideas for 2025', category: 'Décor', date: 'May 4, 2025', read: '6 min', excerpt: 'Small guest lists, big impact. Floral arches, string lights, and tablescapes that make every corner of your micro-wedding glow.' },
+    { slug: 'honeymoon-destinations-india-2025', title: 'India\'s Most Romantic Honeymoon Spots in 2025', category: 'Travel', date: 'Apr 28, 2025', read: '9 min', excerpt: 'From Kashmir\'s valleys to Kerala backwaters — romantic getaways that will leave you both speechless and create memories for a lifetime.' },
+    { slug: 'bridal-jewellery-guide', title: 'The Complete Bridal Jewellery Guide', category: 'Fashion', date: 'Apr 20, 2025', read: '8 min', excerpt: 'Choosing the right jewellery set for every ceremony — from mangalsutra to maang tikka, nath to haath phool, we\'ve got you covered.' },
+    { slug: 'wedding-photography-tips', title: '10 Tips to Get Stunning Wedding Photos', category: 'Photography', date: 'Apr 14, 2025', read: '5 min', excerpt: 'Work with your photographer to create magical candid moments and timeless portraits that you\'ll treasure for generations.' },
+    { slug: 'south-indian-wedding-traditions', title: 'South Indian Wedding Traditions Explained', category: 'Culture', date: 'Apr 8, 2025', read: '10 min', excerpt: 'A deep dive into the beautiful rituals of Tamil, Telugu, and Malayali weddings — meaning behind the customs, attire, and ceremonies.' },
+    { slug: 'budget-wedding-tips', title: '15 Ways to Have a Royal Wedding on a Budget', category: 'Planning', date: 'Apr 2, 2025', read: '7 min', excerpt: 'Smart tips to cut costs without cutting corners — because your big day deserves to be magical regardless of budget.' },
+  ];
+
+  // ── STATE ──
+  let allBlogs = [];
+  let filteredBlogs = [];
+  let displayedCount = 0;
+  const PAGE_SIZE = 9;
+  let activeCategory = 'all';
+  let searchQuery = '';
+
+  // ── AUTO-DISCOVERY ──
+  // Tries to detect blogs from the blog/ folder structure.
+  // Checks KNOWN_BLOGS first, then tries to discover any additional ones.
+  async function discoverBlogs() {
+    // Check URL param for initial category filter
+    const params = new URLSearchParams(window.location.search);
+    const paramCat = params.get('cat');
+
+    // Probe known slugs
+    const probeResults = await Promise.all(
+      KNOWN_BLOGS.map(async (blog) => {
+        try {
+          const res = await fetch(`blog/${blog.slug}/index.html`, { method: 'HEAD' });
+          return { ...blog, exists: res.ok };
+        } catch {
+          return { ...blog, exists: false };
+        }
+      })
+    );
+
+    // Include confirmed + fallback to showing all if none found (dev mode)
+    const confirmed = probeResults.filter(b => b.exists);
+    allBlogs = confirmed.length > 0 ? confirmed : [...KNOWN_BLOGS];
+
+    if (paramCat) {
+      const matchedCat = allBlogs.find(b => b.category.toLowerCase() === paramCat.toLowerCase());
+      if (matchedCat) {
+        activeCategory = matchedCat.category;
+        document.querySelectorAll('.filter-tag').forEach(t => {
+          t.classList.toggle('active', t.dataset.cat === activeCategory || (t.dataset.cat === 'all' && !activeCategory));
+        });
+      }
+    }
+
+    applyFilters();
+  }
+
+  // ── RENDER ──
+  function createCard(blog, index) {
+    const card = document.createElement('a');
+    card.href = `blog/${blog.slug}/index.html`;
+    card.className = 'blog-card';
+    card.style.animationDelay = `${(index % PAGE_SIZE) * 0.07}s`;
+    const highlight = searchQuery ? highlightText(blog.title, searchQuery) : blog.title;
+    card.innerHTML = `
+      <div class="blog-card-img">
+        <img src="blog/${blog.slug}/hero.webp" alt="${blog.title}" loading="lazy" onerror="this.style.display='none'">
+        <div class="blog-card-badge">${blog.category}</div>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">
+          <span>📅 ${blog.date}</span>
+          <span>⏱ ${blog.read} read</span>
+        </div>
+        <h3 class="blog-card-title">${highlight}</h3>
+        <p class="blog-card-excerpt">${blog.excerpt}</p>
+        <div class="blog-card-footer">
+          <span class="blog-read-more">Read Article <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>`;
+    return card;
+  }
+
+  function highlightText(text, query) {
+    if (!query) return text;
+    const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    return text.replace(re, '<mark style="background:rgba(201,168,76,0.3);color:inherit;border-radius:2px;padding:0 2px">$1</mark>');
+  }
+
+  function renderBlogs(append = false) {
+    const grid = document.getElementById('blogsGrid');
+    if (!append) {
+      grid.innerHTML = '';
+      displayedCount = 0;
+    }
+    const slice = filteredBlogs.slice(displayedCount, displayedCount + PAGE_SIZE);
+    if (filteredBlogs.length === 0 && !append) {
+      grid.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">🔍</div>
+          <h3>No articles found</h3>
+          <p>Try a different search term or browse all categories.</p>
+        </div>`;
+    } else {
+      slice.forEach((blog, i) => grid.appendChild(createCard(blog, displayedCount + i)));
+      displayedCount += slice.length;
+    }
+    const loadMoreWrap = document.getElementById('loadMoreWrap');
+    const btn = document.getElementById('loadMoreBtn');
+    if (displayedCount < filteredBlogs.length) {
+      loadMoreWrap.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = `Load More Articles (${filteredBlogs.length - displayedCount} remaining)`;
+    } else {
+      loadMoreWrap.style.display = 'none';
+    }
+  }
+
+  function applyFilters() {
+    filteredBlogs = allBlogs.filter(blog => {
+      const matchesCat = activeCategory === 'all' || blog.category === activeCategory;
+      const q = searchQuery.toLowerCase();
+      const matchesSearch = !q || blog.title.toLowerCase().includes(q) || blog.excerpt.toLowerCase().includes(q) || blog.category.toLowerCase().includes(q);
+      return matchesCat && matchesSearch;
+    });
+    const countEl = document.getElementById('searchCount');
+    if (searchQuery) {
+      countEl.textContent = `Found ${filteredBlogs.length} article${filteredBlogs.length !== 1 ? 's' : ''}`;
+    } else {
+      countEl.textContent = '';
+    }
+    renderBlogs(false);
+  }
+
+  // ── FILTER TAGS ──
+  document.getElementById('filterBar').addEventListener('click', (e) => {
+    const tag = e.target.closest('.filter-tag');
+    if (!tag) return;
+    activeCategory = tag.dataset.cat;
+    document.querySelectorAll('.filter-tag').forEach(t => t.classList.toggle('active', t === tag));
+    applyFilters();
+  });
+
+  // ── SEARCH ──
+  const searchInput = document.getElementById('searchInput');
+  const searchClear = document.getElementById('searchClear');
+  let searchTimeout;
+  searchInput.addEventListener('input', () => {
+    searchQuery = searchInput.value.trim();
+    searchClear.style.display = searchQuery ? 'block' : 'none';
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(applyFilters, 280);
+  });
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClear.style.display = 'none';
+    document.getElementById('searchCount').textContent = '';
+    applyFilters();
+  });
+
+  // ── LOAD MORE ──
+  document.getElementById('loadMoreBtn').addEventListener('click', () => {
+    renderBlogs(true);
+  });
+
+  // ── INIT ──
+  discoverBlogs();
+</script>
+</body>
+</html>
