@@ -460,9 +460,41 @@
 
   // ── LOAD BLOG POSTS DYNAMICALLY ──
   // Each post lives at /blogs/{slug}/{slug}.html with /blogs/{slug}/hero.webp
-  // Add/remove posts by editing /blogs/posts.json — no HTML changes needed.
+  // /blogs/posts.json just lists the folder names (slugs) to load.
+  // All title/excerpt/tag/author/date/readtime is parsed directly from each post's HTML.
   fetch('/blogs/posts.json')
     .then(res => res.json())
+    .then(entries => Promise.all(entries.map(entry =>
+      fetch(`/blogs/${entry.slug}/${entry.slug}.html`)
+        .then(res => res.text())
+        .then(html => {
+          const doc = new DOMParser().parseFromString(html, 'text/html');
+          const get = sel => doc.querySelector(sel);
+          const meta = name => {
+            const el = doc.querySelector(`meta[property="${name}"], meta[name="${name}"]`);
+            return el ? el.getAttribute('content') : '';
+          };
+
+          const heroMetaSpans = Array.from(doc.querySelectorAll('.hero-meta span')).map(s => s.textContent.trim().replace(/^[·✦]\s*/, ''));
+
+          return {
+            slug: entry.slug,
+            featured: !!entry.featured,
+            title: meta('og:title') || (get('h1.hero-title') ? get('h1.hero-title').textContent.trim() : ''),
+            excerpt: meta('og:description'),
+            cardExcerpt: meta('og:description'),
+            tag: meta('article:section') || (get('.hero-eyebrow') ? get('.hero-eyebrow').textContent.trim() : ''),
+            featuredTag: get('.hero-eyebrow') ? get('.hero-eyebrow').textContent.trim() : meta('article:section'),
+            author: heroMetaSpans[0] || 'Royal Shaadi Editorial Team',
+            date: heroMetaSpans[1] || '',
+            readTime: heroMetaSpans[2] || '',
+            heroAlt: get('.hero-img') ? get('.hero-img').getAttribute('alt') : '',
+            cardAlt: get('.hero-img') ? get('.hero-img').getAttribute('alt') : ''
+          };
+        })
+        .catch(err => { console.error(`Failed to load /blogs/${entry.slug}/${entry.slug}.html`, err); return null; })
+    )))
+    .then(posts => posts.filter(Boolean))
     .then(posts => {
       const featured = posts.find(p => p.featured) || posts[0];
       const rest = posts.filter(p => p !== featured);
@@ -482,9 +514,9 @@
             <h3 class="featured-title"><a href="${url}">${featured.title}</a></h3>
             <p class="featured-excerpt">${featured.excerpt || featured.cardExcerpt}</p>
             <div class="featured-meta">
-              <span>By ${featured.author || 'Royal Shaadi Editorial Team'}</span>
-              <span>· ${featured.date || ''}</span>
-              <span>· ${featured.readTime || ''}</span>
+              <span>By ${featured.author}</span>
+              <span>· ${featured.date}</span>
+              <span>· ${featured.readTime}</span>
             </div>
             <a class="read-more" href="${url}">
               Read the full story

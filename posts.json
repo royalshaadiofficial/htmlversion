@@ -1,32 +1,5 @@
 [
-  {
-    "slug": "indian-wedding-trends-2026",
-    "title": "10 Indian Wedding Trends for 2026–2027 Every Couple Should Know",
-    "excerpt": "From pastel mandaps and micro-weddings to floral ceilings, AI planning tools, and meaningful keepsakes — here are the ten trends defining Indian weddings this season.",
-    "cardExcerpt": "Pastel palettes, micro-weddings, floral ceilings, and AI-powered planning — the ten trends shaping Indian weddings this year.",
-    "tag": "Wedding Trends",
-    "featuredTag": "Wedding Trends · 2026–2027",
-    "author": "Royal Shaadi Editorial Team",
-    "date": "June 14, 2026",
-    "readTime": "12 min read",
-    "heroAlt": "Bride in a pastel lehenga standing under a floral mandap at an Indian wedding",
-    "cardAlt": "Pastel floral wedding mandap decorated with roses and hydrangeas",
-    "featured": true
-  },
-  {
-    "slug": "bridal-lehenga-guide-2026",
-    "title": "The Ultimate Bridal Lehenga Guide for 2026",
-    "cardExcerpt": "From fabric to silhouette to embroidery — everything a bride needs to know before choosing her wedding lehenga.",
-    "tag": "Bridal Fashion",
-    "readTime": "9 min read",
-    "cardAlt": "Indian bride in an embroidered red and gold bridal lehenga"
-  },
-  {
-    "slug": "mandap-decor-ideas",
-    "title": "25 Stunning Mandap Décor Ideas for Every Budget",
-    "cardExcerpt": "Floral tunnels, botanical greens, brass urlis, and ceiling installs — mandap inspiration for every kind of celebration.",
-    "tag": "Décor",
-    "readTime": "8 min read",
-    "cardAlt": "Floral wedding mandap with hanging marigold and rose decorations"
-  }
+  { "slug": "indian-wedding-trends-2026", "featured": true },
+  { "slug": "bridal-lehenga-guide-2026" },
+  { "slug": "mandap-decor-ideas" }
 ]
