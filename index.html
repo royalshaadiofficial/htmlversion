@@ -328,24 +328,8 @@
     <a class="section-link" href="/blog">View all articles</a>
   </div>
 
-  <article class="featured">
-    <div class="featured-img-wrap">
-      <img class="featured-img" src="/blogs/indian-wedding-trends-2026/hero.webp" alt="Bride in a pastel lehenga standing under a floral mandap at an Indian wedding" loading="lazy">
-    </div>
-    <div class="featured-body">
-      <span class="featured-tag">Wedding Trends · 2026–2027</span>
-      <h3 class="featured-title"><a href="/blogs/indian-wedding-trends-2026/indian-wedding-trends-2026.html">10 Indian Wedding Trends for 2026–2027 Every Couple Should Know</a></h3>
-      <p class="featured-excerpt">From pastel mandaps and micro-weddings to floral ceilings, AI planning tools, and meaningful keepsakes — here are the ten trends defining Indian weddings this season.</p>
-      <div class="featured-meta">
-        <span>By Royal Shaadi Editorial Team</span>
-        <span>· June 14, 2026</span>
-        <span>· 12 min read</span>
-      </div>
-      <a class="read-more" href="/blogs/indian-wedding-trends-2026/indian-wedding-trends-2026.html">
-        Read the full story
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
+  <article class="featured" id="featuredPost">
+    <!-- Rendered by JS from /blogs/posts.json -->
   </article>
 </section>
 
@@ -359,42 +343,8 @@
     <a class="section-link" href="/blog">More articles</a>
   </div>
 
-  <div class="blog-grid">
-    <a class="blog-card" href="/blogs/indian-wedding-trends-2026/indian-wedding-trends-2026.html">
-      <div class="blog-card-img-wrap">
-        <img class="blog-card-img" src="/blogs/indian-wedding-trends-2026/hero.webp" alt="Pastel floral wedding mandap decorated with roses and hydrangeas" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-card-tag">Wedding Trends</span>
-        <h3 class="blog-card-title">10 Indian Wedding Trends for 2026–2027</h3>
-        <p class="blog-card-excerpt">Pastel palettes, micro-weddings, floral ceilings, and AI-powered planning — the ten trends shaping Indian weddings this year.</p>
-        <div class="blog-card-meta"><span>Wedding</span><span>12 min read</span></div>
-      </div>
-    </a>
-
-    <a class="blog-card" href="/blogs/bridal-lehenga-guide-2026/bridal-lehenga-guide-2026.html">
-      <div class="blog-card-img-wrap">
-        <img class="blog-card-img" src="/blogs/bridal-lehenga-guide-2026/hero.webp" alt="Indian bride in an embroidered red and gold bridal lehenga" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-card-tag">Bridal Fashion</span>
-        <h3 class="blog-card-title">The Ultimate Bridal Lehenga Guide for 2026</h3>
-        <p class="blog-card-excerpt">From fabric to silhouette to embroidery — everything a bride needs to know before choosing her wedding lehenga.</p>
-        <div class="blog-card-meta"><span>Fashion</span><span>9 min read</span></div>
-      </div>
-    </a>
-
-    <a class="blog-card" href="/blogs/mandap-decor-ideas/mandap-decor-ideas.html">
-      <div class="blog-card-img-wrap">
-        <img class="blog-card-img" src="/blogs/mandap-decor-ideas/hero.webp" alt="Floral wedding mandap with hanging marigold and rose decorations" loading="lazy">
-      </div>
-      <div class="blog-card-body">
-        <span class="blog-card-tag">Décor</span>
-        <h3 class="blog-card-title">25 Stunning Mandap Décor Ideas for Every Budget</h3>
-        <p class="blog-card-excerpt">Floral tunnels, botanical greens, brass urlis, and ceiling installs — mandap inspiration for every kind of celebration.</p>
-        <div class="blog-card-meta"><span>Décor</span><span>8 min read</span></div>
-      </div>
-    </a>
+  <div class="blog-grid" id="blogGrid">
+    <!-- Rendered by JS from /blogs/posts.json -->
   </div>
 </section>
 
@@ -507,6 +457,64 @@
   scrollTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // ── LOAD BLOG POSTS DYNAMICALLY ──
+  // Each post lives at /blogs/{slug}/{slug}.html with /blogs/{slug}/hero.webp
+  // Add/remove posts by editing /blogs/posts.json — no HTML changes needed.
+  fetch('/blogs/posts.json')
+    .then(res => res.json())
+    .then(posts => {
+      const featured = posts.find(p => p.featured) || posts[0];
+      const rest = posts.filter(p => p !== featured);
+
+      const featuredEl = document.getElementById('featuredPost');
+      const gridEl = document.getElementById('blogGrid');
+
+      if (featured && featuredEl) {
+        const url = `/blogs/${featured.slug}/${featured.slug}.html`;
+        const heroImg = `/blogs/${featured.slug}/hero.webp`;
+        featuredEl.innerHTML = `
+          <div class="featured-img-wrap">
+            <img class="featured-img" src="${heroImg}" alt="${featured.heroAlt || featured.title}" loading="lazy">
+          </div>
+          <div class="featured-body">
+            <span class="featured-tag">${featured.featuredTag || featured.tag}</span>
+            <h3 class="featured-title"><a href="${url}">${featured.title}</a></h3>
+            <p class="featured-excerpt">${featured.excerpt || featured.cardExcerpt}</p>
+            <div class="featured-meta">
+              <span>By ${featured.author || 'Royal Shaadi Editorial Team'}</span>
+              <span>· ${featured.date || ''}</span>
+              <span>· ${featured.readTime || ''}</span>
+            </div>
+            <a class="read-more" href="${url}">
+              Read the full story
+              <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        `;
+      }
+
+      if (gridEl) {
+        gridEl.innerHTML = rest.map(post => {
+          const url = `/blogs/${post.slug}/${post.slug}.html`;
+          const cardImg = `/blogs/${post.slug}/hero.webp`;
+          return `
+            <a class="blog-card" href="${url}">
+              <div class="blog-card-img-wrap">
+                <img class="blog-card-img" src="${cardImg}" alt="${post.cardAlt || post.title}" loading="lazy">
+              </div>
+              <div class="blog-card-body">
+                <span class="blog-card-tag">${post.tag}</span>
+                <h3 class="blog-card-title">${post.title}</h3>
+                <p class="blog-card-excerpt">${post.cardExcerpt}</p>
+                <div class="blog-card-meta"><span>${post.tag}</span><span>${post.readTime}</span></div>
+              </div>
+            </a>
+          `;
+        }).join('');
+      }
+    })
+    .catch(err => console.error('Failed to load posts.json:', err));
 </script>
 
 </body>
