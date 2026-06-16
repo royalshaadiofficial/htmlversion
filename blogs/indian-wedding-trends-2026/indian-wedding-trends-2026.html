@@ -102,6 +102,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; }
 
   html { scroll-behavior: smooth; font-size: 16px; }
 
@@ -111,6 +112,7 @@
     color: var(--ink);
     line-height: 1.8;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   /* ── TOP BAR (Royal Shaadi) ── */
@@ -278,6 +280,7 @@
   /* Image blocks */
   .img-full {
     width: 100%;
+    max-width: 100%;
     border-radius: 14px;
     display: block;
     margin-bottom: 28px;
@@ -308,6 +311,12 @@
     position: relative;
     overflow: hidden;
   }
+  /* When placeholder contains a real image, hide placeholder chrome */
+  .img-placeholder:has(.img-real) {
+    background: none;
+    border: none;
+  }
+  .img-placeholder:has(.img-real)::before { display: none; }
   .img-placeholder::before {
     content: '';
     position: absolute;
@@ -345,6 +354,14 @@
     margin-bottom: 28px;
   }
   .img-grid .img-placeholder { margin-bottom: 0; aspect-ratio: 4/3; }
+  .img-real {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    display: block;
+    object-fit: cover;
+  }
 
   .img-grid-3 {
     display: grid;
@@ -773,12 +790,7 @@
       <h2 class="trend-title">Pastel Palettes & Soft Colour Stories</h2>
       <p class="trend-subtitle">Bridal Fashion &amp; Décor</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/pastel-lehenga.webp" alt="Indian bride in pastel pink lehenga standing in a garden mandap with pastel floral décor" class="img-cover">
-        <!-- <span class="img-placeholder-icon">🌸</span>
-        <span class="img-placeholder-label">IMAGE 1A — Pastel Lehenga Bridal Look</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Indian bride wearing a pale blush pink lehenga with heavy zari embroidery, pearl jewellery, soft dewy makeup, standing in a garden mandap decorated with ivory roses and eucalyptus, soft golden afternoon light, Vogue India editorial photography style, ultra-realistic"</span> -->
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/pastel-lehenga.webp" alt="Indian bride in pastel pink lehenga standing in a garden mandap with pastel floral décor" class="img-full" loading="lazy">
       <p class="img-caption">Soft pastels are dominating bridal lehengas and wedding décor in 2026. Image for illustration — replace with your own.</p>
 
       <div class="tags">
@@ -794,16 +806,10 @@
 
       <div class="img-grid">
         <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/pastel-mandap.webp" alt="Indian wedding mandap decorated with pastel flowers and brass lamps" class="img-full">
-          <!-- <span class="img-placeholder-icon">💐</span>
-          <span class="img-placeholder-label">IMAGE 1B — Pastel Mandap</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Luxurious Indian wedding mandap decorated entirely in soft lavender, blush pink and white flowers — roses, hydrangeas, garden roses — with brass lamp accents and draped ivory fabric, soft bokeh background, editorial photography"</span> -->
+          <img src="/blogs/indian-wedding-trends-2026/pastel-mandap.webp" alt="Indian wedding mandap decorated with pastel flowers and brass lamps" class="img-real" loading="lazy">
         </div>
         <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/pastel-jewellery.webp" alt="Close-up of an Indian bride wearing polki diamond and pearl jewellery set" class="img-full">
-          <!-- <span class="img-placeholder-icon">💍</span>
-          <span class="img-placeholder-label">IMAGE 1C — Bridal Jewellery with Pastels</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Close-up of an Indian bride wearing polki diamond and pearl jewellery set — maang tikka, necklace, earrings — against a champagne lehenga fabric, macro photography with warm soft lighting, ultra-detailed"</span> -->
+          <img src="/blogs/indian-wedding-trends-2026/pastel-jewellery.webp" alt="Close-up of an Indian bride wearing polki diamond and pearl jewellery set" class="img-real" loading="lazy">
         </div>
       </div>
 
@@ -829,12 +835,7 @@
       <h2 class="trend-title">Micro-Weddings: Intimate Over Grand</h2>
       <p class="trend-subtitle">Wedding Planning &amp; Style</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/micro-wedding.webp" alt="An intimate Indian micro-wedding ceremony with 40 guests, set in a lush boutique resort garden in the hills" class="img-placeholder-img">
-        <!-- <span class="img-placeholder-icon">🕯️</span>
-        <span class="img-placeholder-label">IMAGE 2A — Intimate Micro Wedding Setup</span>
-        <span class="img-placeholder-prompt">AI Prompt → "An intimate Indian micro-wedding ceremony with 40 guests, set in a lush boutique resort garden in the hills, circular flower mandap with cascading greenery and white flowers, fairy lights, couple in traditional attire, evening golden hour, warm candlelight, cinematic photography"</span> -->
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/micro-wedding.webp" alt="An intimate Indian micro-wedding ceremony with 40 guests, set in a lush boutique resort garden in the hills" class="img-full" loading="lazy">
       <p class="img-caption">Micro-weddings with guest lists of 30–80 are the fastest-growing format in 2026 Indian wedding planning.</p>
 
       <div class="tags">
@@ -1074,12 +1075,7 @@
       <h2 class="trend-title">Fusion Bridal Fashion: East Meets West</h2>
       <p class="trend-subtitle">Bridal Fashion &amp; Styling</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/fusion-bride.webp" alt="Indian bride in a fusion bridal outfit — a structured corset blouse with traditional heavy gold zari embroidery combined with a draped lehenga skirt in sage green, contemporary styling with traditional polki jewellery, minimal makeup, editorial fashion photography on rooftop at sunset" class="img-placeholder-img">
-        <span class="img-placeholder-icon">👗</span>
-        <span class="img-placeholder-label">IMAGE 7A — Fusion Bridal Look</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Indian bride in a fusion bridal outfit — a structured corset blouse with traditional heavy gold zari embroidery combined with a draped lehenga skirt in sage green, contemporary styling with traditional polki jewellery, minimal makeup, editorial fashion photography on rooftop at sunset"</span>
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/fusion-bride.webp" alt="Indian bride in a fusion bridal outfit — structured corset blouse with traditional gold zari embroidery combined with a draped sage green lehenga skirt, editorial fashion photography at sunset" class="img-full" loading="lazy">
       <p class="img-caption">Fusion bridal fashion — blending traditional Indian craftsmanship with contemporary silhouettes — is defining the most fashion-forward brides of 2026.</p>
 
       <div class="tags">
@@ -1095,22 +1091,13 @@
 
       <div class="img-grid-3">
         <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/double-dupatta.webp" alt="Indian bride in a fusion bridal outfit — a structured corset blouse with traditional heavy gold zari embroidery combined with a draped lehenga skirt in sage green, contemporary styling with traditional polki jewellery, minimal makeup, editorial fashion photography on rooftop at sunset" class="img-placeholder-img">
-          <span class="img-placeholder-icon">✂️</span>
-          <span class="img-placeholder-label">IMAGE 7B — Double Dupatta Style</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Indian bride wearing double dupatta styling — one dupatta draped traditionally, second one styled as a train behind, rich red lehenga with gold embroidery, outdoor heritage location, editorial fashion photography"</span>
+          <img src="/blogs/indian-wedding-trends-2026/double-dupatta.webp" alt="Indian bride wearing double dupatta styling — one dupatta draped traditionally, second styled as a trailing train, rich lehenga with gold embroidery, heritage location" class="img-real" loading="lazy">
         </div>
         <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/contemporary-saree-bride.webp" alt="Modern Indian bride in contemporary pre-draped bridal saree — ivory and gold, structured blouse with 3D floral appliqué, clean minimalist makeup, statement earrings, rooftop wedding backdrop, fashion photography, Vogue India aesthetic" class="img-placeholder-img">
-          <span class="img-placeholder-icon">👑</span>
-          <span class="img-placeholder-label">IMAGE 7C — Contemporary Saree Bride</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Modern Indian bride in contemporary pre-draped bridal saree — ivory and gold, structured blouse with 3D floral appliqué, clean minimalist makeup, statement earrings, rooftop wedding backdrop, fashion photography, Vogue India aesthetic"</span>
+          <img src="/blogs/indian-wedding-trends-2026/contemporary-saree-bride.webp" alt="Modern Indian bride in contemporary pre-draped bridal saree — ivory and gold with structured blouse, 3D floral appliqué, minimalist makeup, rooftop wedding backdrop" class="img-real" loading="lazy">
         </div>
         <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/groom-fusion-sherwani.webp" alt="Indian groom in a modern fusion sherwani — tailored in ivory with minimal gold thread embroidery, relaxed linen-look fabric, paired with traditional churidar and embroidered juttis, natural light, editorial men's fashion photography" class="img-placeholder-img">
-          <span class="img-placeholder-icon">💃</span>
-          <span class="img-placeholder-label">IMAGE 7D — Groom Fusion Sherwani</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Indian groom in a modern fusion sherwani — tailored in ivory with minimal gold thread embroidery, relaxed linen-look fabric, paired with traditional churidar and embroidered juttis, natural light, editorial men's fashion photography"</span>
+          <img src="/blogs/indian-wedding-trends-2026/groom-fusion-sherwani.webp" alt="Indian groom in a modern fusion sherwani — tailored ivory with minimal gold thread embroidery, relaxed linen-look fabric, traditional churidar and embroidered juttis" class="img-real" loading="lazy">
         </div>
       </div>
 
