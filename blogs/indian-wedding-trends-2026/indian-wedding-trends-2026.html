@@ -296,82 +296,7 @@
     margin-bottom: 24px;
     font-style: italic;
   }
-  .img-placeholder {
-    width: 100%;
-    border-radius: 14px;
-    margin-bottom: 6px;
-    aspect-ratio: 16/9;
-    background: linear-gradient(135deg, #EDE7DA 0%, #D9CCBA 100%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    border: 1.5px dashed var(--border-strong);
-    position: relative;
-    overflow: hidden;
-  }
-  /* When placeholder contains a real image, hide placeholder chrome */
-  .img-placeholder:has(.img-real) {
-    background: none;
-    border: none;
-  }
-  .img-placeholder:has(.img-real)::before { display: none; }
-  .img-placeholder::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(201,168,76,0.05) 10px, rgba(201,168,76,0.05) 20px);
-  }
-  .img-placeholder-icon {
-    font-size: 2.5rem;
-    opacity: 0.35;
-  }
-  .img-placeholder-label {
-    font-size: 0.78rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-align: center;
-    padding: 0 20px;
-    font-weight: 500;
-  }
-  .img-placeholder-prompt {
-    font-size: 0.7rem;
-    color: var(--gold-dark);
-    background: rgba(201,168,76,0.12);
-    border: 1px solid var(--border-strong);
-    border-radius: 6px;
-    padding: 5px 12px;
-    letter-spacing: 0.04em;
-    max-width: 90%;
-    text-align: center;
-  }
-
-  .img-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-  .img-grid .img-placeholder { margin-bottom: 0; aspect-ratio: 4/3; }
-  .img-real {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    border-radius: 14px;
-    display: block;
-    object-fit: cover;
-  }
-
-  .img-grid-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 14px;
-    margin-bottom: 28px;
-  }
-  .img-grid-3 .img-placeholder { margin-bottom: 0; aspect-ratio: 1/1; }
-
-  /* Body text */
+/* Body text */
   .trend p {
     font-size: 1rem;
     line-height: 1.85;
@@ -805,12 +730,8 @@
       <p>This shift is driven by two forces: the rise of Instagram-worthy aesthetic photography that looks stunning in natural, diffused light, and a new generation of brides who want to feel comfortable, elegant, and entirely themselves. Pastel bridal lehengas now make up a significant portion of premium designer order books, with labels like Tarun Tahiliani, Anita Dongre, and Rimple &amp; Harpreet Narula reporting a surge in requests for ivory, blush, and mint creations.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/pastel-mandap.webp" alt="Indian wedding mandap decorated with pastel flowers and brass lamps" class="img-real" loading="lazy">
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/pastel-jewellery.webp" alt="Close-up of an Indian bride wearing polki diamond and pearl jewellery set" class="img-real" loading="lazy">
-        </div>
+        <img src="/blogs/indian-wedding-trends-2026/pastel-mandap.webp" alt="Indian wedding mandap decorated with pastel flowers and brass lamps" class="img-real" loading="lazy">
+        <img src="/blogs/indian-wedding-trends-2026/pastel-jewellery.webp" alt="Close-up of an Indian bride wearing polki diamond and pearl jewellery set" class="img-real" loading="lazy">
       </div>
 
       <p>For décor, pastel colour stories extend far beyond the bridal outfit. Mandaps draped in blush orchids and ivory garden roses, reception halls with dusty sage table runners and champagne candle arrangements, even mehendi stages set against pale yellow and terracotta — the entire wedding aesthetic now follows a cohesive, tonal thread. Photographers love it because it creates dreamy, magazine-ready images that capture beautifully both in golden hour sunlight and soft indoor lighting.</p>
@@ -879,12 +800,8 @@
       <h2 class="trend-title">Floral Ceiling Installations &amp; Immersive Décor</h2>
       <p class="trend-subtitle">Wedding Décor &amp; Design</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/floral-ceiling.webp" alt="Breathtaking Indian wedding hall with a full floral ceiling installation — thousands of white orchids, pink garden roses, and trailing greenery suspended overhead creating a floral canopy, warm amber pendant lights interspersed, guests dining below" class="img-real" loading="lazy">
-        <span class="img-placeholder-icon">🌹</span>
-        <span class="img-placeholder-label">IMAGE 3A — Floral Ceiling Installation</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Breathtaking Indian wedding hall with a full floral ceiling installation — thousands of white orchids, pink garden roses, and trailing greenery suspended overhead creating a floral canopy, warm amber pendant lights interspersed, guests dining below, luxury wedding photography, ultra-realistic"</span>
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/floral-ceiling.webp" alt="Breathtaking Indian wedding hall with a full floral ceiling installation — thousands of white orchids, pink garden roses, and trailing greenery suspended overhead creating a floral canopy, warm amber pendant lights interspersed, guests dining below" class="img-real" loading="lazy">
+        <!---->
       <p class="img-caption">Floral ceiling installations are the new standard of luxury in Indian wedding décor, transforming venues into immersive sensory experiences.</p>
 
       <div class="tags">
@@ -899,18 +816,10 @@
       <p>Unlike traditional centrepieces or stage garlands, ceiling installations require advanced rigging expertise and significantly more flowers — often 10,000 to 30,000 blooms for a full ballroom treatment. The effect, however, is unlike anything else. Guests walk in and the collective gasp is instant. Every photograph taken at the event, whether by professional photographers or guests with phones, looks extraordinary because the background is breathtaking from every angle.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/floral-tunnel.webp" alt="Indian wedding venue entry featuring a dramatic floral tunnel arch made of pink roses, white lilies, and cascading green leaves, fairy lights woven through, couple walking through at sunset, romantic editorial photography, golden bokeh" class="img-real" loading="lazy">
-          <span class="img-placeholder-icon">🌸</span>
-          <span class="img-placeholder-label">IMAGE 3B — Floral Tunnel Entry</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Indian wedding venue entry featuring a dramatic floral tunnel arch made of pink roses, white lilies, and cascading green leaves, fairy lights woven through, couple walking through at sunset, romantic editorial photography, golden bokeh"</span>
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/green-botanical-mandap.webp" alt="Indian wedding mandap made entirely from tropical greenery — monstera leaves, ferns, eucalyptus — with white flower accents, brass urlis with floating flowers, minimalist luxury, outdoor garden setting, editorial wedding photography" class="img-real" loading="lazy">
-          <span class="img-placeholder-icon">🌿</span>
-          <span class="img-placeholder-label">IMAGE 3C — Green Botanical Mandap</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Indian wedding mandap made entirely from tropical greenery — monstera leaves, ferns, eucalyptus — with white flower accents, brass urlis with floating flowers, minimalist luxury, outdoor garden setting, editorial wedding photography"</span>
-        </div>
+        <img src="/blogs/indian-wedding-trends-2026/floral-tunnel.webp" alt="Indian wedding venue entry featuring a dramatic floral tunnel arch made of pink roses, white lilies, and cascading green leaves, fairy lights woven through, couple walking through at sunset, romantic editorial photography, golden bokeh" class="img-real" loading="lazy">
+          <!---->
+        <img src="/blogs/indian-wedding-trends-2026/green-botanical-mandap.webp" alt="Indian wedding mandap made entirely from tropical greenery — monstera leaves, ferns, eucalyptus — with white flower accents, brass urlis with floating flowers, minimalist luxury, outdoor garden setting, editorial wedding photography" class="img-real" loading="lazy">
+          <!---->
       </div>
 
       <p>Beyond ceiling installations, the broader décor philosophy in 2026 is about creating immersive environments rather than decorated stages. Couples are investing in floral tunnels at entry points, floating flower installations above dining tables, botanical green walls as photograph backdrops, and suspended floral chandeliers in place of traditional crystal ones. Statement backdrop concepts this year include ombre floral walls, brass mirror panel arrangements, draped silk canopies with pendant lighting, and botanical green walls with white floral accents.</p>
@@ -935,12 +844,8 @@
       <h2 class="trend-title">Destination Weddings at India's Hidden Gems</h2>
       <p class="trend-subtitle">Venues &amp; Destinations</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/hill-station-wedding.webp" alt="Outdoor Indian wedding ceremony set on a misty hill station with a mandap overlooking pine forests and mountains" class="img-real" loading="lazy">  
-        <!-- <span class="img-placeholder-icon">🏔️</span>
-        <span class="img-placeholder-label">IMAGE 4A — Hill Station Destination Wedding</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Indian wedding ceremony set on a misty hill station — Mussoorie or Rishikesh — with a beautiful outdoor mandap overlooking pine forests and mountains, white draped fabric, marigold and rose flowers, Himalayan backdrop, morning mist, cinematic wide shot, ultra-realistic photography"</span> -->
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/hill-station-wedding.webp" alt="Outdoor Indian wedding ceremony set on a misty hill station with a mandap overlooking pine forests and mountains" class="img-real" loading="lazy">  
+        <!---->
       <p class="img-caption">Hill stations like Mussoorie, Rishikesh, and Lansdowne are emerging as India's most coveted destination wedding spots for 2026–2027.</p>
 
       <div class="tags">
@@ -955,19 +860,9 @@
       <p>The appeal is multi-dimensional. The visual backdrop of misty mountains, pine forests, and river valleys is simply spectacular — every photograph looks cinematic without any additional effort. The weather during the wedding season provides natural cool air and dramatic skies. Boutique properties in these regions offer exclusive venue buyouts at price points significantly below Rajasthan's heritage hotels. And the experience for guests — staying together in a mountain property for 2–3 days — creates a sense of togetherness and festivity that urban hotel weddings rarely achieve.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/udaipur-palace-wedding.webp" alt="Grand Indian wedding at a heritage Rajasthan palace — Udaipur or Jodhpur — with an illuminated palace facade at dusk, ornate mandap with marigold and rose decorations, elephant in background, royal grandeur, couple in traditional red and gold, editorial photography" class="img-real" loading="lazy">
-          <span class="img-placeholder-icon">🌅</span>
-          <span class="img-placeholder-label">IMAGE 4B — Rajasthan Heritage Palace Wedding</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Grand Indian wedding at a heritage Rajasthan palace — Udaipur or Jodhpur — with an illuminated palace facade at dusk, ornate mandap with marigold and rose decorations, elephant in background, royal grandeur, couple in traditional red and gold, editorial photography"</span>
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/goa-beach-wedding.webp" alt="Romantic Indian beach wedding in Goa at sunset — barefoot ceremony on white sand, bamboo arch with tropical flowers, bride in ivory and gold lehenga, warm orange sky, ocean waves in background, documentary wedding photography style" class="img-real" loading="lazy">
-          <span class="img-placeholder-icon">🌊</span>
-          <span class="img-placeholder-label">IMAGE 4C — Goa Beach Wedding</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Romantic Indian beach wedding in Goa at sunset — barefoot ceremony on white sand, bamboo arch with tropical flowers, bride in ivory and gold lehenga, warm orange sky, ocean waves in background, documentary wedding photography style"</span>
-        </div>
-      </div>
+        <img src="/blogs/indian-wedding-trends-2026/udaipur-palace-wedding.webp" alt="Grand Indian wedding at a heritage Rajasthan palace — Udaipur or Jodhpur — with an illuminated palace facade at dusk, ornate mandap with marigold and rose decorations, elephant in background, royal grandeur, couple in traditional red and gold, editorial photography" class="img-real" loading="lazy">
+          <!---->
+        <img src="/blogs/indian-wedding-trends-2026/goa-beach-wedding.webp" alt="Romantic Indian beach wedding in Goa at sunset — barefoot ceremony on white sand, bamboo arch with tropical flowers, bride in ivory and gold lehenga, warm orange sky, ocean waves in background, documentary wedding photography style" class="img-real" loading="lazy"></div>
 
       <p>Internationally, Bali, Dubai, and Thailand continue to attract Indian couples willing to plan cross-border celebrations. Within India, heritage villages of Rajasthan (beyond Udaipur and Jodhpur), the backwaters of Kerala, the Konkan coast, and Uttarakhand's river valleys are all seeing sharply increased inquiry volumes from wedding planners in 2026. Venue availability at premium boutique properties in these regions is already tight for the October 2026–February 2027 peak season.</p>
 
@@ -985,13 +880,7 @@
       <h2 class="trend-title">Sustainable &amp; Eco-Conscious Celebrations</h2>
       <p class="trend-subtitle">Green Weddings &amp; Responsible Choices</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/eco-friendly-wedding-decor.webp" alt="Eco-friendly Indian wedding setup with potted plants as table centrepieces, natural cotton fabric draping, terracotta pots, dried flowers and pampas grass, brass urlis with floating marigolds, bamboo furniture, outdoor garden setting, warm natural light, editorial sustainability-focused photography" class="img-real" loading="lazy">
-        <span class="img-placeholder-icon">🌱</span>
-        <span class="img-placeholder-label">IMAGE 5A — Eco-Friendly Wedding Décor</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Eco-friendly Indian wedding setup with potted plants as table centrepieces, natural cotton fabric draping, terracotta pots, dried flowers and pampas grass, brass urlis with floating marigolds, bamboo furniture, outdoor garden setting, warm natural light, editorial sustainability-focused photography"</span>
-      </div>
-      <p class="img-caption">Eco-conscious weddings are no longer a niche choice — they are becoming the hallmark of thoughtful luxury in 2026.</p>
+      <img src="/blogs/indian-wedding-trends-2026/eco-friendly-wedding-decor.webp" alt="Eco-friendly Indian wedding setup with potted plants as table centrepieces, natural cotton fabric draping, terracotta pots, dried flowers and pampas grass, brass urlis with floating marigolds, bamboo furniture, outdoor garden setting, warm natural light, editorial sustainability-focused photography" class="img-real" loading="lazy"><p class="img-caption">Eco-conscious weddings are no longer a niche choice — they are becoming the hallmark of thoughtful luxury in 2026.</p>
 
       <div class="tags">
         <span class="tag">Eco Wedding</span>
@@ -1005,18 +894,10 @@
       <p>What does a sustainable Indian wedding actually look like in practice? It begins with the mandap. In 2026, the eco-conscious mandap replaces non-biodegradable floral foam and plastic cable ties with bamboo and cane structures, organic cotton fabric draping, and locally sourced seasonal flowers. Biodegradable décor elements — dried flowers, pampas grass, terracotta pottery, natural leaf plates for rituals — are used in place of plastic and synthetic materials. Brass and copper elements (traditional urlis, oil lamps, kalash) replace crystal vases.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/sustainable-return-gifts.webp" alt="Sustainable Indian wedding return gifts — potted succulents, seed packets in handmade paper envelopes, organic jute gift bags with embroidered details, terracotta diyas, arranged on a wooden table with fresh flowers, product photography style, warm light" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">♻️</span>
-          <span class="img-placeholder-label">IMAGE 5B — Sustainable Wedding Return Gifts</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Beautiful Indian wedding return gift display featuring seed packets in handmade paper envelopes, potted succulents, organic jute gift bags with embroidered details, terracotta diyas, arranged on a wooden table with fresh flowers, product photography style, warm light"</span> -->
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/farm-to-table-wedding-menu.webp" alt="Elegant farm-to-table Indian wedding food display — grazing table with locally sourced fruits, artisanal breads, traditional Indian street food in clay pots, edible flower garnishes, rustic wooden board presentation, warm candlelight, food photography style" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">🍃</span>
-          <span class="img-placeholder-label">IMAGE 5C — Farm to Table Wedding Menu</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Elegant farm-to-table Indian wedding food display — grazing table with locally sourced fruits, artisanal breads, traditional Indian street food in clay pots, edible flower garnishes, rustic wooden board presentation, warm candlelight, food photography style"</span> -->
-        </div>
+        <img src="/blogs/indian-wedding-trends-2026/sustainable-return-gifts.webp" alt="Sustainable Indian wedding return gifts — potted succulents, seed packets in handmade paper envelopes, organic jute gift bags with embroidered details, terracotta diyas, arranged on a wooden table with fresh flowers, product photography style, warm light" class="img-real" loading="lazy">
+          <!---->
+        <img src="/blogs/indian-wedding-trends-2026/farm-to-table-wedding-menu.webp" alt="Elegant farm-to-table Indian wedding food display — grazing table with locally sourced fruits, artisanal breads, traditional Indian street food in clay pots, edible flower garnishes, rustic wooden board presentation, warm candlelight, food photography style" class="img-real" loading="lazy">
+          <!---->
       </div>
 
       <p>Food choices are a significant sustainability consideration at Indian weddings, where catering waste can be staggering at large events. In 2026, eco-conscious couples are transitioning from vast buffet spreads to plated sit-down dinners with curated menus, dramatically reducing food waste. Farm-to-table menus that source ingredients from local suppliers within 100 km are gaining popularity, both for their environmental credentials and for the quality and freshness of the food itself.</p>
@@ -1037,13 +918,7 @@
       <h2 class="trend-title">Statement Bridal Entry: The Cinematic Moment</h2>
       <p class="trend-subtitle">Bridal Experience &amp; Entertainment</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/dramatic-bridal-entry.webp" alt="Dramatic Indian bridal entry down a grand staircase — bride in deep red and gold lehenga descending gilded stairs surrounded by cold pyrotechnic sparklers, fog machine effect, wedding guests looking on, professional wedding photography, cinematic lighting, wide angle shot" class="img-real" loading="lazy">
-        <span class="img-placeholder-icon">✨</span>
-        <span class="img-placeholder-label">IMAGE 6A — Dramatic Bridal Entry</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Dramatic Indian bridal entry down a grand staircase — bride in deep red and gold lehenga descending gilded stairs surrounded by cold pyrotechnic sparklers, fog machine effect, wedding guests looking on, professional wedding photography, cinematic lighting, wide angle shot"</span>
-      </div>
-      <p class="img-caption">The bridal entry has evolved into the most cinematic and choreographed moment of the modern Indian wedding.</p>
+      <img src="/blogs/indian-wedding-trends-2026/dramatic-bridal-entry.webp" alt="Dramatic Indian bridal entry down a grand staircase — bride in deep red and gold lehenga descending gilded stairs surrounded by cold pyrotechnic sparklers, fog machine effect, wedding guests looking on, professional wedding photography, cinematic lighting, wide angle shot" class="img-real" loading="lazy"><p class="img-caption">The bridal entry has evolved into the most cinematic and choreographed moment of the modern Indian wedding.</p>
 
       <div class="tags">
         <span class="tag">Bridal Entry</span>
@@ -1057,19 +932,7 @@
       <p>Cold pyrotechnic sparklers flanking an aisle, swirling theatrical fog at floor level, a personally curated soundtrack crescendo (often a mash-up that transitions from a beloved Bollywood number to a Western orchestral piece, or vice versa), and perfectly timed lighting transitions as the bride enters — these elements now routinely appear in wedding briefs submitted to planners. Some brides descend from a grand staircase, others arrive via floral-decorated vintage cars that drive up to the entrance, and a rising number of brides are choreographing their own entry dance to a performance that flows seamlessly into the ceremony.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/drone-baraat.webp" alt="Spectacular Indian groom baraat procession at night — groom on white decorated horse, surrounded by family dancing, overhead drone light display forming a heart shape in the sky, fireworks in background, joyful crowd, wedding photography, festive atmosphere" class="img-real" loading="lazy">
-          <span class="img-placeholder-icon">🎉</span>
-          <span class="img-placeholder-label">IMAGE 6B — Baraat Entry with Drone Lights</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Spectacular Indian groom baraat procession at night — groom on white decorated horse, surrounded by family dancing, overhead drone light display forming a heart shape in the sky, fireworks in background, joyful crowd, wedding photography, festive atmosphere"</span>
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/varmala-exchange.webp" alt="Indian couple exchanging varmala (flower garlands) on a stage decorated with marigolds and roses, joyful laughing expression, family clapping around them, confetti falling, warm golden reception hall lighting, wedding photography, candid moment" class="img-real" loading="lazy">
-          <span class="img-placeholder-icon">🌺</span>
-          <span class="img-placeholder-label">IMAGE 6C — Varmala Exchange Moment</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Indian couple exchanging varmala (flower garlands) on a stage decorated with marigolds and roses, joyful laughing expression, family clapping around them, confetti falling, warm golden reception hall lighting, wedding photography, candid moment"</span>
-        </div>
-      </div>
+        <img src="/blogs/indian-wedding-trends-2026/drone-baraat.webp" alt="Spectacular Indian groom baraat procession at night — groom on white decorated horse, surrounded by family dancing, overhead drone light display forming a heart shape in the sky, fireworks in background, joyful crowd, wedding photography, festive atmosphere" class="img-real" loading="lazy"><img src="/blogs/indian-wedding-trends-2026/varmala-exchange.webp" alt="Indian couple exchanging varmala (flower garlands) on a stage decorated with marigolds and roses, joyful laughing expression, family clapping around them, confetti falling, warm golden reception hall lighting, wedding photography, candid moment" class="img-real" loading="lazy"></div>
 
       <p>The groom's baraat has also had a cinematic upgrade. Viral baraat entries — featuring drone light shows forming the couple's initials or a heart shape overhead, live dhol performances combined with DJ sets, flash mob dances featuring the entire baraat, and even surprise celebrity performer appearances — are becoming increasingly common at premium Indian weddings. "Shaadi has become content" is a phrase floating widely in 2026's wedding planning world, and couples are entirely embracing it.</p>
 
@@ -1102,15 +965,9 @@
       <p>Key fusion elements dominating 2026 bridal fashion include: corset blouses with traditional zari or mirror embroidery replacing conventional backless or halter-neck cholis; cape-style dupattas worn over structured gowns with Indian embroidery detailing; pre-draped sarees with contemporary pleating and structured, experimental blouses; and heavily embroidered lehenga skirts paired with minimalist modern crop tops or bustiers. The technical craftsmanship — zardozi, gota patti, resham threadwork, hand-painted motifs — remains entirely rooted in Indian heritage, but the silhouette belongs firmly to the modern world.</p>
 
       <div class="img-grid-3">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/double-dupatta.webp" alt="Indian bride wearing double dupatta styling — one dupatta draped traditionally, second styled as a trailing train, rich lehenga with gold embroidery, heritage location" class="img-real" loading="lazy">
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/contemporary-saree-bride.webp" alt="Modern Indian bride in contemporary pre-draped bridal saree — ivory and gold with structured blouse, 3D floral appliqué, minimalist makeup, rooftop wedding backdrop" class="img-real" loading="lazy">
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/groom-fusion-sherwani.webp" alt="Indian groom in a modern fusion sherwani — tailored ivory with minimal gold thread embroidery, relaxed linen-look fabric, traditional churidar and embroidered juttis" class="img-real" loading="lazy">
-        </div>
+        <img src="/blogs/indian-wedding-trends-2026/double-dupatta.webp" alt="Indian bride wearing double dupatta styling — one dupatta draped traditionally, second styled as a trailing train, rich lehenga with gold embroidery, heritage location" class="img-real" loading="lazy">
+        <img src="/blogs/indian-wedding-trends-2026/contemporary-saree-bride.webp" alt="Modern Indian bride in contemporary pre-draped bridal saree — ivory and gold with structured blouse, 3D floral appliqué, minimalist makeup, rooftop wedding backdrop" class="img-real" loading="lazy">
+        <img src="/blogs/indian-wedding-trends-2026/groom-fusion-sherwani.webp" alt="Indian groom in a modern fusion sherwani — tailored ivory with minimal gold thread embroidery, relaxed linen-look fabric, traditional churidar and embroidered juttis" class="img-real" loading="lazy">
       </div>
 
       <p>The double dupatta trend — popularised by real celebrity weddings including Radhika Merchant's iconic look — has become mainstream in 2026. Brides are now routinely ordering their lehengas with two dupattas: one for the ceremony draped traditionally over the head, and one styled differently for the reception — perhaps as a trailing train, or worn asymmetrically over one shoulder. Some brides are even commissioning dupattas hand-embroidered with the couple's initials, wedding date, or meaningful symbols.</p>
@@ -1128,12 +985,8 @@
       <h2 class="trend-title">AI & Technology in Wedding Planning</h2>
       <p class="trend-subtitle">Planning &amp; Innovation</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/ai-wedding-planning.webp" alt="Indian couple using a wedding planning app on a tablet together, surrounded by wedding mood boards, fabric swatches and bridal magazines, cosy well-lit room, natural home setting, modern lifestyle photography, warm tones" class="img-real" loading="lazy">
-        <!-- <span class="img-placeholder-icon">🤖</span>
-        <span class="img-placeholder-label">IMAGE 8A — Tech-Enabled Wedding Planning</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Indian couple using a wedding planning app on a tablet together, surrounded by wedding mood boards, fabric swatches and bridal magazines, cosy well-lit room, natural home setting, modern lifestyle photography, warm tones"</span> -->
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/ai-wedding-planning.webp" alt="Indian couple using a wedding planning app on a tablet together, surrounded by wedding mood boards, fabric swatches and bridal magazines, cosy well-lit room, natural home setting, modern lifestyle photography, warm tones" class="img-real" loading="lazy">
+        <!---->
       <p class="img-caption">AI-powered tools and technology integrations are making Indian wedding planning smarter, more organised, and less stressful in 2026.</p>
 
       <div class="tags">
@@ -1148,18 +1001,10 @@
       <p>AI-assisted wedding planning tools like WeddAI allow couples to track their budget in real time, manage RSVPs, receive vendor recommendations based on their stated preferences, and even use AI to help write their wedding vows. These tools are particularly valuable for couples managing geographically dispersed families and multi-city logistics. The era of managing a wedding entirely through notebook lists and endless WhatsApp voice notes is giving way to organised, data-driven planning platforms.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/drone-wedding-photography.webp" alt="Aerial drone photograph of an Indian wedding ceremony from directly above — circular mandap with flowers, bride and groom at centre, guests seated in concentric rows around them, top-down bird's eye view, vivid colours, editorial wedding photography" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">📸</span>
-          <span class="img-placeholder-label">IMAGE 8B — Drone Wedding Photography</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Aerial drone photograph of an Indian wedding ceremony from directly above — circular mandap with flowers, bride and groom at centre, guests seated in concentric rows around them, top-down bird's eye view, vivid colours, editorial wedding photography"</span> -->
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/digital-wedding-invitation.webp" alt="Beautiful Indian digital wedding invitation design displayed on a smartphone screen — elegant gold and red design with traditional motifs, couple's photo, QR code for RSVP, shown in a lifestyle flatlay with flowers and jewellery around the phone, top-down photography" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">💌</span>
-          <span class="img-placeholder-label">IMAGE 8C — Digital Wedding Invitation</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Beautiful Indian digital wedding invitation design displayed on a smartphone screen — elegant gold and red design with traditional motifs, couple's photo, QR code for RSVP, shown in a lifestyle flatlay with flowers and jewellery around the phone, top-down photography"</span> -->
-        </div>
+        <img src="/blogs/indian-wedding-trends-2026/drone-wedding-photography.webp" alt="Aerial drone photograph of an Indian wedding ceremony from directly above — circular mandap with flowers, bride and groom at centre, guests seated in concentric rows around them, top-down bird's eye view, vivid colours, editorial wedding photography" class="img-real" loading="lazy">
+          <!---->
+        <img src="/blogs/indian-wedding-trends-2026/digital-wedding-invitation.webp" alt="Beautiful Indian digital wedding invitation design displayed on a smartphone screen — elegant gold and red design with traditional motifs, couple's photo, QR code for RSVP, shown in a lifestyle flatlay with flowers and jewellery around the phone, top-down photography" class="img-real" loading="lazy">
+          <!---->
       </div>
 
       <p>On the day itself, technology creates spectacular guest experiences. QR code menus at the dinner table, live-streaming services for family members who cannot attend in person, instant photo-printing booths where guests can scan a code and receive a printed photograph within seconds, and curated digital photo albums shared with all guests within 48 hours of the wedding — these services are now considered baseline expectations at mid-to-premium Indian weddings.</p>
@@ -1180,11 +1025,9 @@
       <h2 class="trend-title">Experience-First Guest Entertainment</h2>
       <p class="trend-subtitle">Hospitality &amp; Events</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/sangeet-performance.webp" alt="Vibrant Indian wedding sangeet night — elaborately decorated stage with flowers and LED lighting, bride and bridesmaids performing a choreographed Bollywood dance in matching pink lehengas, guests cheering and recording on phones, festive atmosphere, wide shot" class="img-real" loading="lazy">
-        <!-- <span class="img-placeholder-icon">🎭</span> -->
-            <!--     <span class="img-placeholder-prompt">AI Prompt → "Vibrant Indian wedding sangeet night — elaborately decorated stage with flowers and LED lighting, bride and bridesmaids performing a choreographed Bollywood dance in matching pink lehengas, guests cheering and recording on phones, festive atmosphere, wide shot"</span> -->
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/sangeet-performance.webp" alt="Vibrant Indian wedding sangeet night — elaborately decorated stage with flowers and LED lighting, bride and bridesmaids performing a choreographed Bollywood dance in matching pink lehengas, guests cheering and recording on phones, festive atmosphere, wide shot" class="img-real" loading="lazy">
+        <!---->
+            <!---->
       <p class="img-caption">Sangeet nights in 2026 are full theatrical productions with choreographed performances, themed décor, and interactive guest experiences throughout the evening.</p>
 
       <div class="tags">
@@ -1199,18 +1042,10 @@
       <p>Sangeet nights have evolved into full theatrical productions. Months of choreography rehearsals, professional costume coordination, live musicians performing alongside the DJ, surprise celebrity performer appearances, and audience-participation moments are all becoming standard elements of premium sangeet evenings. Even more modest sangeet celebrations are incorporating coordinated family dance sequences, interactive photo stations, themed photobooth setups, and live calligraphy artists writing personalised notes for guests.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/themed-food-stations.webp" alt="Creative themed Indian wedding food stations — a live chaat counter with colourful ingredients displayed in brass bowls, a paan station with elaborate tray setup, a dessert table with traditional mithai displayed beautifully, guests enjoying food, warm candlelight, event photography" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">🍽️</span>
-          <span class="img-placeholder-label">IMAGE 9B — Themed Food Stations</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Creative themed Indian wedding food stations — a live chaat counter with colourful ingredients displayed in brass bowls, a paan station with elaborate tray setup, a dessert table with traditional mithai displayed beautifully, guests enjoying food, warm candlelight, event photography"</span> -->
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/musical-pheras.webp" alt="Emotional Indian wedding pheras ceremony with live musical performance — musicians playing shehnai and tabla beside the havan kund, bride and groom walking around the sacred fire, priest chanting, intimate emotional atmosphere, soft warm lighting, candid documentary photography" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">🎵</span>
-          <span class="img-placeholder-label">IMAGE 9C — Musical Pheras Ceremony</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Beautiful Indian wedding pheras (fire ritual) with live musical performance — musicians playing shehnai and tabla beside the havan kund, bride and groom walking around the sacred fire, priest chanting, intimate emotional atmosphere, soft warm lighting, candid documentary photography"</span> -->
-        </div>
+        <img src="/blogs/indian-wedding-trends-2026/themed-food-stations.webp" alt="Creative themed Indian wedding food stations — a live chaat counter with colourful ingredients displayed in brass bowls, a paan station with elaborate tray setup, a dessert table with traditional mithai displayed beautifully, guests enjoying food, warm candlelight, event photography" class="img-real" loading="lazy">
+          <!---->
+        <img src="/blogs/indian-wedding-trends-2026/musical-pheras.webp" alt="Emotional Indian wedding pheras ceremony with live musical performance — musicians playing shehnai and tabla beside the havan kund, bride and groom walking around the sacred fire, priest chanting, intimate emotional atmosphere, soft warm lighting, candid documentary photography" class="img-real" loading="lazy">
+          <!---->
       </div>
 
       <p>Food stations deserve a special mention as a guest experience innovation. The standard buffet is being replaced — or significantly augmented — by curated live stations: a live chaat counter, a hand-rolled paan station customised for each guest, a gelato or kulfi cart, a regional thali station showcasing the couple's family cuisines, a late-night Maggi and chai counter for the last dance crowd. These stations don't just feed guests — they create moments of interaction and surprise that people talk about for years afterward.</p>
@@ -1226,12 +1061,8 @@
       <h2 class="trend-title">Meaningful Memories: Keepsakes &amp; Preservation</h2>
       <p class="trend-subtitle">Personalisation &amp; Memories</p>
 
-      <div class="img-placeholder">
-        <img src="/blogs/indian-wedding-trends-2026/varmala-resin-keepsake.webp" alt="Beautiful Indian wedding varmala (flower garland) preserved in clear resin — embedded in a rectangular resin block with rose petals visible inside, placed on a wooden display base, styled with the couple's wedding photograph behind it, warm home decor photography" class="img-real" loading="lazy">
-        <!-- <span class="img-placeholder-icon">💎</span>
-        <span class="img-placeholder-label">IMAGE 10A — Varmala Preservation in Resin</span>
-        <span class="img-placeholder-prompt">AI Prompt → "Beautiful Indian wedding varmala (flower garland) preserved in clear resin — embedded in a rectangular resin block with rose petals visible inside, placed on a wooden display base, styled with the couple's wedding photograph behind it, warm home decor photography"</span> -->
-      </div>
+      <img src="/blogs/indian-wedding-trends-2026/varmala-resin-keepsake.webp" alt="Beautiful Indian wedding varmala (flower garland) preserved in clear resin — embedded in a rectangular resin block with rose petals visible inside, placed on a wooden display base, styled with the couple's wedding photograph behind it, warm home decor photography" class="img-real" loading="lazy">
+        <!---->
       <p class="img-caption">Varmala preservation in resin is one of 2026's most beautiful emerging wedding trends — turning the most emotional moment of the ceremony into a lasting keepsake.</p>
 
       <div class="tags">
@@ -1246,18 +1077,10 @@
       <p>Varmala preservation has emerged as one of the most heartfelt trends of the year. The varmala — the flower garlands exchanged between bride and groom during the ceremony — carries enormous emotional significance. It is the first tangible gesture of acceptance and love between the couple. Rather than allowing these garlands to wilt and be discarded, couples are now commissioning artisans to preserve them in clear resin, creating stunning keepsakes in the form of framed art pieces, paperweights, clocks, or lamp bases that display the original flowers forever, suspended in time.</p>
 
       <div class="img-grid">
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/cinematic-wedding-film-still.webp" alt="Cinematic still from an Indian wedding film — close-up of bride and groom's hands during pheras ritual near the sacred fire, intricate mehndi on bride's hands, groom's gold-embroidered sherwani sleeve, warm firelight, shallow depth of field, film photography aesthetic" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">🎬</span>
-          <span class="img-placeholder-label">IMAGE 10B — Cinematic Wedding Film Still</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Cinematic still from an Indian wedding film — close-up of bride and groom's hands during pheras ritual near the sacred fire, intricate mehndi on bride's hands, groom's gold-embroidered sherwani sleeve, warm firelight, shallow depth of field, film photography aesthetic"</span> -->
-        </div>
-        <div class="img-placeholder">
-          <img src="/blogs/indian-wedding-trends-2026/luxury-wedding-album.webp" alt="Luxury Indian wedding album — large format leather-bound photo book open to a double-page spread of wedding photography, placed on a marble surface with fresh flowers and a cup of chai, flat lay lifestyle photography, warm tones" class="img-real" loading="lazy">
-          <!-- <span class="img-placeholder-icon">📖</span>
-          <span class="img-placeholder-label">IMAGE 10C — Luxury Wedding Album</span>
-          <span class="img-placeholder-prompt">AI Prompt → "Luxury Indian wedding album — large format leather-bound photo book open to a double-page spread of wedding photography, placed on a marble surface with fresh flowers and a cup of chai, flat lay lifestyle photography, warm tones"</span> -->
-        </div>
+        <img src="/blogs/indian-wedding-trends-2026/cinematic-wedding-film-still.webp" alt="Cinematic still from an Indian wedding film — close-up of bride and groom's hands during pheras ritual near the sacred fire, intricate mehndi on bride's hands, groom's gold-embroidered sherwani sleeve, warm firelight, shallow depth of field, film photography aesthetic" class="img-real" loading="lazy">
+          <!---->
+        <img src="/blogs/indian-wedding-trends-2026/luxury-wedding-album.webp" alt="Luxury Indian wedding album — large format leather-bound photo book open to a double-page spread of wedding photography, placed on a marble surface with fresh flowers and a cup of chai, flat lay lifestyle photography, warm tones" class="img-real" loading="lazy">
+          <!---->
       </div>
 
       <p>Cinematic wedding films have also reached extraordinary levels of quality and artistry in 2026. The best wedding videographers in India are now creating films that are genuinely cinematic — shot on professional cinema cameras with carefully composed lighting, featuring scripted narrative elements, aerial footage, slow-motion captures of key moments, and original musical compositions. These films are no longer just recordings of the day; they are artistic works that tell the story of the couple and their families in a way that moves viewers to tears on every viewing.</p>
