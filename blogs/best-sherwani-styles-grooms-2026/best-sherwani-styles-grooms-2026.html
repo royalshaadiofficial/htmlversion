@@ -92,6 +92,7 @@
   .topbar.scrolled { box-shadow: 0 4px 24px rgba(26,26,24,0.06); }
   .topbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .topbar-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .topbar-brand-logo { width: 40px; height: 40px; object-fit: contain; border-radius: 8px; display: inline-block; }
   .topbar-logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
   .topbar-tagline { font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
   .topbar-links { display: flex; gap: 36px; align-items: center; }
@@ -491,6 +492,7 @@
 <!-- ── TOPBAR ── -->
 <header class="topbar" id="topbar">
   <a href="/" class="topbar-brand">
+    <img src="/logo.webp" alt="Royal Shaadi logo" class="topbar-brand-logo">
     <div class="topbar-brand-text">
       <span class="topbar-logo-text">Royal Shaadi</span>
       <span class="topbar-tagline">Modern Indian Weddings</span>
