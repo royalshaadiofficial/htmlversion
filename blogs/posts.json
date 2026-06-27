@@ -1,5 +1,7 @@
 [
-  { "slug": "indian-wedding-trends-2026", "featured": true },
+  { "slug": "indian-wedding-trends-2026", "featured": false },
+  { "slug": "wedding-budget-tips-india", "featured":false},
+  { "slug": "wedding-budget-tips-india" },
   { "slug": "summer-wedding-drinks" },
   { "slug": "pag-phera-wedding-ritual-guide" },
   { "slug": "live-food-stations-wedding" },
