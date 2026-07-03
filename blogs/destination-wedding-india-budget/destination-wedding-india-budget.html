@@ -126,15 +126,39 @@
       top: 0;
       z-index: 100;
     }
-    .topbar-logo {
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar-brand-logo {
+      width: auto;
+      height: 34px;
+      flex-shrink: 0;
+    }
+    .topbar-brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .topbar-logo-text {
       font-family: var(--font-display);
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--burgundy);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
-    .topbar-nav {
+    .topbar-tagline {
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .topbar-links {
       display: flex;
+      align-items: center;
       gap: 24px;
       list-style: none;
       font-size: 0.82rem;
@@ -142,8 +166,28 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-    .topbar-nav a { color: var(--charcoal); }
-    .topbar-nav a:hover { color: var(--burgundy); text-decoration: none; }
+    .topbar-links a { color: var(--charcoal); }
+    .topbar-links a:hover { color: var(--burgundy); text-decoration: none; }
+    .topbar-cta {
+      background: var(--burgundy);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 20px;
+    }
+    .topbar-cta:hover { background: #50131f; text-decoration: none !important; }
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      color: var(--charcoal);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .menu-toggle svg { width: 22px; height: 22px; }
 
     /* ═══════════════════════════════════════════
        HERO
@@ -639,7 +683,21 @@
       .toc-wrap { position: static; margin-bottom: 40px; }
       .venue-cards { grid-template-columns: 1fr; }
       .month-grid  { grid-template-columns: repeat(2, 1fr); }
-      .topbar-nav  { display: none; }
+      .topbar-links {
+        display: none;
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        background: #fff;
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--border);
+      }
+      .topbar-links.open { display: flex; }
+      .menu-toggle { display: flex; }
     }
     @media (max-width: 600px) {
       .img-grid  { grid-template-columns: 1fr; }
@@ -1368,152 +1426,6 @@
 
 </div><!-- /page-body -->
 
-<!-- ═══════════════════════════════════════════
-     IMAGE PROMPT REFERENCE (visible to dev)
-═══════════════════════════════════════════ -->
-<!--
-IMAGE PROMPTS FOR GROK / GEMINI:
-Generate each as a photorealistic, high-resolution horizontal landscape photograph (16:9 or 3:2 ratio) unless noted.
-
-SLOT 1 (HERO - hero-destination-wedding.webp):
-"Stunning destination wedding in a grand Rajasthan palace courtyard at golden hour, 
-soft warm light, a couple in traditional bridal attire walking under floral arch, 
-marigold strings hanging from arched sandstone corridors, highly cinematic, 
-editorial wedding photography style, 4K, ultra-detailed"
-
-SLOT 2 (india-wedding-collage.webp):
-"Four-panel collage: top-left a Rajasthan palace wedding ceremony in pink sandstone 
-courtyard; top-right an intimate beach wedding with white drapes in Goa at sunset; 
-bottom-left a Kerala backwater houseboat ceremony with tropical greenery; bottom-right 
-a mountain wedding with snow-capped Himalayas in the background. Photorealistic, 
-editorial wedding photography"
-
-SLOT 3 (rajasthan-jaipur-wedding.webp):
-"Ornate Jaipur haveli courtyard decorated for a wedding with fresh marigold garlands, 
-rose petals on pink sandstone floors, traditional rajasthani lanterns, warm golden hour 
-light through scalloped arches. Photorealistic, wide angle, editorial photography"
-
-SLOT 4 (goa-beach-wedding.webp):
-"Intimate beach wedding setup in North Goa at sunset, white fabric draped ceremony arch 
-with tropical flowers, rows of rattan chairs on golden sand, turquoise sea in background, 
-warm amber light, photorealistic, editorial wedding photography"
-
-SLOT 5 (kerala-backwater-wedding.webp):
-"Traditional Kerala wedding ceremony on a beautifully decorated houseboat on the 
-Alleppey backwaters, bride in cream and gold saree, lush tropical palm trees reflected 
-in water, jasmine flower decorations, serene morning light, photorealistic editorial"
-
-SLOT 6 (himachal-wedding.webp):
-"Outdoor wedding mandap set up in a pine forest clearing with snow-capped Himalayas 
-in the background near Manali or Dharamsala, colourful traditional decorations, 
-couple in traditional attire, dramatic mountain landscape, photorealistic editorial"
-
-SLOT 7 (rishikesh-wedding.webp):
-"Outdoor wedding mandap on the sacred banks of the Ganges river in Rishikesh at sunset, 
-marigold-decorated structure, soft orange and violet sky reflected in calm water, 
-priests and ceremony fire visible, cinematic composition, photorealistic"
-
-SLOT 8 (heritage-haveli-venue.webp):
-"Interior of a restored Rajasthani heritage haveli with ornate carved archways and 
-jali screens, decorated for a wedding with draped marigolds, diyas in alcoves and 
-rose petal floor art, warm amber lantern light, wide editorial photography"
-
-SLOT 9 (resort-wedding-poolside.webp):
-"Romantic sangeet event setup beside a resort infinity pool at night, fairy lights 
-strung overhead, floral stage backdrop in blush and gold, Indian guests in colourful 
-traditional attire, mountain or sea view in distance, photorealistic editorial"
-
-SLOT 10 (farmhouse-wedding-decor.webp):
-"Rustic Indian farmhouse wedding decoration with hundreds of marigold strings hanging 
-from bamboo structures, clay pots and terracotta lamps, colourful rajasthani fabric 
-bunting, daytime photography with dappled natural light, editorial style"
-
-SLOT 11 (venue-negotiation-site-visit.webp):
-"Young Indian couple meeting with an elegant wedding coordinator at a heritage venue, 
-reviewing documents and decoration samples on an outdoor table in a courtyard, 
-warm natural light, candid editorial style photography"
-
-SLOT 12 (marigold-decor-mandap.webp):
-"Spectacular Indian wedding mandap covered entirely in fresh orange and yellow marigold 
-garlands with white roses accent, priest performing ceremony, couple seated beneath, 
-close-up detail of flowers, warm ceremonial light, photorealistic editorial"
-
-SLOT 13 (earthen-lamp-decor.webp):
-"Hundreds of handmade clay diyas and terracotta pots arranged in patterns creating 
-a warm candlelit ambience for an outdoor Indian wedding at dusk, bokeh background, 
-editorial detail photography"
-
-SLOT 14 (fabric-draping-wedding.webp):
-"Indian sangeet stage backdrop created with colourful fabric draping in saffron, 
-deep pink and gold, large parachute cloth ceiling installation, fairy lights woven 
-through, empty stage set for a performance, editorial wide shot"
-
-SLOT 15 (floral-arch-entrance.webp):
-"Grand entrance arch for an Indian wedding made from mixed roses, marigolds, and 
-tropical leaves, towering 4 metres high at the entrance to a heritage venue, 
-couple standing beneath for scale, editorial photography, warm golden hour"
-
-SLOT 16 (indian-wedding-spread.webp):
-"Elaborate Indian wedding dinner food spread arranged on banana leaves, featuring 
-biryani, dal makhani, paneer dishes, colourful array of chutneys, raita, 
-and traditional Indian desserts including gulab jamun and kheer, aerial flat lay 
-editorial food photography"
-
-SLOT 17 (chaat-counter-wedding.webp):
-"Vibrant Indian street food chaat counter at a wedding, colourful bowls of pani puri 
-water, bhel puri, dahi papdi chaat, the counter decorated with marigolds, 
-guests enjoying food in background, editorial food photography"
-
-SLOT 18 (traditional-thali-wedding.webp):
-"Beautifully arranged traditional Indian thali served on a banana leaf at a wedding 
-dinner, variety of dishes in small bowls, rice, dal, sabzi, chapati and dessert, 
-warm light, close-up editorial food photography"
-
-SLOT 19 (bridal-lehenga-jewellery.webp):
-"Indian bride in an exquisitely embroidered deep red lehenga with gold zari work 
-and matching dupatta, wearing elaborate kundan and polki jewellery set, against 
-a warm golden bokeh background, editorial bridal portrait photography"
-
-SLOT 20 (candid-wedding-photography.webp):
-"Emotional and joyful candid moment of an Indian bride and groom exchanging garlands 
-(jaimala) at a wedding ceremony in a Rajasthan palace, guests cheering in background, 
-natural light, documentary wedding photography style"
-
-SLOT 21 (wedding-guests-arrive.webp):
-"Wedding guests in colorful traditional Indian attire arriving at a heritage palace venue, 
-being welcomed with flower garlands and traditional torches (mashaalas) by uniformed 
-staff, grand entrance steps, editorial wide photography"
-
-SLOT 22 (local-floral-artist.webp):
-"Skilled Rajasthani local florist or floral artist creating intricate marigold and 
-rose garland arrangements for a wedding, close-up of hands working with flowers, 
-editorial craft photography, warm natural light"
-
-SLOT 23 (wedding-planner-meeting.webp):
-"Indian wedding planner and couple reviewing a wedding mood board with fabric swatches, 
-venue photos and flower samples at an outdoor cafe table, collaborative meeting, 
-candid editorial photography"
-
-SLOT 24 (wedding-invitation-design.webp):
-"Elegant Indian wedding invitation card with gold foil printing and intricate floral 
-motifs on cream handmade paper, alongside an envelope sealed with a wax stamp and 
-dried flower petals, flat lay editorial stationery photography"
-
-SLOT 25 (welcome-kit-gifts.webp):
-"Indian destination wedding welcome gift kit in a handwoven jute bag, containing 
-small packages of local snacks, mini earthen pot with herbal tea, handmade soap, 
-a handwritten itinerary card with wax seal, flat lay editorial product photography"
-
-SLOT 26 (budget-mistakes-wedding.webp):
-"Concerned young Indian couple sitting at a kitchen table reviewing stacked vendor 
-invoices and wedding contracts, laptop open with spreadsheet visible, candid editorial 
-lifestyle photography, warm ambient home light"
-
-SLOT 27 (happy-couple-wedding-final.webp):
-"Joyful Indian bride in red lehenga and groom in ivory sherwani holding hands and 
-laughing as they walk through a pathway lined with marigold garlands at golden hour, 
-petals scattered on ground, backlit by warm sunset, cinematic editorial photography"
--->
 
 <!-- ═══════════════════════════════════════════
      SCROLL TO TOP
@@ -1582,5 +1494,79 @@ petals scattered on ground, backlit by warm sunset, cinematic editorial photogra
   }
 </script>
 
+
+<!-- ── RECOMMENDED READS: random posts pulled live from /blogs/posts.json ── -->
+<script>
+  (function loadRecommendedReads() {
+    const grid = document.getElementById('recGrid');
+    if (!grid) return;
+
+    // Derive this article's own slug from the URL (/blogs/{slug}/{slug}.html)
+    // so the post never has to exclude itself by a hardcoded name.
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const currentSlug = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : '';
+
+    const PICKS = 3; // how many recommended cards to show
+
+    fetch('/blogs/posts.json')
+      .then(res => res.json())
+      .then(entries => {
+        const candidates = entries
+          .filter(e => e.slug !== currentSlug)
+          .sort(() => Math.random() - 0.5)
+          .slice(0, PICKS);
+
+        return Promise.all(candidates.map(entry =>
+          fetch(`/blogs/${entry.slug}/${entry.slug}.html`)
+            .then(res => res.text())
+            .then(html => {
+              const doc = new DOMParser().parseFromString(html, 'text/html');
+              const meta = name => {
+                const el = doc.querySelector(`meta[property="${name}"], meta[name="${name}"]`);
+                return el ? el.getAttribute('content') : '';
+              };
+              const heroMetaSpans = Array.from(doc.querySelectorAll('.hero-meta span'))
+                .map(s => s.textContent.trim().replace(/^[·✦]\s*/, ''));
+              const heroImg = doc.querySelector('.hero-img');
+              const eyebrow = doc.querySelector('.hero-eyebrow');
+
+              return {
+                slug: entry.slug,
+                title: meta('og:title') || (doc.querySelector('h1.hero-title')?.textContent.trim() || ''),
+                excerpt: meta('og:description') || '',
+                tag: (eyebrow ? eyebrow.textContent.trim() : '') || meta('article:section') || '',
+                readTime: heroMetaSpans[2] || '',
+                alt: heroImg ? heroImg.getAttribute('alt') : ''
+              };
+            })
+            .catch(err => { console.error(`Failed to load /blogs/${entry.slug}/${entry.slug}.html`, err); return null; })
+        ));
+      })
+      .then(posts => posts.filter(Boolean))
+      .then(posts => {
+        if (!posts.length) {
+          const section = document.querySelector('.recommended-reads');
+          if (section) section.style.display = 'none';
+          return;
+        }
+        grid.innerHTML = posts.map(post => {
+          const url = `/blogs/${post.slug}/${post.slug}.html`;
+          const img = `/blogs/${post.slug}/hero.webp`;
+          return `
+            <a class="rec-card" href="${url}">
+              <div class="rec-card-img-wrap">
+                <img class="rec-card-img" src="${img}" alt="${post.alt || post.title}" loading="lazy">
+              </div>
+              <span class="rec-card-tag">${post.tag}</span>
+              <h3 class="rec-card-title">${post.title}</h3>
+              <p class="rec-card-excerpt">${post.excerpt}</p>
+              <div class="rec-card-meta"><span>${post.tag}</span><span>${post.readTime}</span></div>
+            </a>
+          `;
+        }).join('');
+      })
+      .catch(err => console.error('Failed to load /blogs/posts.json:', err));
+  })();
+</script>
 </body>
 </html>
