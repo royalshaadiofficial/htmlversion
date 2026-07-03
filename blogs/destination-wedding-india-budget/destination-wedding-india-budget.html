@@ -668,16 +668,24 @@
 <!-- ═══════════════════════════════════════════
      TOPBAR
 ═══════════════════════════════════════════ -->
-<header class="topbar" role="banner">
-  <a class="topbar-logo" href="https://royalsaadi.co.in">Royal Saadi</a>
-  <nav aria-label="Primary navigation">
-    <ul class="topbar-nav">
-      <li><a href="https://royalsaadi.co.in/weddings">Weddings</a></li>
-      <li><a href="https://royalsaadi.co.in/lifestyle">Lifestyle</a></li>
-      <li><a href="https://royalsaadi.co.in/fashion">Fashion</a></li>
-      <li><a href="https://royalsaadi.co.in/blog">Blog</a></li>
-    </ul>
+<!-- TOP BAR -->
+<header class="topbar" id="topbar">
+  <a href="/" class="topbar-brand">
+    <img src="/logo.webp" alt="Royal Shaadi logo" class="topbar-brand-logo">
+    <span class="topbar-brand-text">
+      <span class="topbar-logo-text">Royal Shaadi</span>
+      <span class="topbar-tagline">Modern Indian Weddings</span>
+    </span>
+  </a>
+  <nav class="topbar-links" id="topbar-nav" aria-label="Primary navigation">
+    <a href="https://planner.royalshaadi.co.in" target="_self">Planner</a>
+    <a href="https://vendor.royalshaadi.co.in" target="_self">Vendor</a>
+    <a href="/blogs.html">Blog</a>
+    <a href="/subscribe" class="topbar-cta">Subscribe</a>
   </nav>
+  <button class="menu-toggle" aria-label="Open menu" onclick="document.getElementById('topbar-nav').classList.toggle('open')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
 </header>
 
 <div id="progress-bar" role="progressbar" aria-label="Reading progress"></div>
