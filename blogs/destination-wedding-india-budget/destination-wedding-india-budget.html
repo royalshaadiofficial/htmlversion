@@ -634,6 +634,81 @@
     }
 
     /* ═══════════════════════════════════════════
+       RECOMMENDED READS
+    ═══════════════════════════════════════════ */
+    .recommended-reads {
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+    .recommended-reads h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--burgundy);
+      margin-bottom: 24px;
+    }
+    .rec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .rec-card {
+      display: block;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .rec-card:hover {
+      text-decoration: none;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(44,44,44,0.1);
+    }
+    .rec-card-img-wrap {
+      aspect-ratio: 16/9;
+      background: var(--rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .rec-card-img { width: 100%; height: 100%; object-fit: cover; }
+    .rec-card-tag {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 16px 16px 6px;
+    }
+    .rec-card-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      color: var(--burgundy);
+      line-height: 1.35;
+      margin: 0 16px 8px;
+    }
+    .rec-card-excerpt {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.5;
+      margin: 0 16px 14px;
+    }
+    .rec-card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin: 0 16px 16px;
+    }
+
+    /* ═══════════════════════════════════════════
        SCROLL TO TOP
     ═══════════════════════════════════════════ */
     #scroll-top {
@@ -1501,78 +1576,6 @@
 </script>
 
 
-<!-- ── RECOMMENDED READS: random posts pulled live from /blogs/posts.json ── -->
-<script>
-  (function loadRecommendedReads() {
-    const grid = document.getElementById('recGrid');
-    if (!grid) return;
 
-    // Derive this article's own slug from the URL (/blogs/{slug}/{slug}.html)
-    // so the post never has to exclude itself by a hardcoded name.
-    const pathParts = window.location.pathname.split('/').filter(Boolean);
-    const currentSlug = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : '';
-
-    const PICKS = 3; // how many recommended cards to show
-
-    fetch('/blogs/posts.json')
-      .then(res => res.json())
-      .then(entries => {
-        const candidates = entries
-          .filter(e => e.slug !== currentSlug)
-          .sort(() => Math.random() - 0.5)
-          .slice(0, PICKS);
-
-        return Promise.all(candidates.map(entry =>
-          fetch(`/blogs/${entry.slug}/${entry.slug}.html`)
-            .then(res => res.text())
-            .then(html => {
-              const doc = new DOMParser().parseFromString(html, 'text/html');
-              const meta = name => {
-                const el = doc.querySelector(`meta[property="${name}"], meta[name="${name}"]`);
-                return el ? el.getAttribute('content') : '';
-              };
-              const heroMetaSpans = Array.from(doc.querySelectorAll('.hero-meta span'))
-                .map(s => s.textContent.trim().replace(/^[·✦]\s*/, ''));
-              const heroImg = doc.querySelector('.hero-img');
-              const eyebrow = doc.querySelector('.hero-eyebrow');
-
-              return {
-                slug: entry.slug,
-                title: meta('og:title') || (doc.querySelector('h1.hero-title')?.textContent.trim() || ''),
-                excerpt: meta('og:description') || '',
-                tag: (eyebrow ? eyebrow.textContent.trim() : '') || meta('article:section') || '',
-                readTime: heroMetaSpans[2] || '',
-                alt: heroImg ? heroImg.getAttribute('alt') : ''
-              };
-            })
-            .catch(err => { console.error(`Failed to load /blogs/${entry.slug}/${entry.slug}.html`, err); return null; })
-        ));
-      })
-      .then(posts => posts.filter(Boolean))
-      .then(posts => {
-        if (!posts.length) {
-          const section = document.querySelector('.recommended-reads');
-          if (section) section.style.display = 'none';
-          return;
-        }
-        grid.innerHTML = posts.map(post => {
-          const url = `/blogs/${post.slug}/${post.slug}.html`;
-          const img = `/blogs/${post.slug}/hero.webp`;
-          return `
-            <a class="rec-card" href="${url}">
-              <div class="rec-card-img-wrap">
-                <img class="rec-card-img" src="${img}" alt="${post.alt || post.title}" loading="lazy">
-              </div>
-              <span class="rec-card-tag">${post.tag}</span>
-              <h3 class="rec-card-title">${post.title}</h3>
-              <p class="rec-card-excerpt">${post.excerpt}</p>
-              <div class="rec-card-meta"><span>${post.tag}</span><span>${post.readTime}</span></div>
-            </a>
-          `;
-        }).join('');
-      })
-      .catch(err => console.error('Failed to load /blogs/posts.json:', err));
-  })();
-</script>
 </body>
 </html>
