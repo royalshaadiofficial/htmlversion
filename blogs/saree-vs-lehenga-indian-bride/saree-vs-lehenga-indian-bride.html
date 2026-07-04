@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="/logo.webp" type="image/webp">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9083664222221461"
+     crossorigin="anonymous"></script>
 
 <style>
   :root {
@@ -64,6 +66,7 @@
   }
   .topbar.scrolled { box-shadow: 0 4px 24px rgba(26,26,24,0.06); }
   .topbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .topbar-brand-logo { width: 40px; height: 40px; object-fit: contain; flex-shrink: 0; display: block; }
   .topbar-logo-text { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); }
   .topbar-tagline { font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
   .topbar-links { display: flex; gap: 36px; align-items: center; }
@@ -318,6 +321,7 @@
 
   /* RECOMMENDED READS */
   .recommended-reads {
+    grid-column: 1 / -1;
     max-width: 1200px; margin: 0 auto; padding: 0 40px 72px;
   }
   .recommended-reads-title {
