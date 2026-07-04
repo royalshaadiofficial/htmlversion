@@ -315,6 +315,51 @@
   .sidebar-info p { font-size: 0.82rem; color: var(--gold-dark); line-height: 1.6; margin-bottom: 14px; }
   .sidebar-info a { font-size: 0.78rem; color: var(--gold-dark); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 
+  /* RECOMMENDED READS */
+  .recommended-reads {
+    max-width: 1200px; margin: 0 auto; padding: 0 40px 72px;
+  }
+  .recommended-reads-title {
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+    color: var(--deep); margin-bottom: 20px;
+  }
+  .rec-grid {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;
+  }
+  .rec-card {
+    display: block; text-decoration: none; background: var(--white);
+    border: 1px solid var(--border-strong); border-radius: 14px; overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .rec-card:hover {
+    transform: translateY(-3px); box-shadow: 0 10px 26px rgba(26,26,24,0.07);
+  }
+  .rec-card-img-wrap {
+    aspect-ratio: 16 / 10; overflow: hidden; background: #EDE7DA;
+  }
+  .rec-card-img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .rec-card-body {
+    padding: 18px 18px 20px;
+  }
+  .rec-card-tag {
+    display: inline-block; font-size: 0.7rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold-dark); margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .rec-card-title {
+    font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+    color: var(--deep); line-height: 1.35; margin-bottom: 8px;
+  }
+  .rec-card-excerpt {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.6; margin-bottom: 12px;
+  }
+  .rec-card-meta {
+    display: flex; justify-content: space-between; gap: 12px; font-size: 0.78rem;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
   /* CTA BLOCK */
   .cta-block {
     background: var(--deep); border-radius: 16px; padding: 48px 40px;
@@ -371,6 +416,8 @@
     .topbar-links { display: none; }
     .page-wrap { grid-template-columns: 1fr; gap: 0; padding: 40px 24px; }
     .sidebar { position: static; margin-top: 48px; }
+    .recommended-reads { padding: 0 24px 56px; }
+    .rec-grid { grid-template-columns: 1fr 1fr; }
     .hero-content { padding: 0 28px 40px; }
     .hero-motif { display: none; }
     .stat-row { grid-template-columns: 1fr; }
@@ -898,6 +945,11 @@
   </div>
 </footer>
 
+<section class="recommended-reads" aria-label="Recommended reads">
+  <div class="recommended-reads-title">Recommended Reads</div>
+  <div class="rec-grid" id="recGrid"></div>
+</section>
+
 <!-- SCROLL TO TOP -->
 <button id="scrollTop" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -959,23 +1011,30 @@
     const grid = document.getElementById('recGrid');
     if (!grid) return;
 
-    // Derive this article's own slug from the URL (/blogs/{slug}/{slug}.html)
-    // so the post never has to exclude itself by a hardcoded name.
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     const currentSlug = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : '';
+    const PICKS = 3;
 
-    const PICKS = 3; // how many recommended cards to show
+    const postsJsonUrl = '../posts.json';
+    const articleBaseUrl = '../';
 
-    fetch('/blogs/posts.json')
+    const escapeHtml = value => String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/\"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+    fetch(postsJsonUrl)
       .then(res => res.json())
       .then(entries => {
         const candidates = entries
-          .filter(e => e.slug !== currentSlug)
+          .filter(e => e.slug && e.slug !== currentSlug)
           .sort(() => Math.random() - 0.5)
           .slice(0, PICKS);
 
         return Promise.all(candidates.map(entry =>
-          fetch(`/blogs/${entry.slug}/${entry.slug}.html`)
+          fetch(`${articleBaseUrl}${entry.slug}/${entry.slug}.html`)
             .then(res => res.text())
             .then(html => {
               const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -985,7 +1044,7 @@
               };
               const heroMetaSpans = Array.from(doc.querySelectorAll('.hero-meta span'))
                 .map(s => s.textContent.trim().replace(/^[·✦]\s*/, ''));
-              const heroImg = doc.querySelector('.hero-img');
+              const heroImg = doc.querySelector('.hero-image, .hero-img, .hero img');
               const eyebrow = doc.querySelector('.hero-eyebrow');
 
               return {
@@ -997,7 +1056,7 @@
                 alt: heroImg ? heroImg.getAttribute('alt') : ''
               };
             })
-            .catch(err => { console.error(`Failed to load /blogs/${entry.slug}/${entry.slug}.html`, err); return null; })
+            .catch(err => { console.error(`Failed to load ${entry.slug}`, err); return null; })
         ));
       })
       .then(posts => posts.filter(Boolean))
@@ -1008,22 +1067,24 @@
           return;
         }
         grid.innerHTML = posts.map(post => {
-          const url = `/blogs/${post.slug}/${post.slug}.html`;
-          const img = `/blogs/${post.slug}/hero.webp`;
+          const url = `${articleBaseUrl}${post.slug}/${post.slug}.html`;
+          const img = `${articleBaseUrl}${post.slug}/hero.webp`;
           return `
             <a class="rec-card" href="${url}">
               <div class="rec-card-img-wrap">
-                <img class="rec-card-img" src="${img}" alt="${post.alt || post.title}" loading="lazy">
+                <img class="rec-card-img" src="${img}" alt="${escapeHtml(post.alt || post.title)}" loading="lazy">
               </div>
-              <span class="rec-card-tag">${post.tag}</span>
-              <h3 class="rec-card-title">${post.title}</h3>
-              <p class="rec-card-excerpt">${post.excerpt}</p>
-              <div class="rec-card-meta"><span>${post.tag}</span><span>${post.readTime}</span></div>
+              <div class="rec-card-body">
+                <span class="rec-card-tag">${escapeHtml(post.tag || 'Blog')}</span>
+                <h3 class="rec-card-title">${escapeHtml(post.title)}</h3>
+                <p class="rec-card-excerpt">${escapeHtml(post.excerpt)}</p>
+                <div class="rec-card-meta"><span>${escapeHtml(post.tag || 'Read')}</span><span>${escapeHtml(post.readTime)}</span></div>
+              </div>
             </a>
           `;
         }).join('');
       })
-      .catch(err => console.error('Failed to load /blogs/posts.json:', err));
+      .catch(err => console.error('Failed to load recommended reads:', err));
   })();
 </script>
 
