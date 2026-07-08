@@ -1,419 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vendors — RoyalShaadi</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9083664222221461" crossorigin="anonymous"></script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MSM88SXB');</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BN8H58LK9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0BN8H58LK9');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dream Vendors — Royal Shaadi | Indian Wedding Professionals</title>
+  <meta name="description" content="Find the finest Indian wedding vendors. From luxury venues and high-end photographers to exquisite bridal wear and catering.">
+
+  <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+  <link rel="icon" type="image/webp" href="/logo.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --ivory: #faf7f2; --cream: #f3ece0; --blush: #e8c9b0;
-      --rose: #c9736b; --maroon: #8b2635; --gold: #c9a84c;
-      --gold-light: #e8d5a3; --dark: #1a1008; --text: #2c1a0e;
-      --muted: #7a6050; --white: #ffffff;
+      --ink: #1A1A18;
+      --muted: #767069;
+      --line: #E8E4DD;
+      --line-strong: #D8D2C8;
+      --surface: #FBFAF7;
+      --white: #FFFFFF;
+      --accent: #C75B39;
+      --accent-soft: #FBE9E2;
+      --olive: #6B7156;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
     }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Jost', sans-serif; background: var(--ivory); color: var(--text); }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    img { max-width: 100%; display: block; }
 
-    /* NAV */
-    nav { position: sticky; top: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 72px; background: rgba(250,247,242,0.95); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(201,168,76,0.2); box-shadow: 0 2px 20px rgba(26,16,8,0.06); }
-    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--maroon); letter-spacing: 0.05em; text-decoration: none; }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; align-items: center; gap: 2rem; }
-    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.85rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--maroon); }
-    .btn-vendor { background: var(--maroon); color: var(--white) !important; padding: 0.5rem 1.4rem; border-radius: 2px; }
-    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; }
+    body {
+      font-family: var(--font-body);
+      background: var(--surface);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-    /* HERO */
-    .vendors-hero { background: linear-gradient(135deg, #1a1008, #3d1f12, #8b2635); padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
-    .vendors-hero::before { content: ''; position: absolute; inset: 0; opacity: 0.05; background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-    .vendors-hero-inner { position: relative; z-index: 1; }
-    .page-eyebrow { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
-    .page-eyebrow::before, .page-eyebrow::after { content: ''; width: 30px; height: 1px; background: var(--gold); opacity: 0.5; }
-    .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 300; color: var(--ivory); margin-bottom: 0.5rem; }
-    .page-title em { color: var(--gold); font-style: italic; }
-    .page-subtitle { color: rgba(250,247,242,0.6); font-size: 1rem; margin-bottom: 2.5rem; }
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(251,250,247,0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .topbar.hide-bar { transform: translateY(-100%); }
+    .topbar.scrolled { box-shadow: 0 4px 24px rgba(26,26,24,0.06); }
+    .topbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .topbar-brand-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 8px; }
+    .topbar-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .topbar-tagline { font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .topbar-links { display: flex; gap: 36px; align-items: center; }
+    .topbar-links a { font-size: 0.85rem; color: var(--ink); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .topbar-links a:hover { color: var(--accent); }
+    .topbar-cta { background: var(--ink); color: var(--white) !important; padding: 10px 22px; border-radius: 100px; font-size: 0.8rem !important; }
+    .topbar-cta:hover { background: var(--accent) !important; }
 
-    /* STATS BAR */
-    .stats-bar { background: var(--cream); border-top: 1px solid rgba(201,168,76,0.2); border-bottom: 1px solid rgba(201,168,76,0.2); }
-    .stats-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: center; }
-    .stat-item { flex: 1; max-width: 200px; text-align: center; padding: 1.5rem 1rem; border-right: 1px solid rgba(201,168,76,0.2); }
+  .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--ink); padding: 4px; }
+  .menu-toggle svg { width: 24px; height: 24px; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 48px 80px;
+      background: var(--ink);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(199,91,57,0.15) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; font-weight: 600; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.1; margin-bottom: 20px; }
+    .hero-title em { color: var(--accent-soft); font-style: italic; font-weight: 500; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: var(--white); border-bottom: 1px solid var(--line); }
+    .stats-inner { max-width: 1240px; margin: 0 auto; padding: 0 48px; display: flex; justify-content: space-between; }
+    .stat-item { flex: 1; text-align: center; padding: 32px 0; border-right: 1px solid var(--line); }
     .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--maroon); line-height: 1; }
-    .stat-label { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
+    .stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 600; color: var(--accent); line-height: 1; }
+    .stat-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 6px; font-weight: 600; }
 
-    /* MAIN */
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
-    .vendors-main { padding: 4rem 0 6rem; }
+    /* ── MAIN CONTENT ── */
+    .section { max-width: 1240px; margin: 0 auto; padding: 80px 48px; }
 
-    /* SEARCH + FILTER ROW */
-    .vendor-controls { display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; }
-    .vendor-search-wrap { position: relative; flex: 1; min-width: 260px; }
-    .vendor-search { width: 100%; padding: 0.85rem 1rem 0.85rem 3rem; background: var(--white); border: 1px solid var(--blush); border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--text); outline: none; transition: border-color 0.2s; }
-    .vendor-search:focus { border-color: var(--gold); }
-    .vendor-search-icon { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); }
-    .vendor-city-select { padding: 0.85rem 1rem; background: var(--white); border: 1px solid var(--blush); border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.85rem; color: var(--text); outline: none; cursor: pointer; min-width: 160px; }
+    /* SEARCH & FILTERS */
+    .filters-row { display: flex; gap: 16px; margin-bottom: 48px; flex-wrap: wrap; }
+    .search-wrap { flex: 1; position: relative; min-width: 300px; }
+    .search-input {
+      width: 100%; padding: 14px 20px 14px 48px; border-radius: 100px; border: 1px solid var(--line-strong);
+      background: var(--white); font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+    .city-select {
+      padding: 0 24px; border-radius: 100px; border: 1px solid var(--line-strong); background: var(--white);
+      font-family: var(--font-body); font-size: 0.9rem; color: var(--ink); cursor: pointer; outline: none;
+    }
 
-    /* CATEGORY SIDEBAR + GRID */
-    .vendors-layout { display: grid; grid-template-columns: 220px 1fr; gap: 3rem; align-items: start; }
-    .vendor-sidebar { position: sticky; top: 90px; }
-    .sidebar-title { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .sidebar-cats { list-style: none; }
-    .sidebar-cat { margin-bottom: 0.25rem; }
-    .sidebar-cat a { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.75rem; text-decoration: none; font-size: 0.85rem; color: var(--muted); border-radius: 2px; transition: all 0.2s; border-left: 2px solid transparent; }
-    .sidebar-cat a:hover, .sidebar-cat a.active { color: var(--text); background: rgba(201,168,76,0.08); border-left-color: var(--gold); }
-    .sidebar-cat a .cat-count { margin-left: auto; font-size: 0.72rem; background: var(--cream); padding: 0.15rem 0.5rem; border-radius: 10px; }
+    .layout { display: grid; grid-template-columns: 240px 1fr; gap: 56px; }
+
+    /* SIDEBAR */
+    .sidebar-title { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; font-weight: 700; }
+    .cat-list { list-style: none; }
+    .cat-item { margin-bottom: 8px; }
+    .cat-link {
+      display: flex; align-items: center; gap: 12px; padding: 10px 16px; text-decoration: none;
+      color: var(--muted); font-size: 0.88rem; font-weight: 500; border-radius: 8px; transition: all 0.2s;
+    }
+    .cat-link:hover { background: var(--accent-soft); color: var(--accent); }
+    .cat-link.active { background: var(--accent); color: var(--white); }
+    .cat-count { margin-left: auto; font-size: 0.7rem; opacity: 0.7; }
 
     /* VENDOR GRID */
-    .vendor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .vendor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
     .v-card {
-      background: var(--white); border-radius: 2px;
-      overflow: hidden; text-decoration: none; color: inherit;
-      box-shadow: 0 2px 16px rgba(26,16,8,0.07);
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex; flex-direction: column;
-      animation: fadeIn 0.4s ease both;
+      background: var(--white); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+      text-decoration: none; color: inherit; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column;
     }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-    .v-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(26,16,8,0.13); }
-    .v-card-img { aspect-ratio: 4/3; background: var(--cream); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-    .v-card-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .v-card:hover .v-card-img img { transform: scale(1.06); }
-    .v-premium-badge { position: absolute; top: 0.75rem; right: 0.75rem; background: var(--gold); color: var(--dark); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 1px; }
-    .v-card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
-    .v-cat-tag { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--maroon); margin-bottom: 0.5rem; }
-    .v-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text); margin-bottom: 0.3rem; line-height: 1.3; }
-    .v-city { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.6rem; }
-    .v-stars { color: var(--gold); font-size: 0.8rem; }
-    .v-reviews { font-size: 0.72rem; color: var(--muted); margin-left: 0.35rem; }
-    .v-price { font-size: 0.8rem; color: var(--muted); margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px solid var(--cream); }
-    .v-price strong { color: var(--maroon); }
+    .v-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(26,26,24,0.08); }
+    .v-img-wrap { aspect-ratio: 4/3; background: var(--line); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+    .v-premium { position: absolute; top: 12px; right: 12px; background: var(--accent); color: #FFF; font-size: 0.6rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .v-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .v-cat { font-size: 0.7rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .v-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; line-height: 1.3; }
+    .v-city { font-size: 0.8rem; color: var(--muted); margin-bottom: 12px; display: flex; align-items: center; gap: 4px; }
+    .v-rating { color: #E67E22; font-size: 0.85rem; font-weight: 600; margin-bottom: 16px; border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto; }
+    .v-price { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+    .v-price span { color: var(--muted); font-weight: 400; }
 
-    /* LIST YOUR BIZ CTA */
-    .list-cta { background: var(--dark); padding: 6rem 2rem; text-align: center; position: relative; overflow: hidden; }
-    .list-cta::before { content: ''; position: absolute; inset: 0; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='1'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
-    .list-cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
-    .cta-eyebrow { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: var(--ivory); margin-bottom: 1rem; }
-    .cta-title em { color: var(--gold); font-style: italic; }
-    .cta-desc { color: rgba(250,247,242,0.55); margin-bottom: 2rem; line-height: 1.8; }
-    .cta-benefits { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-    .cta-benefit { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(250,247,242,0.7); }
-    .cta-benefit::before { content: '✓'; color: var(--gold); font-weight: 700; }
-    .btn-primary { background: var(--gold); color: var(--dark); padding: 0.85rem 2.5rem; border-radius: 2px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; transition: all 0.25s; display: inline-block; }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+    /* ── SCROLL TO TOP ── */
+    .scroll-top {
+      position: fixed; bottom: 32px; right: 32px; width: 50px; height: 50px;
+      border-radius: 50%; background: var(--ink); color: #FFF; border: none;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(26,26,24,0.25); z-index: 99;
+      opacity: 0; transform: translateY(16px) scale(0.9); pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .scroll-top:hover { background: var(--accent); }
+    .scroll-top svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2.5; }
 
-    /* LISTING FORM MODAL */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,16,8,0.75); z-index: 2000; align-items: center; justify-content: center; padding: 2rem; }
+    /* CTA SECTION */
+    .cta-section { background: var(--ink); color: var(--white); border-radius: 12px; padding: 64px; text-align: center; margin-top: 80px; position: relative; overflow: hidden; }
+    .cta-title { font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 16px; }
+    .cta-desc { color: rgba(255,255,255,0.6); max-width: 500px; margin: 0 auto 32px; }
+    .cta-btn { background: var(--accent); color: #FFF; padding: 16px 40px; border-radius: 100px; text-decoration: none; font-weight: 600; display: inline-block; transition: background 0.2s; border: none; cursor: pointer; }
+    .cta-btn:hover { background: #B14E2E; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,26,24,0.8); z-index: 1000; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(4px); }
     .modal-overlay.open { display: flex; }
-    .modal { background: var(--white); max-width: 560px; width: 100%; border-radius: 2px; overflow: hidden; max-height: 90vh; overflow-y: auto; animation: slideUp 0.35s ease; }
-    @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
-    .modal-header { background: linear-gradient(135deg, var(--maroon), var(--dark)); padding: 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--ivory); }
-    .modal-close { background: none; border: none; color: rgba(250,247,242,0.6); font-size: 1.5rem; cursor: pointer; transition: color 0.2s; }
-    .modal-close:hover { color: var(--gold); }
-    .modal-body { padding: 2rem; }
-    .form-group { margin-bottom: 1.5rem; }
-    .form-label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
-    .form-input, .form-select, .form-textarea { width: 100%; padding: 0.8rem 1rem; background: var(--cream); border: 1px solid var(--blush); border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--text); outline: none; transition: border-color 0.2s; }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); background: var(--ivory); }
-    .form-textarea { min-height: 100px; resize: vertical; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-submit { width: 100%; background: var(--maroon); color: var(--white); border: none; padding: 1rem; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.25s; margin-top: 0.5rem; }
-    .form-submit:hover { background: var(--rose); }
+    .modal { background: var(--white); max-width: 500px; width: 100%; border-radius: 12px; overflow: hidden; position: relative; animation: slideUp 0.4s ease; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-head { background: var(--surface); padding: 32px; border-bottom: 1px solid var(--line); }
+    .modal-title { font-family: var(--font-display); font-size: 1.5rem; }
+    .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); }
+    .modal-body { padding: 32px; }
+    .form-group { margin-bottom: 20px; }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 8px; }
+    .form-input { width: 100%; padding: 12px 16px; border: 1px solid var(--line-strong); border-radius: 8px; font-family: var(--font-body); font-size: 0.9rem; outline: none; }
+    .form-input:focus { border-color: var(--accent); }
+    .form-submit { width: 100%; background: var(--ink); color: #FFF; padding: 14px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
 
     /* FOOTER */
-    footer { background: var(--dark); padding: 2.5rem; }
-    .footer-bottom { font-size: 0.8rem; color: rgba(250,247,242,0.25); display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; flex-wrap: wrap; gap: 0.5rem; }
-    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold); }
+    footer { background: var(--ink); color: rgba(255,255,255,0.55); padding: 64px 48px 28px; }
+    .footer-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: #FFF; margin-bottom: 14px; display: block; text-decoration: none; }
+    .footer-heading { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { max-width: 1240px; margin: 0 auto; padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.78rem; }
 
-    /* RESPONSIVE */
-    @media (max-width: 1024px) { .vendors-layout { grid-template-columns: 180px 1fr; } .vendor-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 768px) {
-      nav { padding: 0 1.5rem; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; flex-direction: column; gap: 5px; }
-      .ham-bar { width: 24px; height: 2px; background: var(--text); }
-      .vendors-layout { grid-template-columns: 1fr; }
-      .vendor-sidebar { position: static; }
-      .sidebar-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-      .sidebar-cat a { border-left: none; border: 1px solid var(--blush); border-radius: 20px; padding: 0.4rem 0.9rem; font-size: 0.78rem; }
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      .vendor-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .topbar { padding: 14px 20px; }
+      .topbar-links {
+        display: none; position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--surface); flex-direction: column; gap: 0; border-bottom: 1px solid var(--line);
+        box-shadow: 0 8px 20px rgba(26,26,24,0.08); padding: 8px 0;
+      }
+      .topbar-links.open { display: flex; }
+      .topbar-links a { padding: 16px 24px; border-top: 1px solid var(--line); }
+      .topbar-cta { margin: 8px 24px; text-align: center; }
+      .menu-toggle { display: block; }
+      .hero { padding: 120px 20px 64px; }
+      .section { padding: 48px 20px; }
       .vendor-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
+      .stats-inner { flex-wrap: wrap; }
+      .stat-item { flex: 50%; border: none; }
+      .footer-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <a href="index.html" class="nav-logo">Royal<span>Shaadi</span></a>
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
+  <header class="topbar" id="topbar">
+    <a href="/" class="topbar-brand">
+      <img src="/logo.webp" alt="Royal Shaadi logo" class="topbar-brand-logo">
+      <span class="topbar-brand-text">
+        <span class="topbar-logo">Royal Shaadi</span>
+        <span class="topbar-tagline">Modern Indian Weddings</span>
+      </span>
+    </a>
+    <nav class="topbar-links" aria-label="Primary navigation">
+      <a href="wedding-calendar.html">Wedding Calendar</a>
+      <a href="planner.html">Planner</a>
+      <a href="vendors.html">Vendor</a>
       <a href="blogs.html">Blog</a>
-      <a href="vendors.html">Vendors</a>
-      <a href="#" onclick="openModal()" class="btn-vendor">List Your Business</a>
-    </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <span class="ham-bar"></span>
-      <span class="ham-bar"></span>
-      <span class="ham-bar"></span>
+      <a href="/subscribe" class="topbar-cta">Subscribe</a>
+    </nav>
+    <button class="menu-toggle" aria-label="Open menu" onclick="document.querySelector('.topbar-links').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
-  </nav>
+  </header>
 
-  <div class="vendors-hero">
-    <div class="vendors-hero-inner">
-      <div class="page-eyebrow">Curated Excellence</div>
-      <h1 class="page-title">Find Your <em>Dream Vendors</em></h1>
-      <p class="page-subtitle">India's finest wedding professionals, all in one place</p>
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">The Royal Collection</p>
+      <h1 class="hero-title">Find Your <em>Dream Wedding</em> Team</h1>
+      <p class="hero-sub">A curated selection of India's most prestigious wedding professionals, from cinematic storytellers to master chefs.</p>
     </div>
-  </div>
+  </section>
 
   <div class="stats-bar">
     <div class="stats-inner">
-      <div class="stat-item"><div class="stat-num">1,200+</div><div class="stat-label">Verified Vendors</div></div>
-      <div class="stat-item"><div class="stat-num">48</div><div class="stat-label">Cities Covered</div></div>
-      <div class="stat-item"><div class="stat-num">12K+</div><div class="stat-label">Happy Couples</div></div>
-      <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Average Rating</div></div>
+      <div class="stat-item"><div class="stat-num">2,400+</div><div class="stat-label">Verified Vendors</div></div>
+      <div class="stat-item"><div class="stat-num">52</div><div class="stat-label">Cities Covered</div></div>
+      <div class="stat-item"><div class="stat-num">18K+</div><div class="stat-label">Successful Events</div></div>
+      <div class="stat-item"><div class="stat-num">4.9/5</div><div class="stat-label">Avg. User Rating</div></div>
     </div>
   </div>
 
-  <div class="vendors-main">
-    <div class="container">
-      <!-- Controls -->
-      <div class="vendor-controls">
-        <div class="vendor-search-wrap">
-          <span class="vendor-search-icon">🔍</span>
-          <input type="text" id="vendorSearch" class="vendor-search" placeholder="Search vendors by name, style…"/>
-        </div>
-        <select class="vendor-city-select" id="cityFilter">
-          <option value="">All Cities</option>
-          <option>Delhi NCR</option>
-          <option>Mumbai</option>
-          <option>Bangalore</option>
-          <option>Jaipur</option>
-          <option>Hyderabad</option>
-          <option>Chennai</option>
-          <option>Kolkata</option>
-          <option>Udaipur</option>
-          <option>Lucknow</option>
-          <option>Pune</option>
-        </select>
+  <main class="section">
+    <div class="filters-row">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="vendorSearch" class="search-input" placeholder="Search by name, category, or style...">
       </div>
+      <select id="cityFilter" class="city-select">
+        <option value="">All Cities</option>
+        <option>Delhi NCR</option>
+        <option>Mumbai</option>
+        <option>Bangalore</option>
+        <option>Jaipur</option>
+        <option>Hyderabad</option>
+        <option>Udaipur</option>
+        <option>Goa</option>
+        <option>Chennai</option>
+        <option>Kolkata</option>
+      </select>
+    </div>
 
-      <div class="vendors-layout">
-        <!-- Sidebar -->
-        <aside class="vendor-sidebar">
-          <div class="sidebar-title">Categories</div>
-          <ul class="sidebar-cats" id="sidebarCats">
-            <li class="sidebar-cat"><a href="#" data-cat="all" class="active"><span>🏠</span> All Vendors <span class="cat-count">48</span></a></li>
-            <li class="sidebar-cat"><a href="#food" data-cat="Food & Catering"><span>🍛</span> Food & Catering <span class="cat-count">12</span></a></li>
-            <li class="sidebar-cat"><a href="#decoration" data-cat="Decoration"><span>🌸</span> Decoration <span class="cat-count">10</span></a></li>
-            <li class="sidebar-cat"><a href="#photography" data-cat="Photography"><span>📸</span> Photography <span class="cat-count">8</span></a></li>
-            <li class="sidebar-cat"><a href="#venues" data-cat="Venues"><span>🏰</span> Venues <span class="cat-count">6</span></a></li>
-            <li class="sidebar-cat"><a href="#bridal" data-cat="Bridal Wear"><span>👰</span> Bridal Wear <span class="cat-count">7</span></a></li>
-            <li class="sidebar-cat"><a href="#music" data-cat="Music & DJ"><span>🎵</span> Music & DJ <span class="cat-count">5</span></a></li>
-          </ul>
-        </aside>
+    <div class="layout">
+      <aside>
+        <div class="sidebar-title">Categories</div>
+        <ul class="cat-list" id="catList">
+          <li class="cat-item"><a href="#" class="cat-link active" data-cat="all">🏠 All Services</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Venues">🏰 Venues</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Photography">📸 Photography</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Food & Catering">🍛 Catering</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Decoration">🌸 Decoration</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Bridal Wear">👰 Bridal Wear</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Music & DJ">🎵 Music & DJ</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Beauty & Makeup">💄 Beauty & Makeup</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Jewellery">💎 Jewellery</a></li>
+          <li class="cat-item"><a href="#" class="cat-link" data-cat="Mehndi">🎨 Mehndi</a></li>
+        </ul>
+      </aside>
 
-        <!-- Grid -->
-        <div>
-          <div class="vendor-grid" id="vendorGrid"></div>
-        </div>
+      <div class="vendor-grid" id="vendorGrid">
+        <!-- Rendered by JS -->
       </div>
     </div>
-  </div>
 
-  <!-- LIST YOUR BUSINESS CTA -->
-  <div class="list-cta" id="list-cta">
-    <div class="list-cta-inner">
-      <div class="cta-eyebrow">For Business Owners</div>
-      <h2 class="cta-title">List Your <em>Business</em> on RoyalShaadi</h2>
-      <p class="cta-desc">Reach thousands of couples planning their dream wedding. Join India's most trusted wedding vendor platform.</p>
-      <div class="cta-benefits">
-        <div class="cta-benefit">Free listing to start</div>
-        <div class="cta-benefit">10,000+ monthly visitors</div>
-        <div class="cta-benefit">Verified badge</div>
-        <div class="cta-benefit">Direct enquiries</div>
-      </div>
-      <button class="btn-primary" onclick="openModal()">List Your Business Free</button>
-    </div>
-  </div>
+    <section class="cta-section">
+      <h2 class="cta-title">Are you a <em>Wedding Professional</em>?</h2>
+      <p class="cta-desc">Join our exclusive network and showcase your services to thousands of couples planning their royal wedding.</p>
+      <button class="cta-btn" onclick="openModal()">List Your Business</button>
+    </section>
+  </main>
 
-  <!-- MODAL -->
-  <div class="modal-overlay" id="listModal">
+  <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
-      <div class="modal-header">
-        <div class="modal-title">List Your Business</div>
-        <button class="modal-close" onclick="closeModal()">×</button>
+      <div class="modal-head">
+        <h3 class="modal-title">Partner with Royal Shaadi</h3>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
       </div>
       <div class="modal-body">
-        <form onsubmit="handleSubmit(event)">
+        <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you shortly.'); closeModal();">
           <div class="form-group">
-            <label class="form-label">Business Name *</label>
-            <input type="text" class="form-input" placeholder="e.g. Saffron Grand Catering" required/>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Category *</label>
-              <select class="form-select" required>
-                <option value="">Select category…</option>
-                <option>Food & Catering</option>
-                <option>Decoration</option>
-                <option>Photography</option>
-                <option>Venues</option>
-                <option>Bridal Wear</option>
-                <option>Music & DJ</option>
-                <option>Beauty & Makeup</option>
-                <option>Jewellery</option>
-                <option>Honeymoon Planning</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label">City *</label>
-              <input type="text" class="form-input" placeholder="e.g. Delhi NCR" required/>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Contact Name *</label>
-              <input type="text" class="form-input" placeholder="Your name" required/>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Phone *</label>
-              <input type="tel" class="form-input" placeholder="+91 98765 43210" required/>
-            </div>
+            <label class="form-label">Business Name</label>
+            <input type="text" class="form-input" placeholder="e.g. Majestic Moments Studio" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Email *</label>
-            <input type="email" class="form-input" placeholder="your@email.com" required/>
+            <label class="form-label">Category</label>
+            <select class="form-input" required>
+              <option value="">Select a category</option>
+              <option>Venues</option>
+              <option>Photography</option>
+              <option>Food & Catering</option>
+              <option>Decoration</option>
+              <option>Bridal Wear</option>
+              <option>Music & DJ</option>
+            </select>
           </div>
           <div class="form-group">
-            <label class="form-label">About Your Business</label>
-            <textarea class="form-textarea" placeholder="Tell couples what makes your service special…"></textarea>
+            <label class="form-label">City</label>
+            <input type="text" class="form-input" placeholder="e.g. Mumbai" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Starting Price</label>
-            <input type="text" class="form-input" placeholder="e.g. ₹50,000 onwards"/>
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required>
           </div>
-          <button type="submit" class="form-submit">Submit Listing Request</button>
+          <button type="submit" class="form-submit">Apply for Listing</button>
         </form>
       </div>
     </div>
   </div>
 
-  <footer>
-    <div class="footer-bottom">
-      <span class="footer-logo">RoyalShaadi</span>
-      <span>© 2025 royalshaadi.co.in</span>
-      <a href="index.html" style="color:rgba(201,168,76,0.7);text-decoration:none;font-size:0.8rem;">← Back to Home</a>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="/" class="footer-logo">Royal Shaadi</a>
+      <p class="footer-desc">Royal Shaadi is your guide to modern Indian weddings — covering bridal fashion, décor, venues, and the trends shaping celebrations across India.</p>
     </div>
-  </footer>
+    <div>
+      <div class="footer-heading">Explore</div>
+      <ul class="footer-links">
+        <li><a href="/weddings">Weddings</a></li>
+        <li><a href="/fashion">Fashion</a></li>
+        <li><a href="/lifestyle">Lifestyle</a></li>
+        <li><a href="/blogs.html">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Company</div>
+      <ul class="footer-links">
+        <li><a href="/about">About Us</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/advertise">Advertise</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Legal</div>
+      <ul class="footer-links">
+        <li><a href="/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Royal Shaadi. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/royalsaadi">Instagram</a>
+      <a href="https://www.facebook.com/royalsaadi">Facebook</a>
+      <a href="https://twitter.com/royalsaadi">Twitter</a>
+    </div>
+  </div>
+</footer>
 
-<script>
-  document.getElementById('hamburger').addEventListener('click', () => {
-    document.getElementById('navLinks').classList.toggle('open');
-  });
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
-  const VENDORS = [
-    { name: 'Regal Rasoi Catering', cat: 'Food & Catering', city: 'Delhi NCR', stars: 5, reviews: 142, price: '₹1,200/plate', premium: true, icon: '🍛' },
-    { name: 'Saffron Grand Feasts', cat: 'Food & Catering', city: 'Mumbai', stars: 5, reviews: 98, price: '₹1,800/plate', premium: true, icon: '🥘' },
-    { name: 'Royal Mithai & Desserts', cat: 'Food & Catering', city: 'Jaipur', stars: 4, reviews: 76, price: 'Custom packages', premium: false, icon: '🎂' },
-    { name: 'Nawabi Daawat Co.', cat: 'Food & Catering', city: 'Lucknow', stars: 5, reviews: 112, price: '₹950/plate', premium: false, icon: '🍽️' },
-    { name: 'Bloom & Splendour', cat: 'Decoration', city: 'Bangalore', stars: 5, reviews: 89, price: 'From ₹2L', premium: true, icon: '🌸' },
-    { name: 'Golden Drape Events', cat: 'Decoration', city: 'Delhi NCR', stars: 5, reviews: 134, price: 'From ₹3.5L', premium: true, icon: '🕯️' },
-    { name: 'Maharaja Mandap', cat: 'Decoration', city: 'Udaipur', stars: 5, reviews: 67, price: 'From ₹5L', premium: false, icon: '✨' },
-    { name: 'Florista Royale', cat: 'Decoration', city: 'Chennai', stars: 4, reviews: 55, price: 'From ₹1.2L', premium: false, icon: '🪷' },
-    { name: 'Frame & Forever Studio', cat: 'Photography', city: 'Mumbai', stars: 5, reviews: 178, price: 'From ₹80,000', premium: true, icon: '📸' },
-    { name: 'Cinematic Weddings Co.', cat: 'Photography', city: 'Hyderabad', stars: 5, reviews: 92, price: 'From ₹1.2L', premium: true, icon: '🎬' },
-    { name: 'Golden Hour Clicks', cat: 'Photography', city: 'Jaipur', stars: 4, reviews: 61, price: 'From ₹60,000', premium: false, icon: '🌄' },
-    { name: 'Palace on Wheels Resort', cat: 'Venues', city: 'Udaipur', stars: 5, reviews: 203, price: 'From ₹15L', premium: true, icon: '🏰' },
-    { name: 'Sea Breeze Grand Banquet', cat: 'Venues', city: 'Goa', stars: 5, reviews: 156, price: 'From ₹8L', premium: true, icon: '🌊' },
-    { name: 'The Imperial Lawns', cat: 'Venues', city: 'Delhi NCR', stars: 4, reviews: 88, price: 'From ₹6L', premium: false, icon: '🏛️' },
-    { name: 'Sabyasachi Boutique Delhi', cat: 'Bridal Wear', city: 'Delhi NCR', stars: 5, reviews: 245, price: 'From ₹2.5L', premium: true, icon: '👰' },
-    { name: 'Anita Dongre Studio', cat: 'Bridal Wear', city: 'Mumbai', stars: 5, reviews: 189, price: 'From ₹1.8L', premium: true, icon: '🥻' },
-    { name: 'Meena Bazaar Couture', cat: 'Bridal Wear', city: 'Delhi NCR', stars: 4, reviews: 301, price: 'From ₹85,000', premium: false, icon: '💎' },
-    { name: 'DJ Shaahi Beats', cat: 'Music & DJ', city: 'Pan India', stars: 5, reviews: 122, price: 'From ₹50,000', premium: true, icon: '🎵' },
-    { name: 'Shehnai & Symphony', cat: 'Music & DJ', city: 'Varanasi', stars: 5, reviews: 74, price: 'From ₹40,000', premium: false, icon: '🎺' },
-    { name: 'Dhol Dynasty', cat: 'Music & DJ', city: 'Amritsar', stars: 4, reviews: 93, price: 'From ₹25,000', premium: false, icon: '🥁' },
-  ];
+  <script>
+    const VENDORS = [
+      { name: 'Regal Rasoi Catering', cat: 'Food & Catering', city: 'Delhi NCR', stars: 5, reviews: 142, price: '₹1,200', unit: '/plate', premium: true, icon: '🍛' },
+      { name: 'Saffron Grand Feasts', cat: 'Food & Catering', city: 'Mumbai', stars: 5, reviews: 98, price: '₹1,800', unit: '/plate', premium: true, icon: '🥘' },
+      { name: 'Royal Mithai & Desserts', cat: 'Food & Catering', city: 'Jaipur', stars: 4, reviews: 76, price: 'Custom', unit: ' Packages', premium: false, icon: '🎂' },
+      { name: 'Nawabi Daawat Co.', cat: 'Food & Catering', city: 'Lucknow', stars: 5, reviews: 112, price: '₹950', unit: '/plate', premium: false, icon: '🍽️' },
+      { name: 'Gourmet Galore', cat: 'Food & Catering', city: 'Bangalore', stars: 5, reviews: 84, price: '₹1,500', unit: '/plate', premium: false, icon: '🥂' },
 
-  let activeCategory = 'all';
+      { name: 'Bloom & Splendour', cat: 'Decoration', city: 'Bangalore', stars: 5, reviews: 89, price: '₹2L', unit: ' onwards', premium: true, icon: '🌸' },
+      { name: 'Golden Drape Events', cat: 'Decoration', city: 'Delhi NCR', stars: 5, reviews: 134, price: '₹3.5L', unit: ' onwards', premium: true, icon: '🕯️' },
+      { name: 'Maharaja Mandap', cat: 'Decoration', city: 'Udaipur', stars: 5, reviews: 67, price: '₹5L', unit: ' onwards', premium: false, icon: '✨' },
+      { name: 'Florista Royale', cat: 'Decoration', city: 'Chennai', stars: 4, reviews: 55, price: '₹1.2L', unit: ' onwards', premium: false, icon: '🪷' },
+      { name: 'Petals & Props', cat: 'Decoration', city: 'Mumbai', stars: 5, reviews: 42, price: '₹2.5L', unit: ' onwards', premium: false, icon: '🎐' },
 
-  function renderVendors() {
-    const q = document.getElementById('vendorSearch').value.trim().toLowerCase();
-    const city = document.getElementById('cityFilter').value;
-    const grid = document.getElementById('vendorGrid');
+      { name: 'Frame & Forever Studio', cat: 'Photography', city: 'Mumbai', stars: 5, reviews: 178, price: '₹80K', unit: ' /day', premium: true, icon: '📸' },
+      { name: 'Cinematic Weddings Co.', cat: 'Photography', city: 'Hyderabad', stars: 5, reviews: 92, price: '₹1.2L', unit: ' /day', premium: true, icon: '🎬' },
+      { name: 'Golden Hour Clicks', cat: 'Photography', city: 'Jaipur', stars: 4, reviews: 61, price: '₹60K', unit: ' /day', premium: false, icon: '🌄' },
+      { name: 'Pixel Perfection', cat: 'Photography', city: 'Delhi NCR', stars: 5, reviews: 104, price: '₹1L', unit: ' /day', premium: false, icon: '📷' },
+      { name: 'Vintage Tales', cat: 'Photography', city: 'Goa', stars: 5, reviews: 53, price: '₹90K', unit: ' /day', premium: false, icon: '🎞️' },
 
-    let filtered = VENDORS.filter(v => {
-      const matchCat = activeCategory === 'all' || v.cat === activeCategory;
-      const matchSearch = !q || v.name.toLowerCase().includes(q) || v.cat.toLowerCase().includes(q) || v.city.toLowerCase().includes(q);
-      const matchCity = !city || v.city === city;
-      return matchCat && matchSearch && matchCity;
-    });
+      { name: 'Palace on Wheels Resort', cat: 'Venues', city: 'Udaipur', stars: 5, reviews: 203, price: '₹15L', unit: ' onwards', premium: true, icon: '🏰' },
+      { name: 'Sea Breeze Grand Banquet', cat: 'Venues', city: 'Goa', stars: 5, reviews: 156, price: '₹8L', unit: ' onwards', premium: true, icon: '🌊' },
+      { name: 'The Imperial Lawns', cat: 'Venues', city: 'Delhi NCR', stars: 4, reviews: 88, price: '₹6L', unit: ' onwards', premium: false, icon: '🏛️' },
+      { name: 'Heritage Heights', cat: 'Venues', city: 'Jaipur', stars: 5, reviews: 121, price: '₹10L', unit: ' onwards', premium: false, icon: '🏟️' },
+      { name: 'Urban Oasis Hotel', cat: 'Venues', city: 'Mumbai', stars: 4, reviews: 74, price: '₹5L', unit: ' onwards', premium: false, icon: '🏨' },
 
-    grid.innerHTML = '';
-    if (filtered.length === 0) {
-      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);font-family:Cormorant Garamond,serif;font-size:1.3rem;font-style:italic">No vendors found. Try different filters.</div>';
-      return;
+      { name: 'Sabyasachi Boutique', cat: 'Bridal Wear', city: 'Delhi NCR', stars: 5, reviews: 245, price: '₹2.5L', unit: ' onwards', premium: true, icon: '👰' },
+      { name: 'Anita Dongre Studio', cat: 'Bridal Wear', city: 'Mumbai', stars: 5, reviews: 189, price: '₹1.8L', unit: ' onwards', premium: true, icon: '🥻' },
+      { name: 'Meena Bazaar Couture', cat: 'Bridal Wear', city: 'Delhi NCR', stars: 4, reviews: 301, price: '₹85K', unit: ' onwards', premium: false, icon: '💎' },
+      { name: 'Kalamkari House', cat: 'Bridal Wear', city: 'Hyderabad', stars: 5, reviews: 67, price: '₹1.2L', unit: ' onwards', premium: false, icon: '🧵' },
+      { name: 'Silk Route Bridal', cat: 'Bridal Wear', city: 'Chennai', stars: 5, reviews: 92, price: '₹1.5L', unit: ' onwards', premium: false, icon: '🎀' },
+
+      { name: 'DJ Shaahi Beats', cat: 'Music & DJ', city: 'Pan India', stars: 5, reviews: 122, price: '₹50K', unit: ' onwards', premium: true, icon: '🎵' },
+      { name: 'Shehnai & Symphony', cat: 'Music & DJ', city: 'Varanasi', stars: 5, reviews: 74, price: '₹40K', unit: ' onwards', premium: false, icon: '🎺' },
+      { name: 'Dhol Dynasty', cat: 'Music & DJ', city: 'Amritsar', stars: 4, reviews: 93, price: '₹25K', unit: ' onwards', premium: false, icon: '🥁' },
+      { name: 'The Sufi Project', cat: 'Music & DJ', city: 'Delhi NCR', stars: 5, reviews: 56, price: '₹70K', unit: ' onwards', premium: false, icon: '🪕' },
+      { name: 'Electronica India', cat: 'Music & DJ', city: 'Mumbai', stars: 5, reviews: 48, price: '₹80K', unit: ' onwards', premium: false, icon: '🎧' },
+
+      { name: 'Glow by Gauri', cat: 'Beauty & Makeup', city: 'Mumbai', stars: 5, reviews: 112, price: '₹25K', unit: ' /event', premium: true, icon: '💄' },
+      { name: 'Radiant Brides', cat: 'Beauty & Makeup', city: 'Delhi NCR', stars: 5, reviews: 89, price: '₹30K', unit: ' /event', premium: false, icon: '💆' },
+      { name: 'Heritage Jewels', cat: 'Jewellery', city: 'Jaipur', stars: 5, reviews: 156, price: '₹5L', unit: ' onwards', premium: true, icon: '💍' },
+      { name: 'Vogue Ornaments', cat: 'Jewellery', city: 'Mumbai', stars: 4, reviews: 67, price: '₹2L', unit: ' onwards', premium: false, icon: '💎' },
+      { name: 'Mehndi by Muskaan', cat: 'Mehndi', city: 'Delhi NCR', stars: 5, reviews: 204, price: '₹15K', unit: ' onwards', premium: false, icon: '🎨' },
+      { name: 'The Grand Ballroom', cat: 'Venues', city: 'Mumbai', stars: 5, reviews: 145, price: '₹8L', unit: ' onwards', premium: false, icon: '🏛️' },
+      { name: 'Lakeside Pavilion', cat: 'Venues', city: 'Hyderabad', stars: 4, reviews: 62, price: '₹4L', unit: ' onwards', premium: false, icon: '🌅' },
+      { name: 'Rose Garden Estate', cat: 'Venues', city: 'Bangalore', stars: 5, reviews: 88, price: '₹6.5L', unit: ' onwards', premium: true, icon: '🏡' },
+      { name: 'Silver Screen Studios', cat: 'Photography', city: 'Chennai', stars: 5, reviews: 76, price: '₹75K', unit: ' /day', premium: false, icon: '🎬' },
+      { name: 'Ethereal Captures', cat: 'Photography', city: 'Kolkata', stars: 4, reviews: 45, price: '₹55K', unit: ' /day', premium: false, icon: '🖼️' },
+      { name: 'Monochrome Magic', cat: 'Photography', city: 'Delhi NCR', stars: 5, reviews: 112, price: '₹1.1L', unit: ' /day', premium: true, icon: '🎞️' },
+      { name: 'The Spice Route', cat: 'Food & Catering', city: 'Pune', stars: 5, reviews: 134, price: '₹1,100', unit: '/plate', premium: false, icon: '🍛' },
+      { name: 'Flavors of Punjab', cat: 'Food & Catering', city: 'Amritsar', stars: 5, reviews: 210, price: '₹850', unit: '/plate', premium: false, icon: '🍲' },
+      { name: 'Coastal Cuisines', cat: 'Food & Catering', city: 'Goa', stars: 4, reviews: 95, price: '₹1,400', unit: '/plate', premium: true, icon: '🦞' },
+      { name: 'Floral Fantasy', cat: 'Decoration', city: 'Jaipur', stars: 5, reviews: 67, price: '₹2.2L', unit: ' onwards', premium: false, icon: '🌻' },
+      { name: 'Crystal Decor Co.', cat: 'Decoration', city: 'Mumbai', stars: 5, reviews: 128, price: '₹4L', unit: ' onwards', premium: true, icon: '💎' },
+      { name: 'Traditional Touches', cat: 'Decoration', city: 'Kolkata', stars: 4, reviews: 82, price: '₹1.5L', unit: ' onwards', premium: false, icon: '🏮' },
+      { name: 'Couture Kings', cat: 'Bridal Wear', city: 'Delhi NCR', stars: 5, reviews: 154, price: '₹2L', unit: ' onwards', premium: true, icon: '🧥' },
+      { name: 'Zari Work Studio', cat: 'Bridal Wear', city: 'Lucknow', stars: 5, reviews: 87, price: '₹90K', unit: ' onwards', premium: false, icon: '🧣' },
+      { name: 'Elegance by Eva', cat: 'Bridal Wear', city: 'Bangalore', stars: 4, reviews: 110, price: '₹1.3L', unit: ' onwards', premium: false, icon: '👗' },
+      { name: 'The Beat Masters', cat: 'Music & DJ', city: 'Mumbai', stars: 5, reviews: 142, price: '₹65K', unit: ' onwards', premium: true, icon: '🎹' },
+      { name: 'Acoustic Soul', cat: 'Music & DJ', city: 'Pune', stars: 5, reviews: 63, price: '₹45K', unit: ' onwards', premium: false, icon: '🎸' },
+      { name: 'Royal Brass Band', cat: 'Music & DJ', city: 'Delhi NCR', stars: 4, reviews: 176, price: '₹35K', unit: ' onwards', premium: false, icon: '🎺' },
+      { name: 'Shimmer & Shine', cat: 'Beauty & Makeup', city: 'Bangalore', stars: 5, reviews: 42, price: '₹20K', unit: ' onwards', premium: false, icon: '🎨' },
+      { name: 'The Mehndi Artiste', cat: 'Mehndi', city: 'Mumbai', stars: 5, reviews: 156, price: '₹12K', unit: ' onwards', premium: true, icon: '🪷' },
+      { name: 'Gold Standard Jewels', cat: 'Jewellery', city: 'Delhi NCR', stars: 5, reviews: 89, price: '₹4L', unit: ' onwards', premium: false, icon: '✨' },
+      { name: 'Bridal Glow Studio', cat: 'Beauty & Makeup', city: 'Hyderabad', stars: 4, reviews: 73, price: '₹18K', unit: ' onwards', premium: false, icon: '💅' },
+      { name: 'Royal Ornaments', cat: 'Jewellery', city: 'Kolkata', stars: 5, reviews: 124, price: '₹3L', unit: ' onwards', premium: true, icon: '👑' }
+    ];
+
+    let activeCat = 'all';
+
+    function render() {
+      const grid = document.getElementById('vendorGrid');
+      const search = document.getElementById('vendorSearch').value.toLowerCase();
+      const city = document.getElementById('cityFilter').value;
+
+      const filtered = VENDORS.filter(v => {
+        const matchesCat = activeCat === 'all' || v.cat === activeCat;
+        const matchesSearch = v.name.toLowerCase().includes(search) || v.cat.toLowerCase().includes(search);
+        const matchesCity = !city || v.city === city;
+        return matchesCat && matchesSearch && matchesCity;
+      });
+
+      grid.innerHTML = filtered.map(v => `
+        <div class="v-card">
+          <div class="v-img-wrap">
+            ${v.icon}
+            ${v.premium ? '<span class="v-premium">Premium</span>' : ''}
+          </div>
+          <div class="v-body">
+            <span class="v-cat">${v.cat}</span>
+            <h3 class="v-name">${v.name}</h3>
+            <div class="v-city">📍 ${v.city}</div>
+            <div class="v-rating">★ ${v.stars}.0 <span>(${v.reviews} reviews)</span></div>
+            <div class="v-price">${v.price}<span>${v.unit}</span></div>
+          </div>
+        </div>
+      `).join('');
     }
 
-    filtered.forEach((v, i) => {
-      const stars = '★'.repeat(v.stars) + '☆'.repeat(5 - v.stars);
-      const card = document.createElement('a');
-      card.href = '#list-cta';
-      card.className = 'v-card';
-      card.style.animationDelay = `${i * 0.06}s`;
-      card.innerHTML = `
-        <div class="v-card-img">${v.icon}${v.premium ? '<div class="v-premium-badge">⭐ Premium</div>' : ''}</div>
-        <div class="v-card-body">
-          <div class="v-cat-tag">${v.cat}</div>
-          <div class="v-name">${v.name}</div>
-          <div class="v-city">📍 ${v.city}</div>
-          <div class="v-stars">${stars} <span class="v-reviews">(${v.reviews} reviews)</span></div>
-          <div class="v-price">Starting from <strong>${v.price}</strong></div>
-        </div>`;
-      grid.appendChild(card);
+    document.getElementById('catList').addEventListener('click', e => {
+      const link = e.target.closest('.cat-link');
+      if (!link) return;
+      e.preventDefault();
+      document.querySelectorAll('.cat-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      activeCat = link.dataset.cat;
+      render();
     });
-  }
 
-  // Sidebar filter
-  document.getElementById('sidebarCats').addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (!link) return;
-    e.preventDefault();
-    activeCategory = link.dataset.cat;
-    document.querySelectorAll('#sidebarCats a').forEach(a => a.classList.toggle('active', a === link));
-    renderVendors();
-  });
+    document.getElementById('vendorSearch').addEventListener('input', render);
+    document.getElementById('cityFilter').addEventListener('change', render);
 
-  document.getElementById('vendorSearch').addEventListener('input', renderVendors);
-  document.getElementById('cityFilter').addEventListener('change', renderVendors);
+    function openModal() { document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 
-  function openModal() {
-    document.getElementById('listModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('listModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.getElementById('listModal').addEventListener('click', (e) => {
-    if (e.target === document.getElementById('listModal')) closeModal();
-  });
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = '✓ Request Received! We\'ll contact you within 24 hrs.';
-    btn.style.background = '#4caf50';
-    setTimeout(closeModal, 3000);
-  }
+    let lastScroll = 0;
+    const topbar = document.getElementById('topbar');
+    const scrollTop = document.getElementById('scrollTop');
 
-  renderVendors();
-</script>
+    window.addEventListener('scroll', () => {
+      const current = window.scrollY;
+
+      // Hide/show header
+      if (current > lastScroll && current > 120) {
+        topbar.classList.add('hide-bar');
+      } else {
+        topbar.classList.remove('hide-bar');
+      }
+      topbar.classList.toggle('scrolled', current > 10);
+      lastScroll = current;
+
+      // Scroll to top button
+      if (scrollTop) scrollTop.classList.toggle('visible', current > 480);
+    });
+
+    if (scrollTop) {
+      scrollTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    render();
+  </script>
 </body>
 </html>

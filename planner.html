@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9083664222221461" crossorigin="anonymous"></script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MSM88SXB');</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0BN8H58LK9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0BN8H58LK9');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Planner — Royal Shaadi | Organize Your Big Day</title>
+  <meta name="description" content="Plan your Indian wedding with our comprehensive, easy-to-use digital planner. No login required. Track your budget, checklist, and guest list seamlessly.">
+
+  <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
+  <link rel="icon" type="image/webp" href="/logo.webp">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #1A1A18;
+      --muted: #767069;
+      --line: #E8E4DD;
+      --line-strong: #D8D2C8;
+      --surface: #FBFAF7;
+      --white: #FFFFFF;
+      --accent: #C75B39;
+      --accent-soft: #FBE9E2;
+      --olive: #6B7156;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    img { max-width: 100%; display: block; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--surface);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(251,250,247,0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .topbar.hide-bar { transform: translateY(-100%); }
+    .topbar.scrolled { box-shadow: 0 4px 24px rgba(26,26,24,0.06); }
+    .topbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .topbar-brand-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 8px; }
+    .topbar-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+    .topbar-tagline { font-size: 0.65rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+    .topbar-links { display: flex; gap: 36px; align-items: center; }
+    .topbar-links a { font-size: 0.85rem; color: var(--ink); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .topbar-links a:hover { color: var(--accent); }
+    .topbar-cta { background: var(--ink); color: var(--white) !important; padding: 10px 22px; border-radius: 100px; font-size: 0.8rem !important; }
+    .topbar-cta:hover { background: var(--accent) !important; }
+
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--ink); padding: 4px; }
+    .menu-toggle svg { width: 24px; height: 24px; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 48px 80px;
+      background: var(--ink);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(199,91,57,0.15) 0%, transparent 70%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+    .hero-eyebrow { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; font-weight: 600; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.1; margin-bottom: 20px; }
+    .hero-title em { color: var(--accent-soft); font-style: italic; font-weight: 500; }
+    .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
+
+    /* ── DASHBOARD ── */
+    .section { max-width: 1240px; margin: 0 auto; padding: 80px 48px; }
+    .planner-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px; }
+    .card { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+    .card-full { grid-column: span 2; }
+    .card-title { font-family: var(--font-display); font-size: 1.75rem; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+    .card-title span { font-size: 1.25rem; background: var(--accent-soft); color: var(--accent); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+
+    /* ── TABLES & INPUTS ── */
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    th { text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 12px 16px; border-bottom: 2px solid var(--line); }
+    td { padding: 16px; border-bottom: 1px solid var(--line); }
+    input, select {
+      width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line-strong);
+      font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
+    }
+    input:focus, select:focus { border-color: var(--accent); }
+    .btn-add { background: var(--ink); color: var(--white); border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 20px; font-size: 0.85rem; }
+    .btn-add:hover { background: var(--accent); }
+    .row-total { font-weight: 700; background: var(--surface); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: rgba(255,255,255,0.55); padding: 64px 48px 28px; margin-top: 80px; }
+    .footer-grid { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .footer-logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: #FFF; margin-bottom: 14px; display: block; text-decoration: none; }
+    .footer-heading { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 18px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom { max-width: 1240px; margin: 0 auto; padding-top: 24px; display: flex; justify-content: space-between; font-size: 0.78rem; }
+    .footer-socials { display: flex; gap: 16px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) { .planner-grid { grid-template-columns: 1fr; } .card-full { grid-column: auto; } }
+    @media (max-width: 720px) {
+      .topbar { padding: 14px 20px; }
+      .topbar-links { display: none; }
+      .hero { padding: 120px 20px 64px; }
+      .section { padding: 48px 20px; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <a href="/" class="topbar-brand">
+      <img src="/logo.webp" alt="Royal Shaadi logo" class="topbar-brand-logo">
+      <span class="topbar-brand-text">
+        <span class="topbar-logo">Royal Shaadi</span>
+        <span class="topbar-tagline">Modern Indian Weddings</span>
+      </span>
+    </a>
+    <nav class="topbar-links" aria-label="Primary navigation">
+      <a href="wedding-calendar.html">Wedding Calendar</a>
+      <a href="planner.html">Planner</a>
+      <a href="vendors.html">Vendor</a>
+      <a href="blogs.html">Blog</a>
+      <a href="/subscribe" class="topbar-cta">Subscribe</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Digital Wedding Concierge</p>
+      <h1 class="hero-title">Your <em>Royal Wedding</em>, Perfectly Organized</h1>
+      <p class="hero-sub">From first inspiration to the final ritual. Track your budget, manage your tasks, and curate your guest list—all in one private place.</p>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="planner-grid">
+      <!-- BUDGET TRACKER -->
+      <div class="card card-full">
+        <h2 class="card-title"><span>💰</span> Budget Estimator</h2>
+        <div style="overflow-x:auto">
+          <table id="budgetTable">
+            <thead>
+              <tr>
+                <th style="width:30%">Category</th>
+                <th style="width:20%">Estimated Cost (₹)</th>
+                <th style="width:20%">Actual Cost (₹)</th>
+                <th style="width:20%">Status</th>
+                <th style="width:10%"></th>
+              </tr>
+            </thead>
+            <tbody id="budgetBody">
+              <!-- Default Rows -->
+            </tbody>
+            <tfoot>
+              <tr class="row-total">
+                <td>TOTAL</td>
+                <td id="totalEstimated">₹0</td>
+                <td id="totalActual">₹0</td>
+                <td colspan="2">Remaining: <span id="remainingBudget" style="color:var(--accent)">₹0</span></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <button class="btn-add" onclick="addBudgetRow()">+ Add Category</button>
+      </div>
+
+      <!-- TASK TRACKER -->
+      <div class="card">
+        <h2 class="card-title"><span>📅</span> Planning Timeline</h2>
+        <div style="overflow-x:auto">
+          <table id="taskTable">
+            <thead>
+              <tr>
+                <th>Task Description</th>
+                <th style="width:35%">Priority</th>
+                <th style="width:35%">Status</th>
+              </tr>
+            </thead>
+            <tbody id="taskBody">
+              <!-- Default Rows -->
+            </tbody>
+          </table>
+        </div>
+        <button class="btn-add" onclick="addTaskRow()">+ Add Custom Task</button>
+      </div>
+
+      <!-- VENDOR SELECTIONS -->
+      <div class="card">
+        <h2 class="card-title"><span>🤝</span> Vendor Selection</h2>
+        <div style="overflow-x:auto">
+          <table id="vendorTable">
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Preferred Vendor</th>
+                <th>Booking Status</th>
+              </tr>
+            </thead>
+            <tbody id="vendorBody">
+              <!-- Default Rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- GUEST LIST -->
+      <div class="card card-full">
+        <h2 class="card-title"><span>👥</span> Guest List Manager</h2>
+        <div style="overflow-x:auto">
+          <table id="guestTable">
+            <thead>
+              <tr>
+                <th>Guest Name</th>
+                <th>Relationship</th>
+                <th>RSVP Status</th>
+                <th>Dietary Pref.</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="guestBody">
+              <!-- Default Rows -->
+            </tbody>
+          </table>
+        </div>
+        <button class="btn-add" onclick="addGuestRow()">+ Add Guest Group</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="footer-logo">Royal Shaadi</a>
+        <p class="footer-desc">Royal Shaadi is your guide to modern Indian weddings — covering bridal fashion, décor, venues, and the trends shaping celebrations across India.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Explore</div>
+        <ul class="footer-links">
+          <li><a href="/weddings">Weddings</a></li>
+          <li><a href="/fashion">Fashion</a></li>
+          <li><a href="/lifestyle">Lifestyle</a></li>
+          <li><a href="/blogs.html">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/advertise">Advertise</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Legal</div>
+        <ul class="footer-links">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Royal Shaadi. All rights reserved.</span>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/royalsaadi" style="color:inherit">Instagram</a>
+        <a href="https://www.facebook.com/royalsaadi" style="color:inherit">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const DEFAULT_BUDGET = [
+      { cat: 'Venues', est: 500000, act: 0, status: 'Not Paid' },
+      { cat: 'Catering', est: 300000, act: 0, status: 'Deposit Paid' },
+      { cat: 'Photography', est: 100000, act: 0, status: 'Not Paid' },
+      { cat: 'Decoration', est: 200000, act: 0, status: 'Not Paid' },
+      { cat: 'Bridal Wear', est: 150000, act: 0, status: 'Not Paid' }
+    ];
+
+    const DEFAULT_TASKS = [
+      { task: 'Set the Wedding Date', priority: 'High', status: 'In Progress' },
+      { task: 'Book Primary Venue', priority: 'High', status: 'Not Started' },
+      { task: 'Hire Wedding Photographer', priority: 'Medium', status: 'Not Started' },
+      { task: 'Finalize Guest List', priority: 'High', status: 'Not Started' }
+    ];
+
+    const DEFAULT_VENDORS = [
+      { service: 'Venues', pref: '', status: 'Inquiry Sent' },
+      { service: 'Photography', pref: '', status: 'Shortlisted' },
+      { service: 'Decoration', pref: '', status: 'Not Started' },
+      { service: 'Catering', pref: '', status: 'Not Started' }
+    ];
+
+    const DEFAULT_GUESTS = [
+      { name: 'Ravi & Family', rel: 'Family', rsvp: 'Confirmed', diet: 'Veg' }
+    ];
+
+    const CATEGORIES = [
+      'Venues', 'Photography', 'Food & Catering', 'Decoration',
+      'Bridal Wear', 'Music & DJ', 'Beauty & Makeup', 'Jewellery', 'Mehndi', 'Other'
+    ];
+
+    function createSelect(options, selectedValue, onchange) {
+      const select = document.createElement('select');
+      options.forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt;
+        o.textContent = opt;
+        if (opt === selectedValue) o.selected = true;
+        select.appendChild(o);
+      });
+      select.onchange = onchange;
+      return select;
+    }
+
+    function addBudgetRow(data = { cat: 'Venues', est: 0, act: 0, status: 'Not Paid' }) {
+      const tbody = document.getElementById('budgetBody');
+      const tr = document.createElement('tr');
+
+      const catSelect = createSelect(CATEGORIES, data.cat, saveAll);
+
+      const estInput = document.createElement('input');
+      estInput.type = 'number';
+      estInput.value = data.est;
+      estInput.oninput = () => { calculateBudget(); saveAll(); };
+
+      const actInput = document.createElement('input');
+      actInput.type = 'number';
+      actInput.value = data.act;
+      actInput.oninput = () => { calculateBudget(); saveAll(); };
+
+      const statusSelect = createSelect(['Not Paid', 'Deposit Paid', 'Fully Paid', 'Cancelled'], data.status, saveAll);
+
+      const delBtn = document.createElement('button');
+      delBtn.innerHTML = '&times;';
+      delBtn.className = 'btn-add';
+      delBtn.style.margin = '0';
+      delBtn.style.background = '#e74c3c';
+      delBtn.onclick = () => { tr.remove(); calculateBudget(); saveAll(); };
+
+      tr.insertCell().appendChild(catSelect);
+      tr.insertCell().appendChild(estInput);
+      tr.insertCell().appendChild(actInput);
+      tr.insertCell().appendChild(statusSelect);
+      tr.insertCell().appendChild(delBtn);
+      tbody.appendChild(tr);
+      calculateBudget();
+    }
+
+    function addTaskRow(data = { task: '', priority: 'Medium', status: 'Not Started' }) {
+      const tbody = document.getElementById('taskBody');
+      const tr = document.createElement('tr');
+      const input = document.createElement('input');
+      input.value = data.task;
+      input.oninput = saveAll;
+      const prio = createSelect(['High', 'Medium', 'Low'], data.priority, saveAll);
+      const status = createSelect(['Not Started', 'In Progress', 'Done', 'Postponed'], data.status, saveAll);
+      tr.insertCell().appendChild(input);
+      tr.insertCell().appendChild(prio);
+      tr.insertCell().appendChild(status);
+      tbody.appendChild(tr);
+    }
+
+    function addVendorRow(data = { service: 'Venues', pref: '', status: 'Not Started' }) {
+      const tbody = document.getElementById('vendorBody');
+      const tr = document.createElement('tr');
+      const svc = createSelect(CATEGORIES, data.service, saveAll);
+      const pref = document.createElement('input');
+      pref.value = data.pref;
+      pref.oninput = saveAll;
+      const status = createSelect(['Not Started', 'Inquiry Sent', 'Shortlisted', 'Booked'], data.status, saveAll);
+      tr.insertCell().appendChild(svc);
+      tr.insertCell().appendChild(pref);
+      tr.insertCell().appendChild(status);
+      tbody.appendChild(tr);
+    }
+
+    function addGuestRow(data = { name: '', rel: 'Family', rsvp: 'Pending', diet: 'N/A' }) {
+      const tbody = document.getElementById('guestBody');
+      const tr = document.createElement('tr');
+      const name = document.createElement('input');
+      name.value = data.name;
+      name.oninput = saveAll;
+      const rel = createSelect(['Family', 'Friend', 'Colleague', 'Other'], data.rel, saveAll);
+      const rsvp = createSelect(['Pending', 'Confirmed', 'Declined'], data.rsvp, saveAll);
+      const diet = createSelect(['N/A', 'Veg', 'Non-Veg', 'Vegan', 'Allergic'], data.diet, saveAll);
+
+      const delBtn = document.createElement('button');
+      delBtn.innerHTML = '&times;';
+      delBtn.className = 'btn-add';
+      delBtn.style.margin = '0';
+      delBtn.style.background = '#e74c3c';
+      delBtn.onclick = () => { tr.remove(); saveAll(); };
+
+      tr.insertCell().appendChild(name);
+      tr.insertCell().appendChild(rel);
+      tr.insertCell().appendChild(rsvp);
+      tr.insertCell().appendChild(diet);
+      tr.insertCell().appendChild(delBtn);
+      tbody.appendChild(tr);
+    }
+
+    function calculateBudget() {
+      let est = 0, act = 0;
+      document.querySelectorAll('#budgetBody tr').forEach(tr => {
+        est += parseFloat(tr.cells[1].firstChild.value) || 0;
+        act += parseFloat(tr.cells[2].firstChild.value) || 0;
+      });
+      document.getElementById('totalEstimated').textContent = '₹' + est.toLocaleString();
+      document.getElementById('totalActual').textContent = '₹' + act.toLocaleString();
+      document.getElementById('remainingBudget').textContent = '₹' + (est - act).toLocaleString();
+    }
+
+    function saveAll() {
+      const data = {
+        budget: [], tasks: [], vendors: [], guests: []
+      };
+      document.querySelectorAll('#budgetBody tr').forEach(tr => {
+        data.budget.push({ cat: tr.cells[0].firstChild.value, est: tr.cells[1].firstChild.value, act: tr.cells[2].firstChild.value, status: tr.cells[3].firstChild.value });
+      });
+      document.querySelectorAll('#taskBody tr').forEach(tr => {
+        data.tasks.push({ task: tr.cells[0].firstChild.value, priority: tr.cells[1].firstChild.value, status: tr.cells[2].firstChild.value });
+      });
+      document.querySelectorAll('#vendorBody tr').forEach(tr => {
+        data.vendors.push({ service: tr.cells[0].firstChild.value, pref: tr.cells[1].firstChild.value, status: tr.cells[2].firstChild.value });
+      });
+      document.querySelectorAll('#guestBody tr').forEach(tr => {
+        data.guests.push({ name: tr.cells[0].firstChild.value, rel: tr.cells[1].firstChild.value, rsvp: tr.cells[2].firstChild.value, diet: tr.cells[3].firstChild.value });
+      });
+      document.cookie = "rs_planner_data=" + encodeURIComponent(JSON.stringify(data)) + ";max-age=31536000;path=/";
+    }
+
+    function loadAll() {
+      const cookie = document.cookie.split('; ').find(row => row.startsWith('rs_planner_data='));
+      if (cookie) {
+        const data = JSON.parse(decodeURIComponent(cookie.split('=')[1]));
+        data.budget.forEach(addBudgetRow);
+        data.tasks.forEach(addTaskRow);
+        data.vendors.forEach(addVendorRow);
+        data.guests.forEach(addGuestRow);
+      } else {
+        DEFAULT_BUDGET.forEach(addBudgetRow);
+        DEFAULT_TASKS.forEach(addTaskRow);
+        DEFAULT_VENDORS.forEach(addVendorRow);
+        DEFAULT_GUESTS.forEach(addGuestRow);
+      }
+    }
+
+    window.onload = loadAll;
+  </script>
+</body>
+</html>
