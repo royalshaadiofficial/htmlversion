@@ -648,6 +648,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span>✦ Royal Shaadi Editorial Team</span>
       <span>· June 18, 2026</span>
       <span>· 15 min read</span>
+
+      <span>· <span id="view-count">...</span> reads</span>
     </div>
   </div>
 </section>
@@ -1470,5 +1472,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 
+
+<script>
+  (function() {
+    fetch('https://api.counterapi.dev/v1/royalshaadi/mehendi-ceremony-guide/up')
+      .then(res => res.json())
+      .then(data => {
+        const el = document.getElementById('view-count');
+        if (el) el.textContent = data.count.toLocaleString();
+      })
+      .catch(err => console.error('Counter error:', err));
+  })();
+</script>
 </body>
 </html>

@@ -800,6 +800,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span>✦ Royal Saadi Editorial Team</span>
       <span>· June 14, 2026</span>
       <span>· 12 min read</span>
+
+      <span>· <span id="view-count">...</span> reads</span>
     </div>
   </div>
 </section>
@@ -1562,5 +1564,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 
+
+<script>
+  (function() {
+    fetch('https://api.counterapi.dev/v1/royalshaadi/indian-wedding-trends-2026/up')
+      .then(res => res.json())
+      .then(data => {
+        const el = document.getElementById('view-count');
+        if (el) el.textContent = data.count.toLocaleString();
+      })
+      .catch(err => console.error('Counter error:', err));
+  })();
+</script>
 </body>
 </html>
