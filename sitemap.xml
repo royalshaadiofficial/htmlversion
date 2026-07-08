@@ -4,99 +4,153 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://www.royalshaadi.co.in/</loc>
-  <lastmod>2026-06-16T17:53:18+00:00</lastmod>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.royalshaadi.co.in/blogs.html</loc>
-  <lastmod>2026-06-16T17:53:18+00:00</lastmod>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/blogs/indian-wedding-trends-2026/indian-wedding-trends-2026.html</loc>
-  <lastmod>2026-06-16T17:53:18+00:00</lastmod>
+  <loc>https://www.royalshaadi.co.in/vendors.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/blogs/glamour-blouses-for-brides/glamour-blouses-for-brides.html</loc>
-  <lastmod>2026-06-16T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.royalshaadi.co.in/blogs/summer-wedding-drinks/summer-wedding-drinks.html</loc>
-  <lastmod>2026-06-17T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.royalshaadi.co.in/blogs/pag-phera-wedding-ritual-guide/pag-phera-wedding-ritual-guide.html</loc>
-  <lastmod>2026-06-17T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.royalshaadi.co.in/blogs/how-to-set-a-realistic-wedding-budget-india/how-to-set-a-realistic-wedding-budget-india.html</loc>
-  <lastmod>2026-06-18T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.royalshaadi.co.in/blogs/mehendi-ceremony-guide/mehendi-ceremony-guide.html</loc>
-  <lastmod>2026-06-19T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.royalshaadi.co.in/blogs/haldi-ceremony-guide/haldi-ceremony-guide.html</loc>
-  <lastmod>2026-06-19T17:53:18+00:00</lastmod>
+  <loc>https://www.royalshaadi.co.in/planner.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.royalshaadi.co.in/wedding-calendar.html</loc>
-  <lastmod>2026-06-21T17:53:18+00:00</lastmod>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/sangeet-night-planning/sangeet-night-planning.html</loc>
-  <lastmod>2026-06-23T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/about.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/complete-bridal-skincare-routine-3-months/complete-bridal-skincare-routine-3-months.html</loc>
-  <lastmod>2026-06-23T17:53:19+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/contact.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/best-sherwani-styles-grooms-2026/best-sherwani-styles-grooms-2026.html</loc>
-  <lastmod>2026-06-23T17:53:19+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/weddings.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/live-food-stations-wedding/live-food-stations-wedding.html</loc>
-  <lastmod>2026-06-24T17:53:19+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/fashion.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/luxury-wedding-budget-india/luxury-wedding-budget-india.html</loc>
-  <lastmod>2026-06-24T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/lifestyle.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/first-year-marriage-tips-india/first-year-marriage-tips-india.html</loc>
-  <lastmod>2026-06-27T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/subscribe.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/destination-wedding-india-budget/destination-wedding-india-budget.html</loc>
-  <lastmod>2026-07-02T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/privacy-policy.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.30</priority>
 </url>
 <url>
-  <loc>https://www.royalshaadi.co.in/saree-vs-lehenga-indian-bride/saree-vs-lehenga-indian-bride.html</loc>
-  <lastmod>2026-07-03T17:53:18+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.royalshaadi.co.in/terms.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.30</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/advertise.html</loc>
+  <lastmod>2026-06-25T12:00:00+00:00</lastmod>
+  <priority>0.50</priority>
 </url>
 
+<!-- Blog Posts -->
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/indian-wedding-trends-2026/indian-wedding-trends-2026.html</loc>
+  <lastmod>2026-06-16T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/glamour-blouses-for-brides/glamour-blouses-for-brides.html</loc>
+  <lastmod>2026-06-16T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/summer-wedding-drinks/summer-wedding-drinks.html</loc>
+  <lastmod>2026-06-17T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/pag-phera-wedding-ritual-guide/pag-phera-wedding-ritual-guide.html</loc>
+  <lastmod>2026-06-17T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/how-to-set-a-realistic-wedding-budget-india/how-to-set-a-realistic-wedding-budget-india.html</loc>
+  <lastmod>2026-06-18T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/mehendi-ceremony-guide/mehendi-ceremony-guide.html</loc>
+  <lastmod>2026-06-19T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/haldi-ceremony-guide/haldi-ceremony-guide.html</loc>
+  <lastmod>2026-06-19T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/sangeet-night-planning/sangeet-night-planning.html</loc>
+  <lastmod>2026-06-23T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/complete-bridal-skincare-routine-3-months/complete-bridal-skincare-routine-3-months.html</loc>
+  <lastmod>2026-06-23T17:53:19+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/best-sherwani-styles-grooms-2026/best-sherwani-styles-grooms-2026.html</loc>
+  <lastmod>2026-06-23T17:53:19+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/live-food-stations-wedding/live-food-stations-wedding.html</loc>
+  <lastmod>2026-06-24T17:53:19+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/luxury-wedding-budget-india/luxury-wedding-budget-india.html</loc>
+  <lastmod>2026-06-24T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/first-year-marriage-tips-india/first-year-marriage-tips-india.html</loc>
+  <lastmod>2026-06-27T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/destination-wedding-india-budget/destination-wedding-india-budget.html</loc>
+  <lastmod>2026-07-02T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
+<url>
+  <loc>https://www.royalshaadi.co.in/blogs/saree-vs-lehenga-indian-bride/saree-vs-lehenga-indian-bride.html</loc>
+  <lastmod>2026-07-03T17:53:18+00:00</lastmod>
+  <priority>0.60</priority>
+</url>
 
 </urlset>

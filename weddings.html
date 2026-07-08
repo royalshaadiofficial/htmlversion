@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real Weddings — Royal Shaadi | Inspiration from Real Couples</title>
+<meta name="description" content="Explore beautiful real weddings across India. From palace celebrations in Udaipur to intimate beach ceremonies in Goa, find inspiration for your own story.">
+<link rel="icon" type="image/webp" href="/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18; --muted: #767069; --line: #E8E4DD; --surface: #FBFAF7; --white: #FFFFFF; --accent: #C75B39; --accent-soft: #FBE9E2;
+    --font-display: 'Fraunces', Georgia, serif; --font-body: 'Inter', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  
+  .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(251,250,247,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .topbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .topbar-brand-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 8px; }
+  .topbar-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); }
+  .topbar-links { display: flex; gap: 36px; align-items: center; }
+  .topbar-links a { font-size: 0.85rem; color: var(--ink); text-decoration: none; font-weight: 500; }
+  .topbar-cta { background: var(--ink); color: var(--white) !important; padding: 10px 22px; border-radius: 100px; }
+
+  .hero { padding: 180px 48px 100px; text-align: center; background: var(--accent-soft); }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 600; margin-bottom: 24px; }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto; }
+
+  .grid { max-width: 1240px; margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .wedding-card { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--white); }
+  .card-img { width: 100%; height: 250px; background: #EEE; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
+  .card-body { padding: 25px; }
+  .card-title { font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 10px; }
+  .card-loc { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; padding: 40px 20px; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a href="index.html" class="topbar-brand">
+    <img src="/logo.webp" alt="Royal Shaadi logo" class="topbar-brand-logo">
+    <span class="topbar-logo">Royal Shaadi</span>
+  </a>
+  <nav class="topbar-links">
+    <a href="wedding-calendar.html">Wedding Calendar</a>
+    <a href="planner.html">Planner</a>
+    <a href="vendors.html">Vendor</a>
+    <a href="blogs.html">Blog</a>
+    <a href="subscribe.html" class="topbar-cta">Subscribe</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 class="hero-title">Real Weddings</h1>
+  <p class="hero-sub">Get inspired by the unique stories and breathtaking celebrations of couples who planned their royal wedding with us.</p>
+</section>
+
+<main class="grid">
+  <div class="wedding-card">
+    <div class="card-img">🕌</div>
+    <div class="card-body">
+      <div class="card-loc">Udaipur, Rajasthan</div>
+      <h2 class="card-title">Ananya & Kabir: A Palace Dream</h2>
+    </div>
+  </div>
+  <div class="wedding-card">
+    <div class="card-img">🏖️</div>
+    <div class="card-body">
+      <div class="card-loc">South Goa</div>
+      <h2 class="card-title">Riya & Ishaan: Sunset Serenity</h2>
+    </div>
+  </div>
+  <div class="wedding-card">
+    <div class="card-img">🌿</div>
+    <div class="card-body">
+      <div class="card-loc">Coorg, Karnataka</div>
+      <h2 class="card-title">Meera & Arjun: Emerald Elegance</h2>
+    </div>
+  </div>
+</main>
+</body>
+</html>

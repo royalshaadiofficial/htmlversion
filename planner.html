@@ -16,11 +16,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedding Planner — Royal Shaadi | Organize Your Big Day</title>
   <meta name="description" content="Plan your Indian wedding with our comprehensive, easy-to-use digital planner. No login required. Track your budget, checklist, and guest list seamlessly.">
+  <link rel="canonical" href="https://www.royalshaadi.co.in/planner.html">
 
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.royalshaadi.co.in/planner.html">
+  <meta property="og:title" content="Wedding Planner — Royal Shaadi | Organize Your Big Day">
+  <meta property="og:description" content="Plan your Indian wedding with our comprehensive, easy-to-use digital planner. No login required. Track your budget, checklist, and guest list seamlessly.">
+  <meta property="og:image" content="https://www.royalshaadi.co.in/images/og-planner.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://www.royalshaadi.co.in/planner.html">
+  <meta property="twitter:title" content="Wedding Planner — Royal Shaadi | Organize Your Big Day">
+  <meta property="twitter:description" content="Plan your Indian wedding with our comprehensive, easy-to-use digital planner. No login required. Track your budget, checklist, and guest list seamlessly.">
+  <meta property="twitter:image" content="https://www.royalshaadi.co.in/images/og-planner.webp">
+  
   <link rel="icon" type="image/png" href="/favicon-48x48.png" sizes="48x48">
   <link rel="icon" type="image/webp" href="/logo.webp">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -115,8 +130,8 @@
     table { width: 100%; border-collapse: collapse; margin-top: 16px; }
     th { text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 12px 16px; border-bottom: 2px solid var(--line); }
     td { padding: 16px; border-bottom: 1px solid var(--line); }
-    input, select {
-      width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line-strong);
+    input, select { 
+      width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--line-strong); 
       font-family: var(--font-body); font-size: 0.9rem; outline: none; transition: border-color 0.2s;
     }
     input:focus, select:focus { border-color: var(--accent); }
@@ -160,7 +175,7 @@
       <a href="planner.html">Planner</a>
       <a href="vendors.html">Vendor</a>
       <a href="blogs.html">Blog</a>
-      <a href="/subscribe" class="topbar-cta">Subscribe</a>
+      <a href="subscribe.html" class="topbar-cta">Subscribe</a>
     </nav>
   </header>
 
@@ -276,25 +291,25 @@
       <div>
         <div class="footer-heading">Explore</div>
         <ul class="footer-links">
-          <li><a href="/weddings">Weddings</a></li>
-          <li><a href="/fashion">Fashion</a></li>
-          <li><a href="/lifestyle">Lifestyle</a></li>
-          <li><a href="/blogs.html">Blog</a></li>
+          <li><a href="weddings.html">Weddings</a></li>
+          <li><a href="fashion.html">Fashion</a></li>
+          <li><a href="lifestyle.html">Lifestyle</a></li>
+          <li><a href="blogs.html">Blog</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-heading">Company</div>
         <ul class="footer-links">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/advertise">Advertise</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="advertise.html">Advertise</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-heading">Legal</div>
         <ul class="footer-links">
-          <li><a href="/privacy-policy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Use</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Use</a></li>
         </ul>
       </div>
     </div>
@@ -335,7 +350,7 @@
     ];
 
     const CATEGORIES = [
-      'Venues', 'Photography', 'Food & Catering', 'Decoration',
+      'Venues', 'Photography', 'Food & Catering', 'Decoration', 
       'Bridal Wear', 'Music & DJ', 'Beauty & Makeup', 'Jewellery', 'Mehndi', 'Other'
     ];
 
@@ -355,7 +370,7 @@
     function addBudgetRow(data = { cat: 'Venues', est: 0, act: 0, status: 'Not Paid' }) {
       const tbody = document.getElementById('budgetBody');
       const tr = document.createElement('tr');
-
+      
       const catSelect = createSelect(CATEGORIES, data.cat, saveAll);
 
       const estInput = document.createElement('input');
@@ -369,7 +384,7 @@
       actInput.oninput = () => { calculateBudget(); saveAll(); };
 
       const statusSelect = createSelect(['Not Paid', 'Deposit Paid', 'Fully Paid', 'Cancelled'], data.status, saveAll);
-
+      
       const delBtn = document.createElement('button');
       delBtn.innerHTML = '&times;';
       delBtn.className = 'btn-add';
@@ -423,7 +438,7 @@
       const rel = createSelect(['Family', 'Friend', 'Colleague', 'Other'], data.rel, saveAll);
       const rsvp = createSelect(['Pending', 'Confirmed', 'Declined'], data.rsvp, saveAll);
       const diet = createSelect(['N/A', 'Veg', 'Non-Veg', 'Vegan', 'Allergic'], data.diet, saveAll);
-
+      
       const delBtn = document.createElement('button');
       delBtn.innerHTML = '&times;';
       delBtn.className = 'btn-add';
