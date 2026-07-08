@@ -667,6 +667,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         9 min read
       </span>
+
+      <span>· <span id="view-count">...</span> reads</span>
     </div>
   </div>
 </section>
@@ -1336,5 +1338,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   })();
 </script>
 
+
+<script>
+  (function() {
+    fetch('https://api.counterapi.dev/v1/royalshaadi/glamour-blouses-for-brides/up')
+      .then(res => res.json())
+      .then(data => {
+        const el = document.getElementById('view-count');
+        if (el) el.textContent = data.count.toLocaleString();
+      })
+      .catch(err => console.error('Counter error:', err));
+  })();
+</script>
 </body>
 </html>
