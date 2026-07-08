@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridal & Groom Fashion — Royal Shaadi | Wedding Style Guide</title>
+<meta name="description" content="Discover the latest in Indian wedding fashion. From designer lehengas and sherwanis to jewellery and accessory trends.">
+<link rel="icon" type="image/webp" href="/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18; --muted: #767069; --line: #E8E4DD; --surface: #FBFAF7; --white: #FFFFFF; --accent: #C75B39; --accent-soft: #FBE9E2;
+    --font-display: 'Fraunces', Georgia, serif; --font-body: 'Inter', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(251,250,247,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .topbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .topbar-brand-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 8px; }
+  .topbar-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); }
+  .topbar-links { display: flex; gap: 36px; align-items: center; }
+  .topbar-links a { font-size: 0.85rem; color: var(--ink); text-decoration: none; font-weight: 500; }
+  .topbar-cta { background: var(--ink); color: var(--white) !important; padding: 10px 22px; border-radius: 100px; }
+
+  .hero { padding: 180px 48px 100px; text-align: center; background: #1A1A18; color: #FFF; }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 600; margin-bottom: 24px; }
+  .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto; }
+
+  .grid { max-width: 1240px; margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .fashion-card { position: relative; border-radius: 8px; overflow: hidden; height: 500px; }
+  .fashion-img { width: 100%; height: 100%; background: #222; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+  .fashion-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; color: #FFF; }
+  .fashion-cat { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 10px; color: var(--accent); font-weight: 700; }
+  .fashion-title { font-family: var(--font-display); font-size: 2rem; }
+
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; padding: 40px 20px; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a href="index.html" class="topbar-brand">
+    <img src="/logo.webp" alt="Royal Shaadi logo" class="topbar-brand-logo">
+    <span class="topbar-logo">Royal Shaadi</span>
+  </a>
+  <nav class="topbar-links">
+    <a href="wedding-calendar.html">Wedding Calendar</a>
+    <a href="planner.html">Planner</a>
+    <a href="vendors.html">Vendor</a>
+    <a href="blogs.html">Blog</a>
+    <a href="subscribe.html" class="topbar-cta">Subscribe</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 class="hero-title">Wedding Fashion</h1>
+  <p class="hero-sub">Discover the trends defining the modern Indian bride and groom, from timeless classics to contemporary couture.</p>
+</section>
+
+<main class="grid">
+  <div class="fashion-card">
+    <div class="fashion-img">💃</div>
+    <div class="fashion-overlay">
+      <span class="fashion-cat">Bridal Couture</span>
+      <h2 class="fashion-title">The New Red: 2026 Trends</h2>
+    </div>
+  </div>
+  <div class="fashion-card">
+    <div class="fashion-img">🕺</div>
+    <div class="fashion-overlay">
+      <span class="fashion-cat">Groom Style</span>
+      <h2 class="fashion-title">Elevated Sherwanis</h2>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifestyle & Wellness — Royal Shaadi | Wedding Lifestyle Guide</title>
+<meta name="description" content="Prepare for your big day with our lifestyle and wellness guides. From bridal skincare and fitness to tradition and ritual deep-dives.">
+<link rel="icon" type="image/webp" href="/logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A18; --muted: #767069; --line: #E8E4DD; --surface: #FBFAF7; --white: #FFFFFF; --accent: #C75B39; --accent-soft: #FBE9E2;
+    --font-display: 'Fraunces', Georgia, serif; --font-body: 'Inter', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-body); background: var(--surface); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(251,250,247,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .topbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .topbar-brand-logo { width: 42px; height: 42px; object-fit: contain; border-radius: 8px; }
+  .topbar-logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; color: var(--ink); }
+  .topbar-links { display: flex; gap: 36px; align-items: center; }
+  .topbar-links a { font-size: 0.85rem; color: var(--ink); text-decoration: none; font-weight: 500; }
+  .topbar-cta { background: var(--ink); color: var(--white) !important; padding: 10px 22px; border-radius: 100px; }
+
+  .hero { padding: 180px 48px 100px; text-align: center; background: var(--surface); border-bottom: 1px solid var(--line); }
+  .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 600; margin-bottom: 24px; }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 600px; margin: 0 auto; }
+
+  .content { max-width: 1240px; margin: 0 auto; padding: 80px 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; }
+  .lifestyle-section h2 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 20px; }
+  .lifestyle-section p { margin-bottom: 30px; color: var(--muted); }
+  .topic-list { list-style: none; }
+  .topic-item { padding: 20px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+  .topic-name { font-weight: 600; }
+  .topic-arrow { color: var(--accent); }
+
+  @media (max-width: 850px) { .content { grid-template-columns: 1fr; } }
+  @media (max-width: 600px) { .content { padding: 40px 20px; } }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a href="index.html" class="topbar-brand">
+    <img src="/logo.webp" alt="Royal Shaadi logo" class="topbar-brand-logo">
+    <span class="topbar-logo">Royal Shaadi</span>
+  </a>
+  <nav class="topbar-links">
+    <a href="wedding-calendar.html">Wedding Calendar</a>
+    <a href="planner.html">Planner</a>
+    <a href="vendors.html">Vendor</a>
+    <a href="blogs.html">Blog</a>
+    <a href="subscribe.html" class="topbar-cta">Subscribe</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 class="hero-title">Lifestyle & Wellness</h1>
+  <p class="hero-sub">The journey to your wedding is about more than just the day — it's about the rituals, the wellness, and the life you build thereafter.</p>
+</section>
+
+<main class="content">
+  <div class="lifestyle-section">
+    <h2>Mind & Body</h2>
+    <p>Bridal fitness routines, mental health during planning, and skincare secrets for that signature wedding glow.</p>
+    <ul class="topic-list">
+      <li class="topic-item"><span class="topic-name">The 6-Month Bridal Glow Routine</span><span class="topic-arrow">→</span></li>
+      <li class="topic-item"><span class="topic-name">Managing Wedding Planning Stress</span><span class="topic-arrow">→</span></li>
+      <li class="topic-item"><span class="topic-name">Pre-Wedding Yoga for Couples</span><span class="topic-arrow">→</span></li>
+    </ul>
+  </div>
+  <div class="lifestyle-section">
+    <h2>Tradition & Culture</h2>
+    <p>Deep dives into the meaning behind Indian wedding rituals and how to incorporate them into modern ceremonies.</p>
+    <ul class="topic-list">
+      <li class="topic-item"><span class="topic-name">The Significance of the Saptapadi</span><span class="topic-arrow">→</span></li>
+      <li class="topic-item"><span class="topic-name">Modern Takes on the Mehendi Ceremony</span><span class="topic-arrow">→</span></li>
+      <li class="topic-item"><span class="topic-name">Regional Ritual Spotlight: South India</span><span class="topic-arrow">→</span></li>
+    </ul>
+  </div>
+</main>
+</body>
+</html>
