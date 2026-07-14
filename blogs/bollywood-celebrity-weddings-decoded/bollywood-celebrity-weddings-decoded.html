@@ -865,5 +865,90 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     });
   }
 </script>
+<script>
+  (function loadRecommendedReads() {
+    const grid = document.getElementById('recGrid');
+    const section = document.querySelector('.recommended-reads');
+    if (!grid || !section) return;
+
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    const currentSlug = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : '';
+    const PICKS = 3;
+
+    fetch('/blogs/posts.json')
+      .then(res => {
+        if (!res.ok) throw new Error('posts.json not found');
+        return res.json();
+      })
+      .then(entries => {
+        const candidates = Array.isArray(entries) ? entries : [];
+        return Promise.all(candidates
+          .filter(entry => entry && entry.slug && entry.slug !== currentSlug)
+          .sort(() => Math.random() - 0.5)
+          .slice(0, PICKS)
+          .map(entry => fetch(`/blogs/${entry.slug}/${entry.slug}.html`)
+            .then(res => {
+              if (!res.ok) throw new Error('post HTML not found');
+              return res.text();
+            })
+            .then(html => {
+              const doc = new DOMParser().parseFromString(html, 'text/html');
+              const meta = name => {
+                const el = doc.querySelector(`meta[property="${name}"], meta[name="${name}"]`);
+                return el ? el.getAttribute('content') : '';
+              };
+              const heroMetaSpans = Array.from(doc.querySelectorAll('.hero-meta span'))
+                .map(s => s.textContent.trim().replace(/^[·✦]\s*/, ''));
+              const heroImg = doc.querySelector('.hero-img');
+              const eyebrow = doc.querySelector('.hero-eyebrow');
+
+              return {
+                slug: entry.slug,
+                title: meta('og:title') || (doc.querySelector('h1.hero-title')?.textContent.trim() || ''),
+                excerpt: meta('og:description') || '',
+                tag: (eyebrow ? eyebrow.textContent.trim() : '') || meta('article:section') || '',
+                readTime: heroMetaSpans[2] || '',
+                alt: heroImg ? heroImg.getAttribute('alt') : ''
+              };
+            })
+            .catch(() => null)
+          ));
+      })
+      .then(posts => {
+        const validPosts = Array.isArray(posts) ? posts.filter(Boolean) : [];
+        if (!validPosts.length) throw new Error('no valid recommended posts');
+
+        grid.innerHTML = validPosts.map(post => {
+          const url = `/blogs/${post.slug}/${post.slug}.html`;
+          const img = `/blogs/${post.slug}/hero.webp`;
+          return `
+            <a class="rec-card" href="${url}">
+              <div class="rec-card-img-wrap">
+                <img class="rec-card-img" src="${img}" alt="${post.alt || post.title}" loading="lazy">
+              </div>
+              <span class="rec-card-tag">${post.tag}</span>
+              <h3 class="rec-card-title">${post.title}</h3>
+              <p class="rec-card-excerpt">${post.excerpt}</p>
+              <div class="rec-card-meta"><span>${post.tag}</span><span>${post.readTime}</span></div>
+            </a>
+          `;
+        }).join('');
+      })
+      .catch(() => {
+        section.style.display = 'none';
+      });
+  })();
+</script>
+<script>
+  (function() {
+    fetch('https://api.counterapi.dev/v1/royalshaadi/destination-wedding-india-budget/up')
+      .then(res => res.json())
+      .then(data => {
+        const el = document.getElementById('view-count');
+        if (el) el.textContent = data.count.toLocaleString();
+      })
+      .catch(err => console.error('Counter error:', err));
+  })();
+</script>
 </body>
 </html>
