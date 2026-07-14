@@ -873,7 +873,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     const currentSlug = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : '';
-    const PICKS = 3;
+    const PICKS = 4;
 
     fetch('/blogs/posts.json')
       .then(res => {
