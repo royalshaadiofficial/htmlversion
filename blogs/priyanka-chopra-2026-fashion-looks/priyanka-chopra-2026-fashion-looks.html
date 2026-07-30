@@ -957,7 +957,7 @@
 
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     const currentSlug = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : '';
-    const PICKS = 4;
+    const PICKS = 3;
 
     fetch('/blogs/posts.json')
       .then(res => {
